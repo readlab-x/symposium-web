@@ -1,0 +1,23 @@
+[
+	{
+		"id": "theme-love-and-beauty",
+		"name": "爱与美",
+		"summary": "从赞美爱神到追问“何为美”，主题由修辞美感转向形上定义。",
+		"lineIds": ["line-002", "line-005", "line-007"],
+		"characterIds": ["pausanias", "agathon", "socrates"]
+	},
+	{
+		"id": "theme-soul-order",
+		"name": "灵魂秩序",
+		"summary": "人物冲突不断回到同一问题：欲望能否被节制并导向更高价值。",
+		"lineIds": ["line-003", "line-006", "line-009"],
+		"characterIds": ["eryximachus", "socrates", "alcibiades"]
+	},
+	{
+		"id": "theme-myth-and-reason",
+		"name": "神话与理性",
+		"summary": "阿里斯托芬的神话叙事与苏格拉底的定义论证形成方法论对照。",
+		"lineIds": ["line-004", "line-006"],
+		"characterIds": ["aristophanes", "socrates", "diotima"]
+	}
+]

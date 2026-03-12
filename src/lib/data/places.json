@@ -1,0 +1,23 @@
+[
+	{
+		"id": "athens",
+		"name": "雅典",
+		"type": "place",
+		"summary": "《会饮》叙事发生的城邦环境，政治与修辞文化浓厚。",
+		"relatedLineIds": ["line-001", "line-008"]
+	},
+	{
+		"id": "agathon-house",
+		"name": "阿伽松宅邸",
+		"type": "place",
+		"summary": "宴会主场景，发言按顺序展开，形成完整思想链条。",
+		"relatedLineIds": ["line-001", "line-007"]
+	},
+	{
+		"id": "mantinea",
+		"name": "曼提尼亚",
+		"type": "place",
+		"summary": "狄奥提玛所属地名，苏格拉底在此获得关于爱的哲学训练。",
+		"relatedLineIds": ["line-006"]
+	}
+]

@@ -1,0 +1,89 @@
+[
+	{
+		"id": "phaedrus",
+		"name": "斐德若斯",
+		"type": "person",
+		"role": "宴会提议者",
+		"avatar": "斐",
+		"summary": "提议每位宾客依次赞颂爱神，并将爱定义为激发勇敢与荣誉的力量。",
+		"firstLineId": "line-001"
+	},
+	{
+		"id": "pausanias",
+		"name": "泡萨尼亚斯",
+		"type": "person",
+		"role": "演讲者",
+		"avatar": "泡",
+		"summary": "区分“天上之爱”与“凡俗之爱”，强调爱应当与德性和教育结合。",
+		"firstLineId": "line-002"
+	},
+	{
+		"id": "eryximachus",
+		"name": "厄律克西马库斯",
+		"type": "person",
+		"role": "医生",
+		"avatar": "厄",
+		"summary": "将爱扩展为一种宇宙秩序原则，认为医学、音乐和天文学都体现和谐之爱。",
+		"firstLineId": "line-003"
+	},
+	{
+		"id": "aristophanes",
+		"name": "阿里斯托芬",
+		"type": "person",
+		"role": "喜剧诗人",
+		"avatar": "阿",
+		"summary": "提出“圆人神话”，认为爱是寻回失去的另一半，指向完整性与归属感。",
+		"firstLineId": "line-004"
+	},
+	{
+		"id": "agathon",
+		"name": "阿伽松",
+		"type": "person",
+		"role": "宴会主人",
+		"avatar": "伽",
+		"summary": "赞美爱神的优雅、年轻与美，演讲风格华丽但被苏格拉底追问其逻辑。",
+		"firstLineId": "line-005"
+	},
+	{
+		"id": "socrates",
+		"name": "苏格拉底",
+		"type": "person",
+		"role": "核心发言者",
+		"avatar": "苏",
+		"summary": "借狄奥提玛之言提出“爱的阶梯”，从个体之美上升到美本身。",
+		"firstLineId": "line-006"
+	},
+	{
+		"id": "diotima",
+		"name": "狄奥提玛",
+		"type": "person",
+		"role": "苏格拉底转述中的导师",
+		"avatar": "狄",
+		"summary": "将爱定义为介于匮乏与富足之间的追求者，并建立从肉身到理念的上升路径。"
+	},
+	{
+		"id": "alcibiades",
+		"name": "阿尔喀比亚德斯",
+		"type": "person",
+		"role": "突入宴会者",
+		"avatar": "阿",
+		"summary": "以个人经历描绘苏格拉底的精神魅力，为全篇提供戏剧性的现实回声。",
+		"firstLineId": "line-008"
+	},
+	{
+		"id": "eros",
+		"name": "厄洛斯",
+		"type": "deity",
+		"role": "爱神",
+		"avatar": "爱",
+		"summary": "在诸位发言中被赋予不同定义：勇敢之源、和谐原则、对美的追求。"
+	},
+	{
+		"id": "aphrodite",
+		"name": "阿佛洛狄忒",
+		"type": "deity",
+		"role": "爱与美之神",
+		"avatar": "美",
+		"summary": "泡萨尼亚斯借“双重阿佛洛狄忒”区分高尚与低俗之爱。"
+	}
+]

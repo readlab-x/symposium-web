@@ -1,0 +1,74 @@
+[
+	{
+		"id": "line-001",
+		"sequence": 1,
+		"chapter": "宴会开场",
+		"speakerId": "phaedrus",
+		"text": "在阿伽松宅邸，我们不如轮流赞美厄洛斯；在雅典，还没有神比爱神更该被认真谈论。",
+		"tags": ["爱神", "开题", "宴会规则"]
+	},
+	{
+		"id": "line-002",
+		"sequence": 2,
+		"chapter": "第一轮发言",
+		"speakerId": "pausanias",
+		"text": "并非所有爱都相同：阿佛洛狄忒有天上与凡俗之分，对应的爱也应区分德性与欲望。",
+		"tags": ["天上之爱", "凡俗之爱", "伦理区分"]
+	},
+	{
+		"id": "line-003",
+		"sequence": 3,
+		"chapter": "第一轮发言",
+		"speakerId": "eryximachus",
+		"text": "医生看到的爱不只在人心中，也在身体、季节与音乐中；和谐就是被节制的爱。",
+		"tags": ["和谐", "医学", "宇宙秩序"]
+	},
+	{
+		"id": "line-004",
+		"sequence": 4,
+		"chapter": "第一轮发言",
+		"speakerId": "aristophanes",
+		"text": "人原本是完整的圆体，被分开后才在世上寻找另一半；爱就是回到完整的渴望。",
+		"tags": ["圆人神话", "完整性", "亲密关系"]
+	},
+	{
+		"id": "line-005",
+		"sequence": 5,
+		"chapter": "第一轮发言",
+		"speakerId": "agathon",
+		"text": "厄洛斯最年轻、最柔美，住在花朵与灵魂最细腻之处，他让语言本身也变得优雅。",
+		"tags": ["修辞", "美", "赞歌"]
+	},
+	{
+		"id": "line-006",
+		"sequence": 6,
+		"chapter": "苏格拉底长篇",
+		"speakerId": "socrates",
+		"text": "狄奥提玛在曼提尼亚告诉我：爱并非拥有美，而是不断生育于美中，追求永恒。",
+		"tags": ["狄奥提玛", "爱的阶梯", "永恒"]
+	},
+	{
+		"id": "line-007",
+		"sequence": 7,
+		"chapter": "苏格拉底长篇",
+		"speakerId": "socrates",
+		"text": "真正的上升，从爱一具身体开始，最终抵达美本身；此时思想在真理中诞生。",
+		"tags": ["理念", "上升", "真理"]
+	},
+	{
+		"id": "line-008",
+		"sequence": 8,
+		"chapter": "阿尔喀比亚德斯突入",
+		"speakerId": "alcibiades",
+		"text": "我在雅典见过许多雄辩者，但苏格拉底像会发声的雕像：外表朴素，内里却藏着神性。",
+		"tags": ["人物描写", "苏格拉底", "戏剧转折"]
+	},
+	{
+		"id": "line-009",
+		"sequence": 9,
+		"chapter": "阿尔喀比亚德斯突入",
+		"speakerId": "alcibiades",
+		"text": "我曾试图以亲近换取他的心，但他更看重灵魂的秩序，而不是阿佛洛狄忒式的交换。",
+		"tags": ["灵魂", "节制", "价值冲突"]
+	}
+]
