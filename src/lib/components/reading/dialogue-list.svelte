@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import DialogueLine from "$lib/components/reading/dialogue-line.svelte";
 	import type { Character, DialogLine, EntityReference } from "$lib/types";
 
@@ -19,8 +19,8 @@
 
 <div class="space-y-3">
 	{#if lines.length === 0}
-		<div class="rounded-lg border border-dashed p-6 text-sm text-muted-foreground">
-			没有匹配的发言，尝试清空筛选或修改关键字。
+		<div class="rounded-xl border border-dashed p-6 text-sm text-muted-foreground">
+			没有匹配的发言，尝试调整筛选条件或修改搜索关键词。
 		</div>
 	{:else}
 		{#each lines as line (line.id)}

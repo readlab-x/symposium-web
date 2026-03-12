@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { Button } from "$lib/components/ui/button/index.js";
 	import type { Character } from "$lib/types";
 
@@ -18,7 +18,7 @@
 <section class="space-y-3">
 	<div class="flex items-center justify-between">
 		<h2 class="text-sm font-medium text-muted-foreground">按人物筛选</h2>
-		<Button size="sm" variant="outline" onclick={() => onSelectAll?.()}>全部</Button>
+		<Button size="sm" variant="outline" onclick={() => onSelectAll?.()}>全选</Button>
 	</div>
 	<div class="flex flex-wrap gap-2">
 		{#each speakers as speaker (speaker.id)}

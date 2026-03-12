@@ -1,4 +1,4 @@
-import { browser } from "$app/environment";
+﻿import { browser } from "$app/environment";
 import { writable } from "svelte/store";
 import type { DialogLine } from "$lib/types";
 

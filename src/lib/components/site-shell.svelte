@@ -90,6 +90,16 @@
 		return `主题：跟随系统（${darkMode ? "深色" : "浅色"}）`;
 	}
 
+	function languageButtonLabel(): string {
+		const map = new Map(languageOptions.map((option) => [option.code, option.label]));
+		const primary = map.get($i18nPreferences.primaryLanguage) ?? $i18nPreferences.primaryLanguage;
+		if (!$i18nPreferences.translationEnabled) {
+			return `语言配置：主语言 ${primary}，翻译关闭`;
+		}
+		const target = map.get($i18nPreferences.targetLanguage) ?? $i18nPreferences.targetLanguage;
+		return `语言配置：主语言 ${primary}，翻译到 ${target}`;
+	}
+
 	function setPrimaryLanguage(language: LanguageCode) {
 		i18nPreferences.setPrimaryLanguage(language);
 	}
@@ -121,8 +131,8 @@
 					variant="outline"
 					size="icon-sm"
 					onclick={() => (isI18nDialogOpen = true)}
-					aria-label="语言配置"
-					title="语言配置"
+					aria-label={languageButtonLabel()}
+					title={languageButtonLabel()}
 				>
 					<Languages class="size-4" />
 				</Button>

@@ -101,31 +101,34 @@
 	}
 </script>
 
-<section class="space-y-4">
+<section class="space-y-5">
 	<header class="space-y-2">
-		<h1 class="text-2xl font-semibold tracking-tight">对话阅读视图</h1>
-		<p class="text-sm text-muted-foreground">
-			支持人物筛选、实体高亮、注解侧栏。可在右上角“语言配置”中切换主语言与翻译展示。
-		</p>
+		<h1 class="text-2xl font-semibold tracking-tight">原文阅读台</h1>
+		<p class="text-sm text-muted-foreground">以原文为主线阅读，按需展开翻译与学术注解。</p>
 	</header>
 
 	<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
 		<div class="space-y-4">
-			<div class="rounded-lg border p-3">
-				<SpeakerFilter
-					{speakers}
-					activeSpeakerIds={activeSpeakerIds}
-					onToggleSpeaker={toggleSpeaker}
-					onSelectAll={resetSpeakers}
-				/>
-				<div class="mt-3">
+			<details class="group rounded-xl border border-border/60 bg-background/60 p-3 backdrop-blur-sm">
+				<summary class="flex cursor-pointer list-none items-center justify-between gap-3">
+					<span class="text-sm font-medium">阅读工具</span>
+					<span class="text-xs text-muted-foreground group-open:hidden">展开筛选与搜索</span>
+					<span class="hidden text-xs text-muted-foreground group-open:inline">收起</span>
+				</summary>
+				<div class="mt-3 space-y-3">
+					<SpeakerFilter
+						{speakers}
+						activeSpeakerIds={activeSpeakerIds}
+						onToggleSpeaker={toggleSpeaker}
+						onSelectAll={resetSpeakers}
+					/>
 					<Input
 						bind:value={query}
 						placeholder="搜索当前主语言文本或标签，例如：爱 / 灵魂 / Diotima"
 						aria-label="搜索阅读文本"
 					/>
 				</div>
-			</div>
+			</details>
 
 			<DialogueList
 				lines={filteredLines}

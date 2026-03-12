@@ -57,13 +57,17 @@
 
 <article id={line.id}>
 	<Card.Root
-		class={`transition ${isSelected ? "border-primary ring-2 ring-primary/30" : "hover:border-primary/50"}`}
+		class={`transition-colors ${
+			isSelected
+				? "border-primary/50 bg-primary/5 shadow-sm"
+				: "border-border/50 bg-background/55 hover:border-border hover:bg-background"
+		}`}
 		onclick={selectLine}
 		onkeydown={onCardKeydown}
 		role="button"
 		tabindex={0}
 	>
-		<Card.Header class="gap-3">
+		<Card.Header class="gap-3 pb-2">
 			<div class="flex items-center justify-between gap-4">
 				<div class="flex items-center gap-3">
 					<Avatar.Root class="size-8 border">
@@ -76,25 +80,28 @@
 				</div>
 				<div class="flex flex-wrap justify-end gap-1">
 					{#each line.tags as tag (tag)}
-						<Badge variant="secondary">{tag}</Badge>
+						<Badge variant="outline">{tag}</Badge>
 					{/each}
 				</div>
 			</div>
 		</Card.Header>
-		<Card.Content>
+		<Card.Content class="pt-0">
 			<AnnotatedText text={primaryText} entities={entities} />
 
 			{#if canToggleTranslation && translationVisible && targetHasText}
-				<p class="mt-2 text-sm leading-7 text-muted-foreground">{targetText}</p>
+				<p class="mt-2 border-l-2 border-primary/35 pl-3 text-sm leading-7 text-muted-foreground">
+					{targetText}
+				</p>
 			{/if}
 
 			{#if canToggleTranslation}
 				<div class="mt-2 flex justify-end">
 					<Button
-						variant="outline"
+						variant="ghost"
 						size="icon-sm"
 						onclick={toggleTranslation}
 						disabled={!targetHasText}
+						class="text-muted-foreground hover:text-foreground"
 						aria-label={translationVisible ? "收起翻译" : "查看翻译"}
 						title={translationVisible ? "收起翻译" : "查看翻译"}
 					>

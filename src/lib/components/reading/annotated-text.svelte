@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import type { EntityReference, EntityType } from "$lib/types";
 
 	interface Segment {
@@ -76,7 +76,7 @@
 	function entityLabel(type: EntityType): string {
 		if (type === "person") return "人物";
 		if (type === "place") return "地点";
-		return "神祇";
+		return "概念";
 	}
 </script>
 
@@ -84,8 +84,16 @@
 	{#each segments as segment, index (`${index}-${segment.text}`)}
 		{#if segment.entity}
 			<span class="group relative inline-flex">
-				<span class={entityClass(segment.entity.type)}>{segment.text}</span>
-				<span class="pointer-events-none absolute bottom-full left-1/2 z-10 hidden w-56 -translate-x-1/2 rounded-md border bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground shadow-md group-hover:block">
+				<button
+					type="button"
+					class={`cursor-help rounded-sm ${entityClass(segment.entity.type)}`}
+					aria-label={`${segment.text}（${entityLabel(segment.entity.type)}）`}
+				>
+					{segment.text}
+				</button>
+				<span
+					class="pointer-events-none absolute bottom-full left-1/2 z-10 hidden w-56 -translate-x-1/2 rounded-md border bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground shadow-md group-hover:block group-focus-within:block"
+				>
 					<span class="font-semibold">{entityLabel(segment.entity.type)}</span>
 					<br />
 					{segment.entity.summary}
