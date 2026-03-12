@@ -58,6 +58,17 @@
 	let activeSpeakerIds = $state<string[]>(defaultSpeakerIds);
 	let selectedLineId = $state<string | null>(dialogs[0]?.id ?? null);
 	let toolsExpanded = $state(false);
+	const toolSummary = $derived.by(() => {
+		const parts: string[] = [];
+		if (activeSpeakerIds.length !== defaultSpeakerIds.length) {
+			parts.push(`人物 ${activeSpeakerIds.length}/${defaultSpeakerIds.length}`);
+		}
+		const trimmedQuery = query.trim();
+		if (trimmedQuery.length > 0) {
+			parts.push(`关键词：${trimmedQuery}`);
+		}
+		return parts.length > 0 ? parts.join(" · ") : "人物筛选与搜索";
+	});
 
 	const filteredLines = $derived.by(() =>
 		dialogs.filter((line) => {
@@ -118,7 +129,7 @@
 					<div class="flex items-center justify-between gap-3">
 						<div class="space-y-1">
 							<Card.Title class="text-sm font-medium">阅读工具</Card.Title>
-							<Card.Description class="text-xs">人物筛选与搜索</Card.Description>
+							<Card.Description class="text-xs">{toolSummary}</Card.Description>
 						</div>
 						<Button
 							variant="ghost"

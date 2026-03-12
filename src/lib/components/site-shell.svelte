@@ -121,7 +121,12 @@
 			<a href="/" class="text-lg font-semibold tracking-tight">会饮研读台</a>
 			<nav class="flex flex-wrap items-center gap-2">
 				{#each navItems as item (item.href)}
-					<Button href={item.href} variant={isActive(item.href) ? "secondary" : "ghost"} size="sm">
+					<Button
+						href={item.href}
+						variant={isActive(item.href) ? "secondary" : "ghost"}
+						size="sm"
+						class="h-11 px-4 sm:h-8 sm:px-3"
+					>
 						{item.label}
 					</Button>
 				{/each}
@@ -130,15 +135,18 @@
 				<Button
 					variant="outline"
 					size="icon-sm"
+					class="size-11 sm:size-8"
 					onclick={() => (isI18nDialogOpen = true)}
 					aria-label={languageButtonLabel()}
 					title={languageButtonLabel()}
+					aria-haspopup="dialog"
 				>
 					<Languages class="size-4" />
 				</Button>
 				<Button
 					variant="outline"
 					size="icon-sm"
+					class="size-11 sm:size-8"
 					onclick={cycleThemeMode}
 					aria-label={themeButtonLabel()}
 					title={themeButtonLabel()}

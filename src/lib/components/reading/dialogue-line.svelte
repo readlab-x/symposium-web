@@ -32,6 +32,10 @@
 	);
 	const targetHasText = $derived.by(() => hasDisplayText(line, $i18nPreferences.targetLanguage));
 	const targetText = $derived.by(() => getDisplayText(line, $i18nPreferences.targetLanguage));
+	const translationControlLabel = $derived.by(() => (translationVisible ? "收起翻译" : "查看翻译"));
+	const translationControlTitle = $derived.by(() =>
+		targetHasText ? translationControlLabel : "当前行暂无目标语言译文"
+	);
 
 	$effect(() => {
 		if (!canToggleTranslation) {
@@ -57,7 +61,7 @@
 
 <article id={line.id}>
 	<Card.Root
-		class={`transition-colors ${
+		class={`transition-colors duration-200 ease-out ${
 			isSelected
 				? "border-primary/50 bg-primary/5 shadow-sm"
 				: "border-border/50 bg-background/55 hover:border-border hover:bg-background"
@@ -88,10 +92,16 @@
 		<Card.Content class="pt-0">
 			<AnnotatedText text={primaryText} entities={entities} />
 
-			{#if canToggleTranslation && translationVisible && targetHasText}
-				<p class="mt-2 border-l-2 border-primary/35 pl-3 text-sm leading-7 text-muted-foreground">
-					{targetText}
-				</p>
+			{#if canToggleTranslation && targetHasText}
+				<div
+					class={`mt-2 grid transition-[grid-template-rows,opacity] duration-200 ease-out motion-reduce:transition-none ${
+						translationVisible ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+					}`}
+				>
+					<p class="min-h-0 overflow-hidden border-l-2 border-primary/35 pl-3 text-sm leading-7 text-muted-foreground">
+						{targetText}
+					</p>
+				</div>
 			{/if}
 
 			{#if canToggleTranslation}
@@ -99,11 +109,12 @@
 					<Button
 						variant="ghost"
 						size="icon-sm"
+						class="size-11 text-muted-foreground hover:text-foreground sm:size-8"
 						onclick={toggleTranslation}
 						disabled={!targetHasText}
-						class="text-muted-foreground hover:text-foreground"
-						aria-label={translationVisible ? "收起翻译" : "查看翻译"}
-						title={translationVisible ? "收起翻译" : "查看翻译"}
+						aria-label={translationControlLabel}
+						aria-pressed={translationVisible}
+						title={translationControlTitle}
 					>
 						{#if translationVisible}
 							<EyeOff class="size-4" />

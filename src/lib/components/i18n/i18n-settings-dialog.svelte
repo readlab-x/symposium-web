@@ -32,6 +32,7 @@
 		const translation = preferences.translationEnabled ? `开（目标：${target}）` : "关";
 		return `主语言：${primary}｜翻译：${translation}`;
 	});
+	let primaryLanguageSelect = $state<HTMLSelectElement | null>(null);
 
 	function close() {
 		open = false;
@@ -41,6 +42,11 @@
 		if (!open || event.key !== "Escape") return;
 		close();
 	}
+
+	$effect(() => {
+		if (!open) return;
+		queueMicrotask(() => primaryLanguageSelect?.focus());
+	});
 </script>
 
 <svelte:window onkeydown={handleWindowKeydown} />
@@ -58,17 +64,20 @@
 			role="dialog"
 			aria-modal="true"
 			aria-label="语言与翻译配置"
+			aria-describedby="i18n-settings-summary"
 			tabindex={-1}
 		>
 			<Card.Header class="border-b py-4">
 				<Card.Title class="text-lg">语言与翻译配置</Card.Title>
-				<Card.Description>{statusSummary}</Card.Description>
+				<Card.Description id="i18n-settings-summary">{statusSummary}</Card.Description>
 			</Card.Header>
 
 			<Card.Content class="space-y-4 py-4">
 				<section class="space-y-2 rounded-lg border border-border bg-muted/20 p-3">
-					<h3 class="text-sm font-medium">主语言</h3>
+					<label for="primary-language-select" class="block text-sm font-medium">主语言</label>
 					<select
+						id="primary-language-select"
+						bind:this={primaryLanguageSelect}
 						class={selectClass}
 						value={preferences.primaryLanguage}
 						onchange={(event) =>
@@ -82,7 +91,7 @@
 
 				<section class="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
 					<div class="flex items-center justify-between gap-3">
-						<h3 class="text-sm font-medium">翻译</h3>
+						<h3 id="translation-settings-heading" class="text-sm font-medium">翻译</h3>
 						<label class="flex items-center gap-2 text-sm">
 							<input
 								type="checkbox"
@@ -95,6 +104,7 @@
 						</label>
 					</div>
 					<select
+						aria-labelledby="translation-settings-heading"
 						class={selectClass}
 						disabled={!preferences.translationEnabled}
 						value={preferences.targetLanguage}
