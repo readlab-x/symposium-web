@@ -1,4 +1,5 @@
 ﻿<script lang="ts">
+	import { Languages, Monitor, Moon, Sun } from "@lucide/svelte";
 	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
@@ -11,6 +12,11 @@
 		label: string;
 	};
 
+	type ThemeMode = "light" | "dark" | "system";
+
+	const THEME_STORAGE_KEY = "huiyin:theme-mode";
+	const themeCycle: ThemeMode[] = ["system", "light", "dark"];
+
 	const navItems: NavItem[] = [
 		{ href: "/reading", label: "阅读" },
 		{ href: "/characters", label: "人物" },
@@ -20,22 +26,68 @@
 	];
 
 	let darkMode = $state(false);
+	let themeMode = $state<ThemeMode>("system");
 	let isI18nDialogOpen = $state(false);
 	let { children } = $props();
 
 	onMount(() => {
-		darkMode = document.documentElement.classList.contains("dark");
+		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		const initialMode = getStoredThemeMode();
+		setThemeMode(initialMode);
+
+		const onSystemThemeChanged = () => {
+			if (themeMode === "system") {
+				applyTheme("system");
+			}
+		};
+
+		mediaQuery.addEventListener("change", onSystemThemeChanged);
 		i18nPreferences.hydrate();
+
+		return () => {
+			mediaQuery.removeEventListener("change", onSystemThemeChanged);
+		};
 	});
 
 	function isActive(href: string): boolean {
 		return $page.url.pathname === href;
 	}
 
-	function toggleTheme() {
+	function applyTheme(mode: ThemeMode) {
 		if (!browser) return;
-		darkMode = !darkMode;
-		document.documentElement.classList.toggle("dark", darkMode);
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		const shouldUseDark = mode === "dark" || (mode === "system" && prefersDark);
+		darkMode = shouldUseDark;
+		document.documentElement.classList.toggle("dark", shouldUseDark);
+	}
+
+	function getStoredThemeMode(): ThemeMode {
+		if (!browser) return "system";
+		const value = localStorage.getItem(THEME_STORAGE_KEY);
+		if (value === "light" || value === "dark" || value === "system") {
+			return value;
+		}
+		return "system";
+	}
+
+	function setThemeMode(mode: ThemeMode) {
+		themeMode = mode;
+		if (browser) {
+			localStorage.setItem(THEME_STORAGE_KEY, mode);
+		}
+		applyTheme(mode);
+	}
+
+	function cycleThemeMode() {
+		const currentIndex = themeCycle.indexOf(themeMode);
+		const nextIndex = (currentIndex + 1) % themeCycle.length;
+		setThemeMode(themeCycle[nextIndex]);
+	}
+
+	function themeButtonLabel(): string {
+		if (themeMode === "light") return "主题：浅色";
+		if (themeMode === "dark") return "主题：深色";
+		return `主题：跟随系统（${darkMode ? "深色" : "浅色"}）`;
 	}
 
 	function setPrimaryLanguage(language: LanguageCode) {
@@ -65,11 +117,29 @@
 				{/each}
 			</nav>
 			<div class="flex items-center gap-2">
-				<Button variant="outline" size="sm" onclick={() => (isI18nDialogOpen = true)}>
-					语言配置
+				<Button
+					variant="outline"
+					size="icon-sm"
+					onclick={() => (isI18nDialogOpen = true)}
+					aria-label="语言配置"
+					title="语言配置"
+				>
+					<Languages class="size-4" />
 				</Button>
-				<Button variant="outline" size="sm" onclick={toggleTheme}>
-					{darkMode ? "切换日间" : "切换夜间"}
+				<Button
+					variant="outline"
+					size="icon-sm"
+					onclick={cycleThemeMode}
+					aria-label={themeButtonLabel()}
+					title={themeButtonLabel()}
+				>
+					{#if themeMode === "system"}
+						<Monitor class="size-4" />
+					{:else if themeMode === "light"}
+						<Sun class="size-4" />
+					{:else}
+						<Moon class="size-4" />
+					{/if}
 				</Button>
 			</div>
 		</div>
