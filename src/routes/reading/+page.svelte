@@ -1,7 +1,10 @@
 ﻿<script lang="ts">
+	import { ChevronDown } from "@lucide/svelte";
 	import AnnotationPanel from "$lib/components/reading/annotation-panel.svelte";
 	import DialogueList from "$lib/components/reading/dialogue-list.svelte";
 	import SpeakerFilter from "$lib/components/reading/speaker-filter.svelte";
+	import { Button } from "$lib/components/ui/button/index.js";
+	import * as Card from "$lib/components/ui/card/index.js";
 	import { Input } from "$lib/components/ui/input/index.js";
 	import annotationData from "$lib/data/annotations.json";
 	import characterData from "$lib/data/characters.json";
@@ -54,6 +57,7 @@
 	let query = $state("");
 	let activeSpeakerIds = $state<string[]>(defaultSpeakerIds);
 	let selectedLineId = $state<string | null>(dialogs[0]?.id ?? null);
+	let toolsExpanded = $state(false);
 
 	const filteredLines = $derived.by(() =>
 		dialogs.filter((line) => {
@@ -109,26 +113,41 @@
 
 	<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
 		<div class="space-y-4">
-			<details class="group rounded-xl border border-border/60 bg-background/60 p-3 backdrop-blur-sm">
-				<summary class="flex cursor-pointer list-none items-center justify-between gap-3">
-					<span class="text-sm font-medium">阅读工具</span>
-					<span class="text-xs text-muted-foreground group-open:hidden">展开筛选与搜索</span>
-					<span class="hidden text-xs text-muted-foreground group-open:inline">收起</span>
-				</summary>
-				<div class="mt-3 space-y-3">
-					<SpeakerFilter
-						{speakers}
-						activeSpeakerIds={activeSpeakerIds}
-						onToggleSpeaker={toggleSpeaker}
-						onSelectAll={resetSpeakers}
-					/>
-					<Input
-						bind:value={query}
-						placeholder="搜索当前主语言文本或标签，例如：爱 / 灵魂 / Diotima"
-						aria-label="搜索阅读文本"
-					/>
-				</div>
-			</details>
+			<Card.Root class="gap-0 border-border/60 bg-background/70 py-0 shadow-none">
+				<Card.Header class="border-b py-3">
+					<div class="flex items-center justify-between gap-3">
+						<div class="space-y-1">
+							<Card.Title class="text-sm font-medium">阅读工具</Card.Title>
+							<Card.Description class="text-xs">人物筛选与搜索</Card.Description>
+						</div>
+						<Button
+							variant="ghost"
+							size="sm"
+							onclick={() => (toolsExpanded = !toolsExpanded)}
+							aria-expanded={toolsExpanded}
+							aria-controls="reading-tools"
+						>
+							{toolsExpanded ? "收起" : "展开"}
+							<ChevronDown class={`size-4 transition-transform ${toolsExpanded ? "rotate-180" : ""}`} />
+						</Button>
+					</div>
+				</Card.Header>
+				{#if toolsExpanded}
+					<Card.Content id="reading-tools" class="space-y-3 py-3">
+						<SpeakerFilter
+							{speakers}
+							activeSpeakerIds={activeSpeakerIds}
+							onToggleSpeaker={toggleSpeaker}
+							onSelectAll={resetSpeakers}
+						/>
+						<Input
+							bind:value={query}
+							placeholder="搜索当前主语言文本或标签，例如：爱 / 灵魂 / Diotima"
+							aria-label="搜索阅读文本"
+						/>
+					</Card.Content>
+				{/if}
+			</Card.Root>
 
 			<DialogueList
 				lines={filteredLines}

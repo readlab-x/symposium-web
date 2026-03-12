@@ -1,5 +1,6 @@
 ﻿<script lang="ts">
 	import { Button } from "$lib/components/ui/button/index.js";
+	import * as Card from "$lib/components/ui/card/index.js";
 	import type { I18nPreferences, LanguageCode, LanguageOption } from "$lib/stores/i18n";
 
 	let {
@@ -17,6 +18,9 @@
 		onTranslationToggle: (enabled: boolean) => void;
 		onTargetLanguageChange: (language: LanguageCode) => void;
 	} = $props();
+
+	const selectClass =
+		"border-input bg-background ring-offset-background focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-9 w-full rounded-md border px-3 py-1 text-sm outline-none";
 
 	const languageByCode = $derived.by(() =>
 		Object.fromEntries(languages.map((language) => [language.code, language.label])) as Record<string, string>
@@ -49,23 +53,23 @@
 			onclick={close}
 			aria-label="关闭语言与翻译配置"
 		></button>
-		<div
-			class="relative w-full max-w-md rounded-xl border bg-background p-5 shadow-xl"
+		<Card.Root
+			class="relative w-full max-w-md gap-0 py-0 shadow-xl"
 			role="dialog"
 			aria-modal="true"
 			aria-label="语言与翻译配置"
 			tabindex={-1}
 		>
-			<header class="mb-4 space-y-1">
-				<h2 class="text-lg font-semibold">语言与翻译配置</h2>
-				<p class="text-sm text-muted-foreground">{statusSummary}</p>
-			</header>
+			<Card.Header class="border-b py-4">
+				<Card.Title class="text-lg">语言与翻译配置</Card.Title>
+				<Card.Description>{statusSummary}</Card.Description>
+			</Card.Header>
 
-			<div class="space-y-4">
-				<section class="space-y-2 rounded-lg border border-border/70 bg-muted/20 p-3">
+			<Card.Content class="space-y-4 py-4">
+				<section class="space-y-2 rounded-lg border border-border bg-muted/20 p-3">
 					<h3 class="text-sm font-medium">主语言</h3>
 					<select
-						class="h-9 w-full rounded-md border bg-background px-3 text-sm"
+						class={selectClass}
 						value={preferences.primaryLanguage}
 						onchange={(event) =>
 							onPrimaryLanguageChange((event.currentTarget as HTMLSelectElement).value as LanguageCode)}
@@ -76,12 +80,13 @@
 					</select>
 				</section>
 
-				<section class="space-y-3 rounded-lg border border-border/70 bg-muted/20 p-3">
+				<section class="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
 					<div class="flex items-center justify-between gap-3">
 						<h3 class="text-sm font-medium">翻译</h3>
 						<label class="flex items-center gap-2 text-sm">
 							<input
 								type="checkbox"
+								class="size-4 accent-primary"
 								checked={preferences.translationEnabled}
 								onchange={(event) =>
 									onTranslationToggle((event.currentTarget as HTMLInputElement).checked)}
@@ -90,7 +95,7 @@
 						</label>
 					</div>
 					<select
-						class="h-9 w-full rounded-md border bg-background px-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+						class={selectClass}
 						disabled={!preferences.translationEnabled}
 						value={preferences.targetLanguage}
 						onchange={(event) =>
@@ -104,11 +109,11 @@
 						翻译功能用于阅读辅助，默认隐藏，按行点击图标展开。
 					</p>
 				</section>
-			</div>
+			</Card.Content>
 
-			<footer class="mt-5 flex justify-end">
+			<Card.Footer class="justify-end border-t py-4">
 				<Button variant="secondary" size="sm" onclick={close}>完成</Button>
-			</footer>
-		</div>
+			</Card.Footer>
+		</Card.Root>
 	</div>
 {/if}

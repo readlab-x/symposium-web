@@ -27,7 +27,7 @@
 	}
 </script>
 
-<Card.Root class="sticky top-20 flex h-[calc(100dvh-6.5rem)] flex-col">
+<Card.Root class="flex flex-col lg:sticky lg:top-20 lg:h-[calc(100dvh-6.5rem)]">
 	<Card.Header class="shrink-0">
 		<Card.Title class="text-base">注解侧栏</Card.Title>
 		<Card.Description>
