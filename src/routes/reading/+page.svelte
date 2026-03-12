@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import AnnotationPanel from "$lib/components/reading/annotation-panel.svelte";
 	import DialogueList from "$lib/components/reading/dialogue-list.svelte";
 	import SpeakerFilter from "$lib/components/reading/speaker-filter.svelte";
@@ -7,6 +7,7 @@
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
 	import placeData from "$lib/data/places.json";
+	import { getDisplayText, i18nPreferences } from "$lib/stores/i18n";
 	import type {
 		Annotation,
 		Character,
@@ -57,9 +58,10 @@
 	const filteredLines = $derived.by(() =>
 		dialogs.filter((line) => {
 			const speakerMatched = activeSpeakerIds.includes(line.speakerId);
+			const visibleText = getDisplayText(line, $i18nPreferences.primaryLanguage);
 			const queryMatched =
 				query.trim().length === 0 ||
-				line.text.includes(query.trim()) ||
+				visibleText.includes(query.trim()) ||
 				line.tags.some((tag) => tag.includes(query.trim()));
 			return speakerMatched && queryMatched;
 		})
@@ -103,7 +105,7 @@
 	<header class="space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">对话阅读视图</h1>
 		<p class="text-sm text-muted-foreground">
-			支持人物筛选、实体高亮、注解侧栏。当前数据为占位样例，可直接替换为你的正式文本。
+			支持人物筛选、实体高亮、注解侧栏。可在右上角“语言配置”中切换主语言与翻译展示。
 		</p>
 	</header>
 
@@ -119,7 +121,7 @@
 				<div class="mt-3">
 					<Input
 						bind:value={query}
-						placeholder="搜索句子或标签，例如：灵魂 / 爱神 / 理念"
+						placeholder="搜索当前主语言文本或标签，例如：爱 / 灵魂 / Diotima"
 						aria-label="搜索阅读文本"
 					/>
 				</div>

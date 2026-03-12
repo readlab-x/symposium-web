@@ -1,7 +1,8 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import * as Separator from "$lib/components/ui/separator/index.js";
+	import { getDisplayText, i18nPreferences } from "$lib/stores/i18n";
 	import type { Annotation, Character, DialogLine } from "$lib/types";
 
 	let {
@@ -14,6 +15,10 @@
 		annotations: Annotation[];
 	} = $props();
 
+	const displayText = $derived.by(() =>
+		line ? getDisplayText(line, $i18nPreferences.primaryLanguage) : ""
+	);
+
 	function labelForAnnotationType(type: Annotation["type"]): string {
 		if (type === "background") return "背景";
 		if (type === "translation") return "翻译";
@@ -22,8 +27,8 @@
 	}
 </script>
 
-<Card.Root class="sticky top-6">
-	<Card.Header>
+<Card.Root class="sticky top-20 flex h-[calc(100dvh-6.5rem)] flex-col">
+	<Card.Header class="shrink-0">
 		<Card.Title class="text-base">注解侧栏</Card.Title>
 		<Card.Description>
 			{#if line}
@@ -33,10 +38,10 @@
 			{/if}
 		</Card.Description>
 	</Card.Header>
-	<Card.Content class="space-y-4">
+	<Card.Content class="min-h-0 flex-1 space-y-4 overflow-y-auto">
 		{#if line}
 			<blockquote class="rounded-md border-l-4 border-primary/50 bg-muted p-3 text-sm leading-6">
-				{line.text}
+				{displayText}
 			</blockquote>
 			<Separator.Root />
 		{/if}

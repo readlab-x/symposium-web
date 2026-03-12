@@ -1,23 +1,68 @@
 [
-	{
-		"id": "theme-love-and-beauty",
-		"name": "爱与美",
-		"summary": "从赞美爱神到追问“何为美”，主题由修辞美感转向形上定义。",
-		"lineIds": ["line-002", "line-005", "line-007"],
-		"characterIds": ["pausanias", "agathon", "socrates"]
-	},
-	{
-		"id": "theme-soul-order",
-		"name": "灵魂秩序",
-		"summary": "人物冲突不断回到同一问题：欲望能否被节制并导向更高价值。",
-		"lineIds": ["line-003", "line-006", "line-009"],
-		"characterIds": ["eryximachus", "socrates", "alcibiades"]
-	},
-	{
-		"id": "theme-myth-and-reason",
-		"name": "神话与理性",
-		"summary": "阿里斯托芬的神话叙事与苏格拉底的定义论证形成方法论对照。",
-		"lineIds": ["line-004", "line-006"],
-		"characterIds": ["aristophanes", "socrates", "diotima"]
-	}
+  {
+    "id": "theme-narrative-frame",
+    "name": "叙事框架",
+    "summary": "从“听闻-复述-再复述”进入对话，使哲学讨论带有历史回响与戏剧距离。",
+    "lineIds": [
+      "line-001",
+      "line-002",
+      "line-003",
+      "line-016"
+    ],
+    "characterIds": [
+      "apollodorus",
+      "aristodemus",
+      "agathon"
+    ]
+  },
+  {
+    "id": "theme-plural-eros",
+    "name": "多重爱的定义",
+    "summary": "多位发言者从伦理、医学、神话和修辞角度给出不同的爱之图像。",
+    "lineIds": [
+      "line-005",
+      "line-006",
+      "line-007",
+      "line-008",
+      "line-009"
+    ],
+    "characterIds": [
+      "phaedrus",
+      "pausanias",
+      "eryximachus",
+      "aristophanes",
+      "agathon"
+    ]
+  },
+  {
+    "id": "theme-ladder-of-love",
+    "name": "爱的阶梯",
+    "summary": "苏格拉底借狄奥提玛把爱定义为上升运动：由个别之美走向美本身。",
+    "lineIds": [
+      "line-010",
+      "line-011",
+      "line-012",
+      "line-013"
+    ],
+    "characterIds": [
+      "socrates",
+      "diotima",
+      "agathon"
+    ]
+  },
+  {
+    "id": "theme-socratic-portrait",
+    "name": "苏格拉底肖像",
+    "summary": "阿尔基比亚德的证言将“哲学的爱”转化为可见人格：节制、坚忍与精神魅力。",
+    "lineIds": [
+      "line-014",
+      "line-015",
+      "line-016"
+    ],
+    "characterIds": [
+      "alcibiades",
+      "socrates",
+      "aristodemus"
+    ]
+  }
 ]

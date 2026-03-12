@@ -1,74 +1,242 @@
 [
-	{
-		"id": "line-001",
-		"sequence": 1,
-		"chapter": "宴会开场",
-		"speakerId": "phaedrus",
-		"text": "在阿伽松宅邸，我们不如轮流赞美厄洛斯；在雅典，还没有神比爱神更该被认真谈论。",
-		"tags": ["爱神", "开题", "宴会规则"]
-	},
-	{
-		"id": "line-002",
-		"sequence": 2,
-		"chapter": "第一轮发言",
-		"speakerId": "pausanias",
-		"text": "并非所有爱都相同：阿佛洛狄忒有天上与凡俗之分，对应的爱也应区分德性与欲望。",
-		"tags": ["天上之爱", "凡俗之爱", "伦理区分"]
-	},
-	{
-		"id": "line-003",
-		"sequence": 3,
-		"chapter": "第一轮发言",
-		"speakerId": "eryximachus",
-		"text": "医生看到的爱不只在人心中，也在身体、季节与音乐中；和谐就是被节制的爱。",
-		"tags": ["和谐", "医学", "宇宙秩序"]
-	},
-	{
-		"id": "line-004",
-		"sequence": 4,
-		"chapter": "第一轮发言",
-		"speakerId": "aristophanes",
-		"text": "人原本是完整的圆体，被分开后才在世上寻找另一半；爱就是回到完整的渴望。",
-		"tags": ["圆人神话", "完整性", "亲密关系"]
-	},
-	{
-		"id": "line-005",
-		"sequence": 5,
-		"chapter": "第一轮发言",
-		"speakerId": "agathon",
-		"text": "厄洛斯最年轻、最柔美，住在花朵与灵魂最细腻之处，他让语言本身也变得优雅。",
-		"tags": ["修辞", "美", "赞歌"]
-	},
-	{
-		"id": "line-006",
-		"sequence": 6,
-		"chapter": "苏格拉底长篇",
-		"speakerId": "socrates",
-		"text": "狄奥提玛在曼提尼亚告诉我：爱并非拥有美，而是不断生育于美中，追求永恒。",
-		"tags": ["狄奥提玛", "爱的阶梯", "永恒"]
-	},
-	{
-		"id": "line-007",
-		"sequence": 7,
-		"chapter": "苏格拉底长篇",
-		"speakerId": "socrates",
-		"text": "真正的上升，从爱一具身体开始，最终抵达美本身；此时思想在真理中诞生。",
-		"tags": ["理念", "上升", "真理"]
-	},
-	{
-		"id": "line-008",
-		"sequence": 8,
-		"chapter": "阿尔喀比亚德斯突入",
-		"speakerId": "alcibiades",
-		"text": "我在雅典见过许多雄辩者，但苏格拉底像会发声的雕像：外表朴素，内里却藏着神性。",
-		"tags": ["人物描写", "苏格拉底", "戏剧转折"]
-	},
-	{
-		"id": "line-009",
-		"sequence": 9,
-		"chapter": "阿尔喀比亚德斯突入",
-		"speakerId": "alcibiades",
-		"text": "我曾试图以亲近换取他的心，但他更看重灵魂的秩序，而不是阿佛洛狄忒式的交换。",
-		"tags": ["灵魂", "节制", "价值冲突"]
-	}
+  {
+    "id": "line-001",
+    "sequence": 1,
+    "chapter": "引子",
+    "speakerId": "apollodorus",
+    "text": "噢，如果这就是你想要知道的，那倒不费什么事。就在前天，我从法勒伦进城，有位朋友追上来，要我重讲阿伽松家那场会饮。",
+    "tags": [
+      "叙事框架",
+      "会饮",
+      "回忆"
+    ],
+    "translations": {
+      "en-US": "If this is what you want to know, it is no trouble. Just the other day, as I was walking in from Phalerum, a friend stopped me and asked me to retell that banquet at Agathon's house."
+    }
+  },
+  {
+    "id": "line-002",
+    "sequence": 2,
+    "chapter": "引子",
+    "speakerId": "apollodorus",
+    "text": "我们当时都还小，那是阿伽松凭第一部悲剧得奖之后的庆典。事情并不新近，我也是后来从阿里司托得姆那里听来的。",
+    "tags": [
+      "时间背景",
+      "转述来源",
+      "阿伽松"
+    ],
+    "translations": {
+      "en-US": "We were still young then. It was after Agathon won with his first tragedy. The event was long ago, and I only heard the full account later from Aristodemus."
+    }
+  },
+  {
+    "id": "line-003",
+    "sequence": 3,
+    "chapter": "赴宴",
+    "speakerId": "aristodemus",
+    "text": "我在路上碰上苏格拉底，那天他刚洗过澡，脚上还穿着漂亮鞋子。他问我：尽管没请你，愿不愿意跟我去阿伽松家吃晚饭？",
+    "tags": [
+      "入场",
+      "苏格拉底",
+      "阿里司托得姆"
+    ],
+    "translations": {
+      "en-US": "I met Socrates on the road. He had just bathed and was wearing fine sandals. He asked: though you were not invited, would you come with me to dine at Agathon's?"
+    }
+  },
+  {
+    "id": "line-004",
+    "sequence": 4,
+    "chapter": "赴宴",
+    "speakerId": "agathon",
+    "text": "到这边来，苏格拉底，坐在我边上，好让我分享你在门廊里想到的智慧。",
+    "tags": [
+      "宴会场景",
+      "主人",
+      "智慧"
+    ],
+    "translations": {
+      "en-US": "Come sit by me, Socrates, so I may share the wisdom you discovered in the portico."
+    }
+  },
+  {
+    "id": "line-005",
+    "sequence": 5,
+    "chapter": "第一轮发言",
+    "speakerId": "phaedrus",
+    "text": "爱神是最古老也最尊贵的神；对青年而言，没有比高尚的爱人和被爱者更大的福分。",
+    "tags": [
+      "爱神",
+      "荣誉",
+      "勇气"
+    ],
+    "translations": {
+      "en-US": "Love is the oldest and most honored god; for the young, no blessing is greater than a noble lover and beloved."
+    }
+  },
+  {
+    "id": "line-006",
+    "sequence": 6,
+    "chapter": "第一轮发言",
+    "speakerId": "pausanias",
+    "text": "并非所有的爱都相同：既然阿佛洛狄忒有天上的和凡俗的两种，爱也有高下之分，应当区分可赞美与不可赞美的爱。",
+    "tags": [
+      "双重爱",
+      "伦理区分",
+      "阿佛洛狄忒"
+    ],
+    "translations": {
+      "en-US": "Not every love is the same: since Aphrodite has both heavenly and common forms, love too must be judged by higher and lower kinds."
+    }
+  },
+  {
+    "id": "line-007",
+    "sequence": 7,
+    "chapter": "第一轮发言",
+    "speakerId": "eryximachus",
+    "text": "爱的力量不只在人心，也在身体、音乐、季节和天象里；凡是和谐与节制之处，都能看到健全的爱。",
+    "tags": [
+      "和谐",
+      "医学",
+      "宇宙秩序"
+    ],
+    "translations": {
+      "en-US": "Love works not only in the soul, but in the body, music, seasons, and stars; wherever harmony and moderation appear, healthy love is present."
+    }
+  },
+  {
+    "id": "line-008",
+    "sequence": 8,
+    "chapter": "第一轮发言",
+    "speakerId": "aristophanes",
+    "text": "人原本是完整的圆体，后来被神分开；每个人终其一生都在寻找自己的另一半，这种追寻就是爱。",
+    "tags": [
+      "圆人神话",
+      "完整性",
+      "亲密关系"
+    ],
+    "translations": {
+      "en-US": "Humans were once whole and round, then split apart by the gods; all our lives we search for our other half, and that search is love."
+    }
+  },
+  {
+    "id": "line-009",
+    "sequence": 9,
+    "chapter": "第一轮发言",
+    "speakerId": "agathon",
+    "text": "爱神最年轻、最柔美、最细腻，住在花与灵魂之中；在他的引导下，诗与语言都变得优雅。",
+    "tags": [
+      "修辞",
+      "美",
+      "赞歌"
+    ],
+    "translations": {
+      "en-US": "Love is youngest, gentlest, and most delicate, dwelling among flowers and souls; under his guidance, poetry and speech become graceful."
+    }
+  },
+  {
+    "id": "line-010",
+    "sequence": 10,
+    "chapter": "苏格拉底的追问",
+    "speakerId": "socrates",
+    "text": "爱总是对某物的爱，且总是对自己所缺乏之物的爱；既然如此，爱并不已经拥有它所追求的美与善。",
+    "tags": [
+      "辩证法",
+      "缺乏",
+      "美与善"
+    ],
+    "translations": {
+      "en-US": "Love is always love of something, and of what one lacks; therefore love does not already possess the beauty and goodness it seeks."
+    }
+  },
+  {
+    "id": "line-011",
+    "sequence": 11,
+    "chapter": "狄奥提玛教导",
+    "speakerId": "diotima",
+    "text": "爱是贫乏神与资源神之子，所以既不全然匮乏，也不真正富足；他介于无知与智慧之间，永远在追求。",
+    "tags": [
+      "精灵",
+      "贫乏与资源",
+      "中介者"
+    ],
+    "translations": {
+      "en-US": "Love is the child of Poverty and Resource, so he is neither wholly poor nor truly rich; he stands between ignorance and wisdom, always in pursuit."
+    }
+  },
+  {
+    "id": "line-012",
+    "sequence": 12,
+    "chapter": "狄奥提玛教导",
+    "speakerId": "diotima",
+    "text": "真正的上升之路，是从爱一个身体，到爱一切美的身体，再到爱灵魂、制度与知识，最终凝视美本身。",
+    "tags": [
+      "爱的阶梯",
+      "上升",
+      "美本身"
+    ],
+    "translations": {
+      "en-US": "The true ascent begins with one beautiful body, then all beautiful bodies, then beautiful souls, laws, and knowledge, and finally the vision of Beauty itself."
+    }
+  },
+  {
+    "id": "line-013",
+    "sequence": 13,
+    "chapter": "苏格拉底总结",
+    "speakerId": "socrates",
+    "text": "这就是狄奥提玛的教义：若要使生命值得活，我们应当在美中生育德性，并终生赞美爱的力量。",
+    "tags": [
+      "总结",
+      "德性",
+      "爱的礼赞"
+    ],
+    "translations": {
+      "en-US": "This is Diotima's teaching: if life is to be worthy, we must give birth to virtue in beauty and praise the power of love throughout our lives."
+    }
+  },
+  {
+    "id": "line-014",
+    "sequence": 14,
+    "chapter": "阿尔基比亚德入席",
+    "speakerId": "alcibiades",
+    "text": "苏格拉底像会开启的西勒诺斯雕像：外表粗朴可笑，内部却藏着神性的形象和最严肃的智慧。",
+    "tags": [
+      "人物刻画",
+      "苏格拉底",
+      "阿尔基比亚德"
+    ],
+    "translations": {
+      "en-US": "Socrates is like an opened Silenus statue: rough and comic outside, yet inside are divine images and the gravest wisdom."
+    }
+  },
+  {
+    "id": "line-015",
+    "sequence": 15,
+    "chapter": "阿尔基比亚德入席",
+    "speakerId": "alcibiades",
+    "text": "我曾试图以亲近换取他的偏爱，但他对肉身诱惑毫不动摇；在战场与生活中，他都显示出惊人的节制与坚忍。",
+    "tags": [
+      "节制",
+      "德性",
+      "证言"
+    ],
+    "translations": {
+      "en-US": "I tried to win his favor through intimacy, but he was unmoved by bodily temptation; in war and in life he showed astonishing restraint and endurance."
+    }
+  },
+  {
+    "id": "line-016",
+    "sequence": 16,
+    "chapter": "尾声",
+    "speakerId": "aristodemus",
+    "text": "后来狂欢者闯入，宴席秩序尽失。天将亮时只剩苏格拉底、阿里斯托芬和阿伽松仍在辩论，随后众人相继睡去。",
+    "tags": [
+      "戏剧转折",
+      "尾声",
+      "悲喜剧"
+    ],
+    "translations": {
+      "en-US": "Then revelers rushed in and the order of the banquet collapsed. Near dawn only Socrates, Aristophanes, and Agathon were still arguing before all finally slept."
+    }
+  }
 ]

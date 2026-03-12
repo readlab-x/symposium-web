@@ -1,23 +1,61 @@
 [
-	{
-		"id": "athens",
-		"name": "雅典",
-		"type": "place",
-		"summary": "《会饮》叙事发生的城邦环境，政治与修辞文化浓厚。",
-		"relatedLineIds": ["line-001", "line-008"]
-	},
-	{
-		"id": "agathon-house",
-		"name": "阿伽松宅邸",
-		"type": "place",
-		"summary": "宴会主场景，发言按顺序展开，形成完整思想链条。",
-		"relatedLineIds": ["line-001", "line-007"]
-	},
-	{
-		"id": "mantinea",
-		"name": "曼提尼亚",
-		"type": "place",
-		"summary": "狄奥提玛所属地名，苏格拉底在此获得关于爱的哲学训练。",
-		"relatedLineIds": ["line-006"]
-	}
+  {
+    "id": "athens",
+    "name": "雅典",
+    "type": "place",
+    "summary": "对话叙事与思想交锋的城市背景。",
+    "relatedLineIds": [
+      "line-001",
+      "line-002",
+      "line-016"
+    ]
+  },
+  {
+    "id": "phalerum",
+    "name": "法勒伦",
+    "type": "place",
+    "summary": "阿波罗多洛进城途中被拦下并开启转述的地点。",
+    "relatedLineIds": [
+      "line-001"
+    ]
+  },
+  {
+    "id": "agathon-house",
+    "name": "阿伽松宅邸",
+    "type": "place",
+    "summary": "会饮主场，主要发言与戏剧转折都在此发生。",
+    "relatedLineIds": [
+      "line-003",
+      "line-004",
+      "line-016"
+    ]
+  },
+  {
+    "id": "mantinea",
+    "name": "曼提尼亚",
+    "type": "place",
+    "summary": "狄奥提玛相关背景地，承载苏格拉底转述的思想来源。",
+    "relatedLineIds": [
+      "line-011",
+      "line-012"
+    ]
+  },
+  {
+    "id": "potidaea",
+    "name": "波提狄亚",
+    "type": "place",
+    "summary": "阿尔基比亚德回忆中的战场场景，用于证明苏格拉底的坚忍。",
+    "relatedLineIds": [
+      "line-015"
+    ]
+  },
+  {
+    "id": "lyceum",
+    "name": "吕克昂",
+    "type": "place",
+    "summary": "会饮结束后苏格拉底照常活动的地点，体现其日常节律。",
+    "relatedLineIds": [
+      "line-016"
+    ]
+  }
 ]

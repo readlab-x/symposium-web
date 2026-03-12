@@ -24,6 +24,7 @@ export interface DialogLine {
 	chapter: string;
 	speakerId: string;
 	text: string;
+	translations?: Record<string, string>;
 	tags: string[];
 }
 

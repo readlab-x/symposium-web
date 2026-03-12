@@ -1,89 +1,108 @@
 [
-	{
-		"id": "phaedrus",
-		"name": "斐德若斯",
-		"type": "person",
-		"role": "宴会提议者",
-		"avatar": "斐",
-		"summary": "提议每位宾客依次赞颂爱神，并将爱定义为激发勇敢与荣誉的力量。",
-		"firstLineId": "line-001"
-	},
-	{
-		"id": "pausanias",
-		"name": "泡萨尼亚斯",
-		"type": "person",
-		"role": "演讲者",
-		"avatar": "泡",
-		"summary": "区分“天上之爱”与“凡俗之爱”，强调爱应当与德性和教育结合。",
-		"firstLineId": "line-002"
-	},
-	{
-		"id": "eryximachus",
-		"name": "厄律克西马库斯",
-		"type": "person",
-		"role": "医生",
-		"avatar": "厄",
-		"summary": "将爱扩展为一种宇宙秩序原则，认为医学、音乐和天文学都体现和谐之爱。",
-		"firstLineId": "line-003"
-	},
-	{
-		"id": "aristophanes",
-		"name": "阿里斯托芬",
-		"type": "person",
-		"role": "喜剧诗人",
-		"avatar": "阿",
-		"summary": "提出“圆人神话”，认为爱是寻回失去的另一半，指向完整性与归属感。",
-		"firstLineId": "line-004"
-	},
-	{
-		"id": "agathon",
-		"name": "阿伽松",
-		"type": "person",
-		"role": "宴会主人",
-		"avatar": "伽",
-		"summary": "赞美爱神的优雅、年轻与美，演讲风格华丽但被苏格拉底追问其逻辑。",
-		"firstLineId": "line-005"
-	},
-	{
-		"id": "socrates",
-		"name": "苏格拉底",
-		"type": "person",
-		"role": "核心发言者",
-		"avatar": "苏",
-		"summary": "借狄奥提玛之言提出“爱的阶梯”，从个体之美上升到美本身。",
-		"firstLineId": "line-006"
-	},
-	{
-		"id": "diotima",
-		"name": "狄奥提玛",
-		"type": "person",
-		"role": "苏格拉底转述中的导师",
-		"avatar": "狄",
-		"summary": "将爱定义为介于匮乏与富足之间的追求者，并建立从肉身到理念的上升路径。"
-	},
-	{
-		"id": "alcibiades",
-		"name": "阿尔喀比亚德斯",
-		"type": "person",
-		"role": "突入宴会者",
-		"avatar": "阿",
-		"summary": "以个人经历描绘苏格拉底的精神魅力，为全篇提供戏剧性的现实回声。",
-		"firstLineId": "line-008"
-	},
-	{
-		"id": "eros",
-		"name": "厄洛斯",
-		"type": "deity",
-		"role": "爱神",
-		"avatar": "爱",
-		"summary": "在诸位发言中被赋予不同定义：勇敢之源、和谐原则、对美的追求。"
-	},
-	{
-		"id": "aphrodite",
-		"name": "阿佛洛狄忒",
-		"type": "deity",
-		"role": "爱与美之神",
-		"avatar": "美",
-		"summary": "泡萨尼亚斯借“双重阿佛洛狄忒”区分高尚与低俗之爱。"
-	}
+  {
+    "id": "apollodorus",
+    "name": "阿波罗多洛",
+    "type": "person",
+    "role": "外层叙事者",
+    "avatar": "阿",
+    "summary": "与友人步行进城时重述会饮经过，负责搭建整部对话的回忆框架。",
+    "firstLineId": "line-001"
+  },
+  {
+    "id": "aristodemus",
+    "name": "阿里司托得姆",
+    "type": "person",
+    "role": "在场见证者",
+    "avatar": "里",
+    "summary": "会饮的实际目击者，阿波罗多洛转述内容的主要来源。",
+    "firstLineId": "line-003"
+  },
+  {
+    "id": "phaedrus",
+    "name": "斐德罗",
+    "type": "person",
+    "role": "议题发起者",
+    "avatar": "斐",
+    "summary": "提议众人依次赞颂爱神，并以荣誉与勇气为核心开启讨论。",
+    "firstLineId": "line-005"
+  },
+  {
+    "id": "pausanias",
+    "name": "鲍萨尼亚",
+    "type": "person",
+    "role": "伦理区分者",
+    "avatar": "鲍",
+    "summary": "区分高下两种爱，强调评价爱情必须看其道德方向与目的。",
+    "firstLineId": "line-006"
+  },
+  {
+    "id": "eryximachus",
+    "name": "厄律克西马库",
+    "type": "person",
+    "role": "医生与调和论者",
+    "avatar": "厄",
+    "summary": "把爱的秩序扩展到医学、音乐与天象，主张节制性的和谐。",
+    "firstLineId": "line-007"
+  },
+  {
+    "id": "aristophanes",
+    "name": "阿里斯托芬",
+    "type": "person",
+    "role": "神话叙述者",
+    "avatar": "芬",
+    "summary": "通过圆人神话解释亲密欲望，提供诗性且深刻的人性图像。",
+    "firstLineId": "line-008"
+  },
+  {
+    "id": "agathon",
+    "name": "阿伽松",
+    "type": "person",
+    "role": "宴会主人",
+    "avatar": "伽",
+    "summary": "悲剧诗人，发言辞采华美，并在苏格拉底追问中转入哲学讨论。",
+    "firstLineId": "line-004"
+  },
+  {
+    "id": "socrates",
+    "name": "苏格拉底",
+    "type": "person",
+    "role": "核心论证者",
+    "avatar": "苏",
+    "summary": "通过辩证追问与转述狄奥提玛教导，将赞歌推进为哲学定义。",
+    "firstLineId": "line-010"
+  },
+  {
+    "id": "diotima",
+    "name": "狄奥提玛",
+    "type": "person",
+    "role": "苏格拉底的思想导师",
+    "avatar": "狄",
+    "summary": "提出爱之中介本性与“爱的阶梯”，构成《会饮》的思想高潮。",
+    "firstLineId": "line-011"
+  },
+  {
+    "id": "alcibiades",
+    "name": "阿尔基比亚德",
+    "type": "person",
+    "role": "酒后闯入者",
+    "avatar": "阿",
+    "summary": "以亲历证言刻画苏格拉底的精神魅力与实际德性，形成戏剧收束。",
+    "firstLineId": "line-014"
+  },
+  {
+    "id": "eros",
+    "name": "厄洛斯",
+    "type": "deity",
+    "role": "爱之神灵",
+    "avatar": "爱",
+    "summary": "全篇讨论中心：在不同发言中被定义为勇气之源、秩序原则与上升动力。"
+  },
+  {
+    "id": "aphrodite",
+    "name": "阿佛洛狄忒",
+    "type": "deity",
+    "role": "爱与美之神",
+    "avatar": "美",
+    "summary": "鲍萨尼亚借“双重阿佛洛狄忒”区分两类爱，建立伦理分层。"
+  }
 ]

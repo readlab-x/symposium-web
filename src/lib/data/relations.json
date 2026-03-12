@@ -1,90 +1,126 @@
 {
-	"nodes": [
-		{
-			"id": "phaedrus",
-			"label": "斐德若斯",
-			"type": "person",
-			"summary": "议程发起者，推动众人围绕爱神发言。",
-			"x": 80,
-			"y": 120
-		},
-		{
-			"id": "agathon",
-			"label": "阿伽松",
-			"type": "person",
-			"summary": "宴会主办者，修辞风格代表。",
-			"x": 210,
-			"y": 70
-		},
-		{
-			"id": "socrates",
-			"label": "苏格拉底",
-			"type": "person",
-			"summary": "核心论证者，将讨论转向哲学定义。",
-			"x": 210,
-			"y": 180
-		},
-		{
-			"id": "diotima",
-			"label": "狄奥提玛",
-			"type": "person",
-			"summary": "苏格拉底转述中的导师，提出爱的阶梯。",
-			"x": 350,
-			"y": 180
-		},
-		{
-			"id": "alcibiades",
-			"label": "阿尔喀比亚德斯",
-			"type": "person",
-			"summary": "通过个人叙事凸显苏格拉底的实践面向。",
-			"x": 350,
-			"y": 70
-		},
-		{
-			"id": "eros",
-			"label": "厄洛斯",
-			"type": "deity",
-			"summary": "关系网络中心概念，连接所有发言者。",
-			"x": 210,
-			"y": 20
-		}
-	],
-	"edges": [
-		{
-			"id": "edge-1",
-			"source": "phaedrus",
-			"target": "agathon",
-			"relation": "提议在其宅邸举行赞颂"
-		},
-		{
-			"id": "edge-2",
-			"source": "agathon",
-			"target": "socrates",
-			"relation": "演讲后被其追问定义"
-		},
-		{
-			"id": "edge-3",
-			"source": "socrates",
-			"target": "diotima",
-			"relation": "哲学观点来源于其教导"
-		},
-		{
-			"id": "edge-4",
-			"source": "alcibiades",
-			"target": "socrates",
-			"relation": "现实关系中的爱与节制冲突"
-		},
-		{
-			"id": "edge-5",
-			"source": "phaedrus",
-			"target": "eros",
-			"relation": "将爱神置于讨论中心"
-		},
-		{
-			"id": "edge-6",
-			"source": "socrates",
-			"target": "eros",
-			"relation": "重新定义为追求美之中介"
-		}
-	]
+  "nodes": [
+    {
+      "id": "apollodorus",
+      "label": "阿波罗多洛",
+      "type": "person",
+      "summary": "会饮故事的外层转述者。",
+      "x": 60,
+      "y": 140
+    },
+    {
+      "id": "phaedrus",
+      "label": "斐德罗",
+      "type": "person",
+      "summary": "赞颂爱神议题发起者。",
+      "x": 190,
+      "y": 70
+    },
+    {
+      "id": "pausanias",
+      "label": "鲍萨尼亚",
+      "type": "person",
+      "summary": "提出两类爱的伦理分层。",
+      "x": 320,
+      "y": 70
+    },
+    {
+      "id": "agathon",
+      "label": "阿伽松",
+      "type": "person",
+      "summary": "宴会主人与诗人。",
+      "x": 450,
+      "y": 120
+    },
+    {
+      "id": "socrates",
+      "label": "苏格拉底",
+      "type": "person",
+      "summary": "全篇论证转折中心。",
+      "x": 320,
+      "y": 190
+    },
+    {
+      "id": "diotima",
+      "label": "狄奥提玛",
+      "type": "person",
+      "summary": "爱的阶梯理论来源。",
+      "x": 450,
+      "y": 230
+    },
+    {
+      "id": "alcibiades",
+      "label": "阿尔基比亚德",
+      "type": "person",
+      "summary": "以亲历证言塑造苏格拉底。",
+      "x": 190,
+      "y": 250
+    },
+    {
+      "id": "eros",
+      "label": "厄洛斯",
+      "type": "deity",
+      "summary": "全体发言共同围绕的概念中心。",
+      "x": 320,
+      "y": 15
+    },
+    {
+      "id": "aphrodite",
+      "label": "阿佛洛狄忒",
+      "type": "deity",
+      "summary": "两类爱区分中的关键神祇。",
+      "x": 560,
+      "y": 55
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "apollodorus",
+      "target": "socrates",
+      "relation": "长期追随并转述其言行"
+    },
+    {
+      "id": "edge-2",
+      "source": "phaedrus",
+      "target": "eros",
+      "relation": "提议众人依次赞颂爱神"
+    },
+    {
+      "id": "edge-3",
+      "source": "pausanias",
+      "target": "aphrodite",
+      "relation": "借双重阿佛洛狄忒区分两类爱"
+    },
+    {
+      "id": "edge-4",
+      "source": "agathon",
+      "target": "socrates",
+      "relation": "华美赞歌被苏格拉底辩证追问"
+    },
+    {
+      "id": "edge-5",
+      "source": "socrates",
+      "target": "diotima",
+      "relation": "以其教导完成爱的哲学定义"
+    },
+    {
+      "id": "edge-6",
+      "source": "diotima",
+      "target": "eros",
+      "relation": "定义爱为介于匮乏与富足的中介"
+    },
+    {
+      "id": "edge-7",
+      "source": "alcibiades",
+      "target": "socrates",
+      "relation": "以私人经历赞其节制与坚忍"
+    },
+    {
+      "id": "edge-8",
+      "source": "socrates",
+      "target": "eros",
+      "relation": "提出爱的阶梯并导向美本身"
+    }
+  ]
 }
