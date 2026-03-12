@@ -3,6 +3,7 @@ node_modules
 # Editor
 .vscode
 .idea
+.cache
 
 # Output
 .output
