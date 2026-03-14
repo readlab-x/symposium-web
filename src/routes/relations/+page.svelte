@@ -7,26 +7,32 @@
 	import type { RelationsGraph } from "$lib/types";
 
 	const relations = relationsData as RelationsGraph;
+	const nodesById = Object.fromEntries(relations.nodes.map((node) => [node.id, node])) as Record<
+		string,
+		(typeof relations.nodes)[number]
+	>;
 
-	let activeNodeId = $state<string | null>(relations.nodes[0]?.id ?? null);
+	let activeNodeId = $state<string | null>(null);
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
 				title: "人物关系图",
-				description: "当前是静态 SVG 骨架，可平滑升级为 D3 / Cytoscape 的拖拽图与分层筛选图。",
+				description: "拖拽、缩放并选择人物节点，查看《会饮》中的论辩、师承与叙事关系。",
 				selectNode: "选择一个节点",
-				emptyDetail: "点击左侧节点后显示关系详情。",
+				emptyDetail: "点击左侧关系图中的节点后显示关系详情。",
 				deity: "神祇",
-				person: "人物"
+				person: "人物",
+				relatedTo: "关联对象"
 			},
 			"en-US": {
 				title: "Relation Graph",
 				description:
-					"Currently a static SVG scaffold. It can be smoothly upgraded to a draggable and layered graph with D3/Cytoscape.",
+					"Drag, zoom, and select nodes to inspect the argumentative, pedagogical, and narrative relations inside Symposium.",
 				selectNode: "Select a node",
-				emptyDetail: "Select a node on the left to view relation details.",
+				emptyDetail: "Select a node in the graph to inspect its relations.",
 				deity: "Deity",
-				person: "Person"
+				person: "Person",
+				relatedTo: "Related To"
 			}
 		})
 	);
@@ -40,6 +46,15 @@
 					(edge) => edge.source === activeNodeId || edge.target === activeNodeId
 				)
 			: []
+	);
+	const relatedConnections = $derived.by(() =>
+		relatedEdges.map((edge) => {
+			const otherNodeId = edge.source === activeNodeId ? edge.target : edge.source;
+			return {
+				edge,
+				otherNode: nodesById[otherNodeId]
+			};
+		})
 	);
 
 	function entryDelayClass(index: number): string {
@@ -84,11 +99,14 @@
 								{activeNode.type === "deity" ? copy.deity : copy.person}
 							</Badge>
 							<ul class="space-y-2">
-								{#each relatedEdges as edge, index (edge.id)}
+								{#each relatedConnections as connection, index (connection.edge.id)}
 									<li
 										class={`motion-stage-soft ${entryDelayClass(index)} rounded-[1.1rem] border border-border/60 bg-secondary/24 p-3 text-sm transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/38 hover:border-primary/24`}
 									>
-										{edge.relation}
+										<p class="font-medium">
+											{copy.relatedTo}: {connection.otherNode?.label ?? "—"}
+										</p>
+										<p class="mt-1 text-muted-foreground">{connection.edge.relation}</p>
 									</li>
 								{/each}
 							</ul>
