@@ -4,7 +4,6 @@
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
 	import I18nSettingsDialog from "$lib/components/i18n/i18n-settings-dialog.svelte";
-	import { Button } from "$lib/components/ui/button/index.js";
 	import {
 		i18nPreferences,
 		languageOptions,
@@ -144,40 +143,52 @@
 	}
 </script>
 
-<div
-	class="relative min-h-screen bg-gradient-to-b from-stone-50 via-white to-stone-100 dark:from-stone-950 dark:via-stone-950 dark:to-black"
->
-	<header class="sticky top-0 z-40 border-b bg-white/70 backdrop-blur dark:bg-stone-950/70">
-		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-			<a href="/" class="text-lg font-semibold tracking-tight">{shellCopy.siteTitle}</a>
-			<nav class="flex flex-wrap items-center gap-2">
+<div class="relative min-h-screen overflow-x-hidden bg-background">
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_top,rgba(156,121,74,0.12),transparent_72%)] dark:bg-[radial-gradient(circle_at_top,rgba(212,188,145,0.08),transparent_74%)]"
+	></div>
+	<header class="sticky top-0 z-40 border-b border-border/70 bg-background/88 backdrop-blur-md">
+		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3">
+			<a href="/" class="min-w-0 space-y-1">
+				<span class="block text-[0.68rem] tracking-[0.26em] text-muted-foreground uppercase">
+					Symposium
+				</span>
+				<span class="block truncate text-base font-semibold tracking-[0.01em] text-foreground">
+					{shellCopy.siteTitle}
+				</span>
+			</a>
+			<nav class="flex flex-wrap items-center gap-4 sm:gap-5">
 				{#each navItems as item (item.href)}
-					<Button
+					<a
 						href={item.href}
-						variant={isActive(item.href) ? "secondary" : "ghost"}
-						size="sm"
-						class="h-11 px-4 sm:h-8 sm:px-3"
+						class={`relative py-2 text-sm transition-colors ${
+							isActive(item.href)
+								? "text-foreground"
+								: "text-muted-foreground hover:text-foreground"
+						}`}
 					>
 						{pickByLanguage($i18nPreferences.primaryLanguage, item.label)}
-					</Button>
+						{#if isActive(item.href)}
+							<span class="absolute inset-x-0 -bottom-[0.45rem] mx-auto h-px w-6 rounded-full bg-primary/70"></span>
+						{/if}
+					</a>
 				{/each}
 			</nav>
 			<div class="flex items-center gap-2">
-				<Button
-					variant="outline"
-					size="icon-sm"
-					class="size-11 sm:size-8"
+				<button
+					type="button"
+					class="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color] hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
 					onclick={() => (isI18nDialogOpen = true)}
 					aria-label={languageButtonLabel()}
 					title={languageButtonLabel()}
 					aria-haspopup="dialog"
 				>
 					<Languages class="size-4" />
-				</Button>
-				<Button
-					variant="outline"
-					size="icon-sm"
-					class="size-11 sm:size-8"
+				</button>
+				<button
+					type="button"
+					class="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color] hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
 					onclick={cycleThemeMode}
 					aria-label={themeButtonLabel()}
 					title={themeButtonLabel()}
@@ -189,11 +200,11 @@
 					{:else}
 						<Moon class="size-4" />
 					{/if}
-				</Button>
+				</button>
 			</div>
 		</div>
 	</header>
-	<main class="mx-auto max-w-7xl px-4 py-6">
+	<main class="relative mx-auto max-w-7xl px-4 py-7 sm:py-8">
 		{@render children?.()}
 	</main>
 </div>

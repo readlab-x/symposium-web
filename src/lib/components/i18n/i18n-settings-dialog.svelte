@@ -25,7 +25,7 @@
 	} = $props();
 
 	const selectClass =
-		"border-input bg-background ring-offset-background focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-9 w-full rounded-md border px-3 py-1 text-sm outline-none";
+		"border-input bg-background/72 ring-offset-background focus-visible:border-ring focus-visible:ring-ring/40 focus-visible:ring-[2px] disabled:cursor-not-allowed disabled:opacity-50 h-9 w-full rounded-lg border px-3 py-1 text-sm outline-none transition-[background-color,border-color,box-shadow]";
 
 	const languageByCode = $derived.by(() =>
 		Object.fromEntries(languages.map((language) => [language.code, language.label])) as Record<string, string>
@@ -93,25 +93,25 @@
 	<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
 		<button
 			type="button"
-			class="absolute inset-0 bg-black/45"
+			class="absolute inset-0 bg-stone-950/38 backdrop-blur-[1.5px]"
 			onclick={close}
 			aria-label={copy.closeDialog}
 		></button>
 		<Card.Root
-			class="relative w-full max-w-md gap-0 py-0 shadow-xl"
+			class="relative w-full max-w-md gap-0 border-border/75 bg-card/96 py-0 shadow-none"
 			role="dialog"
 			aria-modal="true"
 			aria-label={copy.dialogTitle}
 			aria-describedby="i18n-settings-summary"
 			tabindex={-1}
 		>
-			<Card.Header class="border-b py-4">
+			<Card.Header class="border-b border-border/65 py-4">
 				<Card.Title class="text-lg">{copy.dialogTitle}</Card.Title>
 				<Card.Description id="i18n-settings-summary">{statusSummary}</Card.Description>
 			</Card.Header>
 
 			<Card.Content class="space-y-4 py-4">
-				<section class="space-y-2 rounded-lg border border-border bg-muted/20 p-3">
+				<section class="space-y-2 rounded-2xl border border-border/60 bg-secondary/40 p-3.5">
 					<label for="primary-language-select" class="block text-sm font-medium">{copy.primaryLanguage}</label>
 					<select
 						id="primary-language-select"
@@ -127,7 +127,7 @@
 					</select>
 				</section>
 
-				<section class="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
+				<section class="space-y-3 rounded-2xl border border-border/60 bg-secondary/40 p-3.5">
 					<div class="flex items-center justify-between gap-3">
 						<h3 id="translation-settings-heading" class="text-sm font-medium">{copy.translation}</h3>
 						<label class="flex items-center gap-2 text-sm">
@@ -157,8 +157,8 @@
 				</section>
 			</Card.Content>
 
-			<Card.Footer class="justify-end border-t py-4">
-				<Button variant="secondary" size="sm" onclick={close}>{copy.done}</Button>
+			<Card.Footer class="justify-end border-t border-border/65 py-4">
+				<Button variant="outline" size="sm" onclick={close}>{copy.done}</Button>
 			</Card.Footer>
 		</Card.Root>
 	</div>
