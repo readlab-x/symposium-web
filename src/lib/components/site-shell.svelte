@@ -1,4 +1,5 @@
 ﻿<script lang="ts">
+	import type { Snippet } from "svelte";
 	import { Languages, Monitor, Moon, Sun } from "@lucide/svelte";
 	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
@@ -33,7 +34,7 @@
 	let darkMode = $state(false);
 	let themeMode = $state<ThemeMode>("system");
 	let isI18nDialogOpen = $state(false);
-	let { children } = $props();
+	let { children, routeKey = "" }: { children?: Snippet; routeKey?: string } = $props();
 	const shellCopy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
@@ -150,7 +151,7 @@
 	></div>
 	<header class="sticky top-0 z-40 border-b border-border/70 bg-background/88 backdrop-blur-md">
 		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3">
-			<a href="/" class="min-w-0 space-y-1">
+			<a href="/" class="motion-stage-hero min-w-0 space-y-1">
 				<span class="block text-[0.68rem] tracking-[0.26em] text-muted-foreground uppercase">
 					Symposium
 				</span>
@@ -158,27 +159,29 @@
 					{shellCopy.siteTitle}
 				</span>
 			</a>
-			<nav class="flex flex-wrap items-center gap-4 sm:gap-5">
+			<nav class="motion-stage flex flex-wrap items-center gap-4 motion-delay-1 sm:gap-5">
 				{#each navItems as item (item.href)}
 					<a
 						href={item.href}
-						class={`relative py-2 text-sm transition-colors ${
+						class={`group relative py-2 text-sm transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px ${
 							isActive(item.href)
 								? "text-foreground"
 								: "text-muted-foreground hover:text-foreground"
 						}`}
 					>
 						{pickByLanguage($i18nPreferences.primaryLanguage, item.label)}
-						{#if isActive(item.href)}
-							<span class="absolute inset-x-0 -bottom-[0.45rem] mx-auto h-px w-6 rounded-full bg-primary/70"></span>
-						{/if}
+						<span
+							class={`absolute inset-x-0 -bottom-[0.45rem] mx-auto h-px w-7 origin-center rounded-full bg-primary/75 transition-[transform,opacity,background-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] group-hover:opacity-65 group-hover:scale-x-75 ${
+								isActive(item.href) ? "opacity-100 scale-x-100" : "opacity-0 scale-x-35"
+							}`}
+						></span>
 					</a>
 				{/each}
 			</nav>
-			<div class="flex items-center gap-2">
+			<div class="motion-stage-soft flex items-center gap-2 motion-delay-2">
 				<button
 					type="button"
-					class="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color] hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
+					class="motion-sheen inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
 					onclick={() => (isI18nDialogOpen = true)}
 					aria-label={languageButtonLabel()}
 					title={languageButtonLabel()}
@@ -188,7 +191,7 @@
 				</button>
 				<button
 					type="button"
-					class="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color] hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
+					class="motion-sheen inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
 					onclick={cycleThemeMode}
 					aria-label={themeButtonLabel()}
 					title={themeButtonLabel()}
@@ -205,7 +208,11 @@
 		</div>
 	</header>
 	<main class="relative mx-auto max-w-7xl px-4 py-7 sm:py-8">
-		{@render children?.()}
+		{#key routeKey}
+			<div class="motion-stage-soft motion-delay-2">
+				{@render children?.()}
+			</div>
+		{/key}
 	</main>
 </div>
 
