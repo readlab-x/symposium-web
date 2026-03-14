@@ -43,32 +43,32 @@
 	}
 </script>
 
-<section class="space-y-4">
-	<header class="space-y-2">
+<section class="space-y-5">
+	<header class="max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
-	<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-		{#each characters as character (character.id)}
-			<Card.Root>
-				<Card.Header>
-					<div class="flex items-center justify-between gap-2">
-						<Card.Title class="text-base">{character.name}</Card.Title>
+	<div class="overflow-hidden rounded-[1.5rem] border border-border/60 bg-card/58">
+		{#each characters as character, index (character.id)}
+			<article class={`grid gap-4 px-5 py-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}>
+				<div class="space-y-2">
+					<div class="flex flex-wrap items-center gap-2">
+						<h2 class="text-base font-semibold">{character.name}</h2>
 						<Badge variant="outline">{entityTypeLabel(character.type)}</Badge>
 					</div>
-					<Card.Description>{character.role}</Card.Description>
-				</Card.Header>
-				<Card.Content class="space-y-3">
-					<p class="text-sm leading-6 text-muted-foreground">{character.summary}</p>
-					<div class="flex items-center justify-between text-xs text-muted-foreground">
-						<span>{copy.speechCount}: {speechCount(character.id)}</span>
-						{#if character.firstLineId}
-							<a class="underline" href={`/reading#${character.firstLineId}`}>{copy.firstAppearance}</a>
-						{/if}
-					</div>
-				</Card.Content>
-			</Card.Root>
+					<p class="text-sm text-muted-foreground">{character.role}</p>
+					<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
+				</div>
+				<div class="flex min-w-[10rem] flex-col items-start gap-2 text-xs text-muted-foreground md:items-end">
+					<span>{copy.speechCount}: {speechCount(character.id)}</span>
+					{#if character.firstLineId}
+						<a class="underline underline-offset-4" href={`/reading#${character.firstLineId}`}>
+							{copy.firstAppearance}
+						</a>
+					{/if}
+				</div>
+			</article>
 		{/each}
 	</div>
 </section>

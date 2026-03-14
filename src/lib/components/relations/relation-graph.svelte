@@ -24,9 +24,28 @@
 	);
 
 	function strokeForType(type: RelationNode["type"]): string {
-		if (type === "person") return "#0f766e";
-		if (type === "place") return "#047857";
-		return "#be123c";
+		if (type === "person") return "stroke-amber-700/75 dark:stroke-amber-300/75";
+		if (type === "place") return "stroke-emerald-700/75 dark:stroke-emerald-300/75";
+		return "stroke-rose-700/70 dark:stroke-rose-300/70";
+	}
+
+	function fillForType(type: RelationNode["type"], isActive: boolean): string {
+		if (type === "person") {
+			return isActive
+				? "fill-amber-100 dark:fill-amber-950/45"
+				: "fill-background dark:fill-card";
+		}
+		if (type === "place") {
+			return isActive
+				? "fill-emerald-100 dark:fill-emerald-950/45"
+				: "fill-background dark:fill-card";
+		}
+		return isActive ? "fill-rose-100 dark:fill-rose-950/40" : "fill-background dark:fill-card";
+	}
+
+	function isRelatedToActive(edge: RelationEdge): boolean {
+		if (!activeNodeId) return false;
+		return edge.source === activeNodeId || edge.target === activeNodeId;
 	}
 
 	function findNode(id: string): RelationNode | undefined {
@@ -34,16 +53,23 @@
 	}
 </script>
 
-<svg viewBox={`0 0 ${width} ${height}`} class="w-full rounded-xl border bg-card">
+<svg viewBox={`0 0 ${width} ${height}`} class="w-full rounded-[1.2rem] border border-border/65 bg-card/70">
 	{#each edges as edge (edge.id)}
 		{@const source = findNode(edge.source)}
 		{@const target = findNode(edge.target)}
 		{#if source && target}
-			<line x1={source.x} y1={source.y} x2={target.x} y2={target.y} stroke="#94a3b8" stroke-width="1.6" />
+			<line
+				x1={source.x}
+				y1={source.y}
+				x2={target.x}
+				y2={target.y}
+				class={isRelatedToActive(edge) ? "stroke-primary/42" : "stroke-border/85"}
+				stroke-width={isRelatedToActive(edge) ? "2" : "1.35"}
+			/>
 			<text
 				x={(source.x + target.x) / 2}
 				y={(source.y + target.y) / 2 - 5}
-				class="fill-muted-foreground text-[8px]"
+				class={`text-[8px] ${isRelatedToActive(edge) ? "fill-foreground/70" : "fill-muted-foreground/60"}`}
 				text-anchor="middle"
 			>
 				{edge.relation}
@@ -67,10 +93,9 @@
 			<circle
 				cx={node.x}
 				cy={node.y}
-				r={activeNodeId === node.id ? 16 : 13}
-				fill={activeNodeId === node.id ? "#e2e8f0" : "#ffffff"}
-				stroke={strokeForType(node.type)}
-				stroke-width={activeNodeId === node.id ? 3 : 2}
+				r={activeNodeId === node.id ? 15.5 : 12.5}
+				class={`${fillForType(node.type, activeNodeId === node.id)} ${strokeForType(node.type)}`}
+				stroke-width={activeNodeId === node.id ? 2.6 : 1.8}
 			/>
 			<text
 				x={node.x}

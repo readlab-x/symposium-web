@@ -43,14 +43,14 @@
 	);
 </script>
 
-<section class="space-y-4">
-	<header class="space-y-2">
+<section class="space-y-5">
+	<header class="max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
-	<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-		<div class="rounded-lg border bg-card p-3">
+	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
+		<div class="rounded-[1.5rem] border border-border/60 bg-card/62 p-4">
 			<RelationGraph
 				nodes={relations.nodes}
 				edges={relations.edges}
@@ -58,7 +58,7 @@
 				onSelectNode={(id) => (activeNodeId = id)}
 			/>
 		</div>
-		<Card.Root>
+		<Card.Root class="border-border/60 bg-card/72">
 			<Card.Header>
 				<Card.Title class="text-base">
 					{activeNode ? activeNode.label : copy.selectNode}
@@ -74,7 +74,7 @@
 					<Badge variant="outline">{activeNode.type === "deity" ? copy.deity : copy.person}</Badge>
 					<ul class="space-y-2">
 						{#each relatedEdges as edge (edge.id)}
-							<li class="rounded-md border p-3 text-sm">
+							<li class="rounded-[1.1rem] border border-border/60 bg-secondary/24 p-3 text-sm">
 								{edge.relation}
 							</li>
 						{/each}

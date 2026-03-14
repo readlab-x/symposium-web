@@ -54,13 +54,13 @@
 	});
 </script>
 
-<section class="space-y-4">
-	<header class="space-y-2">
+<section class="space-y-5">
+	<header class="max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
-	<div class="max-w-xl">
+	<div class="max-w-2xl rounded-[1.3rem] border border-border/60 bg-card/56 p-3">
 		<Input bind:value={query} placeholder={copy.placeholder} />
 	</div>
 
@@ -69,31 +69,27 @@
 	{:else if results.length === 0}
 		<p class="text-sm text-muted-foreground">{copy.noResult}</p>
 	{:else}
-		<ul class="space-y-3">
-			{#each results as line (line.id)}
-				<li>
-					<Card.Root>
-						<Card.Header>
-							<Card.Title class="text-sm">
-								{speakerById[line.speakerId]?.name ?? copy.unknownSpeaker} · {line.chapter}
-							</Card.Title>
-						</Card.Header>
-						<Card.Content class="space-y-2">
-							<p class="text-sm leading-7">
-								{getDisplayText(line, $i18nPreferences.primaryLanguage)}
-							</p>
-							<div class="flex flex-wrap gap-1">
-								{#each line.tags as tag (tag)}
-									<Badge variant="secondary">{tag}</Badge>
-								{/each}
-							</div>
-							<a href={`/reading#${line.id}`} class="inline-block text-xs underline">
-								{copy.jumpToReading}
-							</a>
-						</Card.Content>
-					</Card.Root>
-				</li>
+		<div class="overflow-hidden rounded-[1.4rem] border border-border/60 bg-card/58">
+			{#each results as line, index (line.id)}
+				<article class={`space-y-2 px-5 py-4 ${index > 0 ? "border-t border-border/55" : ""}`}>
+					<p class="text-sm font-medium">
+						{speakerById[line.speakerId]?.name ?? copy.unknownSpeaker} · {line.chapter}
+					</p>
+					<p class="text-sm leading-7">
+						{getDisplayText(line, $i18nPreferences.primaryLanguage)}
+					</p>
+					<div class="flex flex-wrap items-center gap-2">
+						<div class="flex flex-wrap gap-1">
+							{#each line.tags as tag (tag)}
+								<Badge variant="secondary">{tag}</Badge>
+							{/each}
+						</div>
+						<a href={`/reading#${line.id}`} class="text-xs underline underline-offset-4">
+							{copy.jumpToReading}
+						</a>
+					</div>
+				</article>
 			{/each}
-		</ul>
+		</div>
 	{/if}
 </section>

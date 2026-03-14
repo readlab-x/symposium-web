@@ -43,29 +43,37 @@
 	);
 </script>
 
-<section class="grid gap-4 lg:grid-cols-2">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title class="text-2xl">{copy.title}</Card.Title>
-			<Card.Description>{copy.description}</Card.Description>
+<section class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+	<Card.Root class="border-border/60 bg-card/62">
+		<Card.Header class="space-y-2">
+			<p class="text-[0.72rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+				Symposium
+			</p>
+			<Card.Title class="max-w-2xl text-3xl leading-tight sm:text-[2.1rem]">{copy.title}</Card.Title>
+			<Card.Description class="max-w-xl leading-6">{copy.description}</Card.Description>
 		</Card.Header>
-		<Card.Content class="space-y-3 text-sm leading-7 text-muted-foreground">
-			<p>{copy.intro}</p>
-			<div class="flex flex-wrap gap-2">
+		<Card.Content class="space-y-5 text-sm leading-7 text-muted-foreground">
+			<p class="max-w-2xl">{copy.intro}</p>
+			<div class="flex flex-wrap gap-2.5">
 				<Button href="/reading">{copy.gotoReading}</Button>
 				<Button href="/themes" variant="outline">{copy.gotoThemes}</Button>
 			</div>
 		</Card.Content>
 	</Card.Root>
 
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>{copy.modulesTitle}</Card.Title>
-		</Card.Header>
-		<Card.Content class="space-y-2 text-sm text-muted-foreground">
+	<section class="space-y-4">
+		<header class="space-y-2">
+			<p class="text-[0.72rem] font-medium tracking-[0.2em] text-muted-foreground uppercase">
+				Index
+			</p>
+			<h2 class="text-xl font-semibold tracking-tight">{copy.modulesTitle}</h2>
+		</header>
+		<div class="overflow-hidden rounded-[1.4rem] border border-border/60 bg-card/54">
 			{#each copy.modules as line, index (`module-${index}`)}
-				<p>{line}</p>
+				<p class={`px-5 py-4 text-sm leading-7 text-muted-foreground ${index > 0 ? "border-t border-border/55" : ""}`}>
+					{line}
+				</p>
 			{/each}
-		</Card.Content>
-	</Card.Root>
+		</div>
+	</section>
 </section>

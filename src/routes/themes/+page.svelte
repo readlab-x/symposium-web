@@ -32,37 +32,37 @@
 	);
 </script>
 
-<section class="space-y-4">
-	<header class="space-y-2">
+<section class="space-y-5">
+	<header class="max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
-	<div class="grid gap-4 lg:grid-cols-2">
+	<div class="grid gap-5 lg:grid-cols-2">
 		{#each themes as theme (theme.id)}
-			<Card.Root>
+			<Card.Root class="border-border/60 bg-card/60">
 				<Card.Header>
 					<Card.Title class="text-base">{theme.name}</Card.Title>
 					<Card.Description>{theme.summary}</Card.Description>
 				</Card.Header>
-				<Card.Content class="space-y-3">
-					<div class="flex flex-wrap gap-1">
+				<Card.Content class="space-y-4">
+					<div class="flex flex-wrap gap-1.5">
 						{#each theme.characterIds as characterId (characterId)}
 							<Badge variant="secondary">{characterById[characterId]?.name ?? characterId}</Badge>
 						{/each}
 					</div>
-					<ul class="space-y-2">
+					<ul class="space-y-3">
 						{#each theme.lineIds as lineId (lineId)}
 							{@const line = lineById[lineId]}
 							{#if line}
-								<li class="rounded-md border p-3">
+								<li class="border-l border-border/65 pl-4">
 									<p class="text-xs text-muted-foreground">
 										{characterById[line.speakerId]?.name} · {line.chapter}
 									</p>
-									<p class="mt-1 text-sm leading-6">
+									<p class="mt-1 text-sm leading-7">
 										{getDisplayText(line, $i18nPreferences.primaryLanguage)}
 									</p>
-									<a href={`/reading#${line.id}`} class="mt-2 inline-block text-xs underline">
+									<a href={`/reading#${line.id}`} class="mt-2 inline-block text-xs underline underline-offset-4">
 										{copy.jumpToReading}
 									</a>
 								</li>
