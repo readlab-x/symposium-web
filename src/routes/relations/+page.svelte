@@ -41,16 +41,23 @@
 				)
 			: []
 	);
+
+	function entryDelayClass(index: number): string {
+		if (index === 0) return "motion-delay-1";
+		if (index === 1) return "motion-delay-2";
+		if (index === 2) return "motion-delay-3";
+		return "motion-delay-4";
+	}
 </script>
 
 <section class="space-y-5">
-	<header class="max-w-3xl space-y-2">
+	<header class="motion-stage-hero max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
 	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
-		<div class="rounded-[1.5rem] border border-border/60 bg-card/62 p-4">
+		<div class="motion-stage-soft motion-delay-1 rounded-[1.5rem] border border-border/60 bg-card/62 p-4">
 			<RelationGraph
 				nodes={relations.nodes}
 				edges={relations.edges}
@@ -58,7 +65,7 @@
 				onSelectNode={(id) => (activeNodeId = id)}
 			/>
 		</div>
-		<Card.Root class="border-border/60 bg-card/72">
+		<Card.Root class="motion-stage-soft motion-delay-2 border-border/60 bg-card/72">
 			<Card.Header>
 				<Card.Title class="text-base">
 					{activeNode ? activeNode.label : copy.selectNode}
@@ -68,18 +75,26 @@
 				{/if}
 			</Card.Header>
 			<Card.Content class="space-y-3">
-				{#if !activeNode}
-					<p class="text-sm text-muted-foreground">{copy.emptyDetail}</p>
-				{:else}
-					<Badge variant="outline">{activeNode.type === "deity" ? copy.deity : copy.person}</Badge>
-					<ul class="space-y-2">
-						{#each relatedEdges as edge (edge.id)}
-							<li class="rounded-[1.1rem] border border-border/60 bg-secondary/24 p-3 text-sm">
-								{edge.relation}
-							</li>
-						{/each}
-					</ul>
-				{/if}
+				{#key activeNodeId ?? "none"}
+					{#if !activeNode}
+						<p class="motion-stage-soft text-sm text-muted-foreground">{copy.emptyDetail}</p>
+					{:else}
+						<div class="space-y-3">
+							<Badge class="motion-stage-soft" variant="outline">
+								{activeNode.type === "deity" ? copy.deity : copy.person}
+							</Badge>
+							<ul class="space-y-2">
+								{#each relatedEdges as edge, index (edge.id)}
+									<li
+										class={`motion-stage-soft ${entryDelayClass(index)} rounded-[1.1rem] border border-border/60 bg-secondary/24 p-3 text-sm transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/38 hover:border-primary/24`}
+									>
+										{edge.relation}
+									</li>
+								{/each}
+							</ul>
+						</div>
+					{/if}
+				{/key}
 			</Card.Content>
 		</Card.Root>
 	</div>

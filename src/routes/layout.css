@@ -201,6 +201,22 @@
   }
 }
 
+@keyframes ritual-pulse-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  24% {
+    opacity: 0.22;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
 @layer utilities {
   .motion-stage {
     opacity: 0;
@@ -266,6 +282,12 @@
   .motion-sheen[data-active="true"]::after {
     animation: ritual-sheen var(--motion-panel-slow) var(--ease-ritual-expo);
   }
+
+  .motion-pulse-ring {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ritual-pulse-ring 1.8s var(--ease-ritual-expo) infinite;
+  }
 }
 
 @layer base {
@@ -312,6 +334,12 @@
   .motion-sheen::after {
     animation: none !important;
     opacity: 0 !important;
+    transform: none !important;
+  }
+
+  .motion-pulse-ring {
+    animation: none !important;
+    opacity: 0.18 !important;
     transform: none !important;
   }
 }

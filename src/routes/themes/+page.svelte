@@ -30,17 +30,27 @@
 			}
 		})
 	);
+
+	function entryDelayClass(index: number): string {
+		if (index === 0) return "";
+		if (index === 1) return "motion-delay-1";
+		if (index === 2) return "motion-delay-2";
+		if (index === 3) return "motion-delay-3";
+		return "motion-delay-4";
+	}
 </script>
 
 <section class="space-y-5">
-	<header class="max-w-3xl space-y-2">
+	<header class="motion-stage-hero max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
 	<div class="grid gap-5 lg:grid-cols-2">
-		{#each themes as theme (theme.id)}
-			<Card.Root class="border-border/60 bg-card/60">
+		{#each themes as theme, index (theme.id)}
+			<Card.Root
+				class={`motion-stage-soft ${entryDelayClass(index)} border-border/60 bg-card/60 transition-[transform,background-color,border-color,box-shadow] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:-translate-y-1 hover:bg-card/74 hover:shadow-[0_26px_42px_-34px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]`}
+			>
 				<Card.Header>
 					<Card.Title class="text-base">{theme.name}</Card.Title>
 					<Card.Description>{theme.summary}</Card.Description>
@@ -55,14 +65,17 @@
 						{#each theme.lineIds as lineId (lineId)}
 							{@const line = lineById[lineId]}
 							{#if line}
-								<li class="border-l border-border/65 pl-4">
+								<li class="border-l border-border/65 pl-4 transition-[transform,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:border-primary/38">
 									<p class="text-xs text-muted-foreground">
 										{characterById[line.speakerId]?.name} · {line.chapter}
 									</p>
 									<p class="mt-1 text-sm leading-7">
 										{getDisplayText(line, $i18nPreferences.primaryLanguage)}
 									</p>
-									<a href={`/reading#${line.id}`} class="mt-2 inline-block text-xs underline underline-offset-4">
+									<a
+										href={`/reading#${line.id}`}
+										class="motion-sheen mt-2 inline-block text-xs transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground underline underline-offset-4"
+									>
 										{copy.jumpToReading}
 									</a>
 								</li>

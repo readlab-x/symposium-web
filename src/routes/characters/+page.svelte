@@ -41,17 +41,28 @@
 		if (type === "place") return copy.place;
 		return copy.deity;
 	}
+
+	function entryDelayClass(index: number): string {
+		if (index === 0) return "";
+		if (index === 1) return "motion-delay-1";
+		if (index === 2) return "motion-delay-2";
+		if (index === 3) return "motion-delay-3";
+		if (index === 4) return "motion-delay-4";
+		return "";
+	}
 </script>
 
 <section class="space-y-5">
-	<header class="max-w-3xl space-y-2">
+	<header class="motion-stage-hero max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
 	<div class="overflow-hidden rounded-[1.5rem] border border-border/60 bg-card/58">
 		{#each characters as character, index (character.id)}
-			<article class={`grid gap-4 px-5 py-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}>
+			<article
+				class={`${index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""} grid gap-4 px-5 py-4 transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/34 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}
+			>
 				<div class="space-y-2">
 					<div class="flex flex-wrap items-center gap-2">
 						<h2 class="text-base font-semibold">{character.name}</h2>
@@ -63,7 +74,10 @@
 				<div class="flex min-w-[10rem] flex-col items-start gap-2 text-xs text-muted-foreground md:items-end">
 					<span>{copy.speechCount}: {speechCount(character.id)}</span>
 					{#if character.firstLineId}
-						<a class="underline underline-offset-4" href={`/reading#${character.firstLineId}`}>
+						<a
+							class="motion-sheen inline-flex items-center transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground underline underline-offset-4"
+							href={`/reading#${character.firstLineId}`}
+						>
 							{copy.firstAppearance}
 						</a>
 					{/if}
