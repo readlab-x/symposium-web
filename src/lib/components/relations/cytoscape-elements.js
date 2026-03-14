@@ -1,8 +1,9 @@
 /**
  * @param {{ nodes: Array<{ id: string, label: string, type: string, summary: string }>, edges: Array<{ id: string, source: string, target: string, relation: string }> }} graph
+ * @returns {import("cytoscape").ElementDefinition[]}
  */
 export function createCytoscapeElements(graph) {
-	return [
+	return /** @type {import("cytoscape").ElementDefinition[]} */ ([
 		...graph.nodes.map((node) => ({
 			group: "nodes",
 			data: {
@@ -21,5 +22,5 @@ export function createCytoscapeElements(graph) {
 				relation: edge.relation
 			}
 		}))
-	];
+	]);
 }

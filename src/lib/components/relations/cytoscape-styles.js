@@ -1,5 +1,6 @@
 /**
  * @param {{ darkMode?: boolean }} [options]
+ * @returns {import("cytoscape").StylesheetJson}
  */
 export function createRelationGraphStyles({ darkMode = false } = {}) {
 	const palette = darkMode
@@ -36,7 +37,7 @@ export function createRelationGraphStyles({ darkMode = false } = {}) {
 				neighborBorder: "#b08c5d"
 			};
 
-	return [
+	return /** @type {import("cytoscape").StylesheetJson} */ ([
 		{
 			selector: "node",
 			style: {
@@ -136,5 +137,5 @@ export function createRelationGraphStyles({ darkMode = false } = {}) {
 				"z-index": 1
 			}
 		}
-	];
+	]);
 }
