@@ -146,14 +146,14 @@
 </script>
 
 <section class="space-y-5">
-	<header class="max-w-3xl space-y-2">
+	<header class="motion-stage-hero max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
 	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
 		<div class="space-y-4">
-			<Card.Root class="gap-0 border-border/55 bg-card/66 py-0">
+			<Card.Root class="motion-stage-soft motion-delay-1 gap-0 border-border/55 bg-card/66 py-0">
 				<Card.Header class="py-3">
 					<div class="flex items-center justify-between gap-3">
 						<div class="space-y-1">
@@ -165,7 +165,7 @@
 						<Button
 							variant="ghost"
 							size="sm"
-							class="text-muted-foreground hover:text-foreground"
+							class="motion-sheen text-muted-foreground transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground"
 							onclick={() => (toolsExpanded = !toolsExpanded)}
 							aria-expanded={toolsExpanded}
 							aria-controls="reading-tools"

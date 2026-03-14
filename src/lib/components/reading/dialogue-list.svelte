@@ -33,9 +33,10 @@
 			{copy.empty}
 		</div>
 	{:else}
-		{#each lines as line (line.id)}
+		{#each lines as line, index (line.id)}
 			<DialogueLine
 				{line}
+				{index}
 				speaker={speakersById[line.speakerId]}
 				isSelected={selectedLineId === line.id}
 				{entities}

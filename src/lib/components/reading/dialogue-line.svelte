@@ -10,12 +10,14 @@
 
 	let {
 		line,
+		index = 0,
 		speaker,
 		isSelected,
 		entities,
 		onSelect
 	}: {
 		line: DialogLine;
+		index?: number;
 		speaker?: Character;
 		isSelected: boolean;
 		entities: EntityReference[];
@@ -75,14 +77,25 @@
 		event.stopPropagation();
 		translationVisible = !translationVisible;
 	}
+
+	function entryDelayClass(position: number): string {
+		if (position === 0) return "";
+		if (position === 1) return "motion-delay-1";
+		if (position === 2) return "motion-delay-2";
+		if (position === 3) return "motion-delay-3";
+		if (position === 4) return "motion-delay-4";
+		return "";
+	}
 </script>
 
 <article id={line.id}>
 	<Card.Root
-		class={`transition-colors duration-200 ease-out ${
+		class={`${
+			index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""
+		} transition-[transform,color,background-color,border-color,box-shadow] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] ${
 			isSelected
-				? "border-primary/28 bg-secondary/62"
-				: "border-border/55 bg-background/58 hover:border-border/80 hover:bg-card/94"
+				? "motion-settle border-primary/28 bg-secondary/62 shadow-[0_20px_40px_-32px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
+				: "border-border/55 bg-background/58 hover:-translate-y-0.5 hover:border-border/80 hover:bg-card/94"
 		}`}
 		onclick={selectLine}
 		onkeydown={onCardKeydown}
@@ -112,11 +125,16 @@
 
 			{#if canToggleTranslation && targetHasText}
 				<div
-					class={`mt-2 grid transition-[grid-template-rows,opacity] duration-200 ease-out motion-reduce:transition-none ${
+					class={`mt-2 grid transition-[grid-template-rows,opacity] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] motion-reduce:transition-none ${
 						translationVisible ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 					}`}
 				>
-					<p class="min-h-0 overflow-hidden rounded-r-2xl border-l border-primary/35 bg-secondary/32 px-3 py-2 text-sm leading-7 text-muted-foreground">
+					<p
+						data-active={translationVisible}
+						class={`motion-sheen min-h-0 overflow-hidden rounded-r-2xl border-l border-primary/35 bg-secondary/32 px-3 py-2 text-sm leading-7 text-muted-foreground transition-[transform,opacity] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] ${
+							translationVisible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+						}`}
+					>
 						{targetText}
 					</p>
 				</div>
@@ -127,7 +145,7 @@
 					<Button
 						variant="ghost"
 						size="icon-sm"
-						class="size-9 rounded-full text-muted-foreground hover:text-foreground sm:size-8"
+						class="motion-sheen size-9 rounded-full text-muted-foreground transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground sm:size-8"
 						onclick={toggleTranslation}
 						disabled={!targetHasText}
 						aria-label={translationControlLabel}

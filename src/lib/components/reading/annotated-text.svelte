@@ -76,12 +76,12 @@
 
 	function entityClass(type: EntityType): string {
 		if (type === "person") {
-			return "rounded-[0.4rem] bg-amber-900/8 px-1 py-px font-medium text-foreground underline decoration-amber-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-amber-900/12 hover:decoration-amber-900/70 dark:bg-amber-200/8 dark:decoration-amber-200/45 dark:hover:bg-amber-200/14 dark:hover:decoration-amber-100/70";
+			return "motion-sheen rounded-[0.4rem] bg-amber-900/8 px-1 py-px font-medium text-foreground underline decoration-amber-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-amber-900/12 hover:decoration-amber-900/70 dark:bg-amber-200/8 dark:decoration-amber-200/45 dark:hover:bg-amber-200/14 dark:hover:decoration-amber-100/70";
 		}
 		if (type === "place") {
-			return "rounded-[0.4rem] bg-emerald-900/8 px-1 py-px font-medium text-foreground underline decoration-emerald-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-emerald-900/12 hover:decoration-emerald-900/70 dark:bg-emerald-200/8 dark:decoration-emerald-200/45 dark:hover:bg-emerald-200/14 dark:hover:decoration-emerald-100/70";
+			return "motion-sheen rounded-[0.4rem] bg-emerald-900/8 px-1 py-px font-medium text-foreground underline decoration-emerald-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-emerald-900/12 hover:decoration-emerald-900/70 dark:bg-emerald-200/8 dark:decoration-emerald-200/45 dark:hover:bg-emerald-200/14 dark:hover:decoration-emerald-100/70";
 		}
-		return "rounded-[0.4rem] bg-sky-900/8 px-1 py-px font-medium text-foreground underline decoration-sky-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-sky-900/12 hover:decoration-sky-900/70 dark:bg-sky-200/8 dark:decoration-sky-200/45 dark:hover:bg-sky-200/14 dark:hover:decoration-sky-100/70";
+		return "motion-sheen rounded-[0.4rem] bg-sky-900/8 px-1 py-px font-medium text-foreground underline decoration-sky-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-sky-900/12 hover:decoration-sky-900/70 dark:bg-sky-200/8 dark:decoration-sky-200/45 dark:hover:bg-sky-200/14 dark:hover:decoration-sky-100/70";
 	}
 
 	function entityLabel(type: EntityType): string {
@@ -103,7 +103,7 @@
 					{segment.text}
 				</button>
 				<span
-					class="pointer-events-none absolute bottom-full left-1/2 z-10 hidden w-56 -translate-x-1/2 rounded-2xl border border-border/70 bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground shadow-none group-hover:block group-focus-within:block"
+					class="pointer-events-none invisible absolute bottom-full left-1/2 z-10 w-56 -translate-x-1/2 translate-y-2 rounded-2xl border border-border/70 bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground opacity-0 shadow-none transition-[opacity,transform] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] group-hover:visible group-hover:-translate-y-1 group-hover:opacity-100 group-focus-within:visible group-focus-within:-translate-y-1 group-focus-within:opacity-100"
 				>
 					<span class="font-semibold">{entityLabel(segment.entity.type)}</span>
 					<br />

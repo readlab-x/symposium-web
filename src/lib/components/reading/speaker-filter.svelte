@@ -28,14 +28,21 @@
 		<h2 class="text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
 			{copy.title}
 		</h2>
-		<Button size="sm" variant="ghost" onclick={() => onSelectAll?.()}>{copy.selectAll}</Button>
+		<Button
+			size="sm"
+			variant="ghost"
+			class="motion-sheen transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px"
+			onclick={() => onSelectAll?.()}
+		>
+			{copy.selectAll}
+		</Button>
 	</div>
 	<div class="flex flex-wrap gap-2">
 		{#each speakers as speaker (speaker.id)}
 			<Button
 				size="sm"
 				variant={activeSpeakerIds.includes(speaker.id) ? "secondary" : "outline"}
-				class="rounded-full"
+				class="motion-sheen rounded-full transition-[transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px"
 				onclick={() => onToggleSpeaker?.(speaker.id)}
 			>
 				{speaker.name}
