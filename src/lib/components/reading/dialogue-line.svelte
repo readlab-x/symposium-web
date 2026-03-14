@@ -5,7 +5,7 @@
 	import { Button } from "$lib/components/ui/button/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import AnnotatedText from "$lib/components/reading/annotated-text.svelte";
-	import { getDisplayText, hasDisplayText, i18nPreferences } from "$lib/stores/i18n";
+	import { getDisplayText, hasDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { Character, DialogLine, EntityReference } from "$lib/types";
 
 	let {
@@ -32,9 +32,27 @@
 	);
 	const targetHasText = $derived.by(() => hasDisplayText(line, $i18nPreferences.targetLanguage));
 	const targetText = $derived.by(() => getDisplayText(line, $i18nPreferences.targetLanguage));
-	const translationControlLabel = $derived.by(() => (translationVisible ? "收起翻译" : "查看翻译"));
+	const copy = $derived.by(() =>
+		pickByLanguage($i18nPreferences.primaryLanguage, {
+			"zh-CN": {
+				unknownSpeaker: "未知发言者",
+				hideTranslation: "收起翻译",
+				showTranslation: "查看翻译",
+				noTranslation: "当前行暂无目标语言译文"
+			},
+			"en-US": {
+				unknownSpeaker: "Unknown Speaker",
+				hideTranslation: "Hide Translation",
+				showTranslation: "Show Translation",
+				noTranslation: "No translation available for this line in target language"
+			}
+		})
+	);
+	const translationControlLabel = $derived.by(() =>
+		translationVisible ? copy.hideTranslation : copy.showTranslation
+	);
 	const translationControlTitle = $derived.by(() =>
-		targetHasText ? translationControlLabel : "当前行暂无目标语言译文"
+		targetHasText ? translationControlLabel : copy.noTranslation
 	);
 
 	$effect(() => {
@@ -78,7 +96,7 @@
 						<Avatar.Fallback>{speaker?.avatar ?? "?"}</Avatar.Fallback>
 					</Avatar.Root>
 					<div>
-						<Card.Title class="text-sm">{speaker?.name ?? "未知发言者"}</Card.Title>
+						<Card.Title class="text-sm">{speaker?.name ?? copy.unknownSpeaker}</Card.Title>
 						<Card.Description>{line.chapter}</Card.Description>
 					</div>
 				</div>

@@ -2,7 +2,7 @@
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import * as Separator from "$lib/components/ui/separator/index.js";
-	import { getDisplayText, i18nPreferences } from "$lib/stores/i18n";
+	import { getDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { Annotation, Character, DialogLine } from "$lib/types";
 
 	let {
@@ -18,23 +18,50 @@
 	const displayText = $derived.by(() =>
 		line ? getDisplayText(line, $i18nPreferences.primaryLanguage) : ""
 	);
+	const copy = $derived.by(() =>
+		pickByLanguage($i18nPreferences.primaryLanguage, {
+			"zh-CN": {
+				title: "注解侧栏",
+				currentLine: "当前选中",
+				unknown: "未知",
+				emptyPrompt: "点击左侧任意发言以查看注解",
+				noAnnotation: "当前发言暂无注解，可继续补充背景、术语和互文信息。",
+				background: "背景",
+				translation: "翻译",
+				term: "术语",
+				intertext: "互文"
+			},
+			"en-US": {
+				title: "Annotation Panel",
+				currentLine: "Selected",
+				unknown: "Unknown",
+				emptyPrompt: "Select any line on the left to view annotations",
+				noAnnotation:
+					"No annotations for this line yet. You can add background, terms, or intertext notes.",
+				background: "Background",
+				translation: "Translation",
+				term: "Term",
+				intertext: "Intertext"
+			}
+		})
+	);
 
 	function labelForAnnotationType(type: Annotation["type"]): string {
-		if (type === "background") return "背景";
-		if (type === "translation") return "翻译";
-		if (type === "term") return "术语";
-		return "互文";
+		if (type === "background") return copy.background;
+		if (type === "translation") return copy.translation;
+		if (type === "term") return copy.term;
+		return copy.intertext;
 	}
 </script>
 
 <Card.Root class="flex flex-col lg:sticky lg:top-20 lg:h-[calc(100dvh-6.5rem)]">
 	<Card.Header class="shrink-0">
-		<Card.Title class="text-base">注解侧栏</Card.Title>
+		<Card.Title class="text-base">{copy.title}</Card.Title>
 		<Card.Description>
 			{#if line}
-				当前选中：{speaker?.name ?? "未知"} · {line.chapter}
+				{copy.currentLine}: {speaker?.name ?? copy.unknown} · {line.chapter}
 			{:else}
-				点击左侧任意发言以查看注解
+				{copy.emptyPrompt}
 			{/if}
 		</Card.Description>
 	</Card.Header>
@@ -47,7 +74,7 @@
 		{/if}
 
 		{#if annotations.length === 0}
-			<p class="text-sm text-muted-foreground">当前发言暂无注解，可继续补充背景、术语和互文信息。</p>
+			<p class="text-sm text-muted-foreground">{copy.noAnnotation}</p>
 		{:else}
 			<ul class="space-y-3">
 				{#each annotations as annotation (annotation.id)}

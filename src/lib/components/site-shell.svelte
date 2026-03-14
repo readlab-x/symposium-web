@@ -5,11 +5,17 @@
 	import { onMount } from "svelte";
 	import I18nSettingsDialog from "$lib/components/i18n/i18n-settings-dialog.svelte";
 	import { Button } from "$lib/components/ui/button/index.js";
-	import { i18nPreferences, languageOptions, type LanguageCode } from "$lib/stores/i18n";
+	import {
+		i18nPreferences,
+		languageOptions,
+		pickByLanguage,
+		type LanguageCode,
+		type LanguageMap
+	} from "$lib/stores/i18n";
 
 	type NavItem = {
 		href: string;
-		label: string;
+		label: LanguageMap<string>;
 	};
 
 	type ThemeMode = "light" | "dark" | "system";
@@ -18,17 +24,41 @@
 	const themeCycle: ThemeMode[] = ["system", "light", "dark"];
 
 	const navItems: NavItem[] = [
-		{ href: "/reading", label: "阅读" },
-		{ href: "/characters", label: "人物" },
-		{ href: "/themes", label: "主题" },
-		{ href: "/relations", label: "关系图" },
-		{ href: "/search", label: "搜索" }
+		{ href: "/reading", label: { "zh-CN": "阅读", "en-US": "Reading" } },
+		{ href: "/characters", label: { "zh-CN": "人物", "en-US": "Characters" } },
+		{ href: "/themes", label: { "zh-CN": "主题", "en-US": "Themes" } },
+		{ href: "/relations", label: { "zh-CN": "关系图", "en-US": "Relations" } },
+		{ href: "/search", label: { "zh-CN": "搜索", "en-US": "Search" } }
 	];
 
 	let darkMode = $state(false);
 	let themeMode = $state<ThemeMode>("system");
 	let isI18nDialogOpen = $state(false);
 	let { children } = $props();
+	const shellCopy = $derived.by(() =>
+		pickByLanguage($i18nPreferences.primaryLanguage, {
+			"zh-CN": {
+				siteTitle: "会饮研读台",
+				languageSettings: "语言配置",
+				themeLabel: "主题",
+				light: "浅色",
+				dark: "深色",
+				system: "跟随系统",
+				translationOff: "翻译关闭",
+				translationTo: "翻译到"
+			},
+			"en-US": {
+				siteTitle: "Symposium Reading Desk",
+				languageSettings: "Language Settings",
+				themeLabel: "Theme",
+				light: "Light",
+				dark: "Dark",
+				system: "System",
+				translationOff: "Translation Off",
+				translationTo: "Translate To"
+			}
+		})
+	);
 
 	onMount(() => {
 		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -85,19 +115,20 @@
 	}
 
 	function themeButtonLabel(): string {
-		if (themeMode === "light") return "主题：浅色";
-		if (themeMode === "dark") return "主题：深色";
-		return `主题：跟随系统（${darkMode ? "深色" : "浅色"}）`;
+		if (themeMode === "light") return `${shellCopy.themeLabel}: ${shellCopy.light}`;
+		if (themeMode === "dark") return `${shellCopy.themeLabel}: ${shellCopy.dark}`;
+		const currentTheme = darkMode ? shellCopy.dark : shellCopy.light;
+		return `${shellCopy.themeLabel}: ${shellCopy.system} (${currentTheme})`;
 	}
 
 	function languageButtonLabel(): string {
 		const map = new Map(languageOptions.map((option) => [option.code, option.label]));
 		const primary = map.get($i18nPreferences.primaryLanguage) ?? $i18nPreferences.primaryLanguage;
 		if (!$i18nPreferences.translationEnabled) {
-			return `语言配置：主语言 ${primary}，翻译关闭`;
+			return `${shellCopy.languageSettings}: ${primary}, ${shellCopy.translationOff}`;
 		}
 		const target = map.get($i18nPreferences.targetLanguage) ?? $i18nPreferences.targetLanguage;
-		return `语言配置：主语言 ${primary}，翻译到 ${target}`;
+		return `${shellCopy.languageSettings}: ${primary}, ${shellCopy.translationTo} ${target}`;
 	}
 
 	function setPrimaryLanguage(language: LanguageCode) {
@@ -118,7 +149,7 @@
 >
 	<header class="sticky top-0 z-40 border-b bg-white/70 backdrop-blur dark:bg-stone-950/70">
 		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-			<a href="/" class="text-lg font-semibold tracking-tight">会饮研读台</a>
+			<a href="/" class="text-lg font-semibold tracking-tight">{shellCopy.siteTitle}</a>
 			<nav class="flex flex-wrap items-center gap-2">
 				{#each navItems as item (item.href)}
 					<Button
@@ -127,7 +158,7 @@
 						size="sm"
 						class="h-11 px-4 sm:h-8 sm:px-3"
 					>
-						{item.label}
+						{pickByLanguage($i18nPreferences.primaryLanguage, item.label)}
 					</Button>
 				{/each}
 			</nav>

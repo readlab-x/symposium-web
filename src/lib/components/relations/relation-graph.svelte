@@ -1,4 +1,5 @@
-<script lang="ts">
+﻿<script lang="ts">
+	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { RelationEdge, RelationNode } from "$lib/types";
 
 	let {
@@ -15,6 +16,12 @@
 
 	const width = 430;
 	const height = 240;
+	const copy = $derived.by(() =>
+		pickByLanguage($i18nPreferences.primaryLanguage, {
+			"zh-CN": { viewRelations: "查看" },
+			"en-US": { viewRelations: "View relations of" }
+		})
+	);
 
 	function strokeForType(type: RelationNode["type"]): string {
 		if (type === "person") return "#0f766e";
@@ -48,7 +55,7 @@
 		<g
 			role="button"
 			tabindex="0"
-			aria-label={`查看 ${node.label} 的关系`}
+			aria-label={`${copy.viewRelations} ${node.label}`}
 			onclick={() => onSelectNode?.(node.id)}
 			onkeydown={(event) => {
 				if (event.key === "Enter" || event.key === " ") {

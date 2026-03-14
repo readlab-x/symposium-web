@@ -3,6 +3,7 @@ import { writable } from "svelte/store";
 import type { DialogLine } from "$lib/types";
 
 export type LanguageCode = "zh-CN" | "en-US";
+export type LanguageMap<T> = Record<LanguageCode, T>;
 
 export interface LanguageOption {
 	code: LanguageCode;
@@ -107,6 +108,10 @@ function createI18nPreferencesStore() {
 }
 
 export const i18nPreferences = createI18nPreferencesStore();
+
+export function pickByLanguage<T>(language: LanguageCode, values: LanguageMap<T>): T {
+	return values[language];
+}
 
 export function getDisplayText(line: DialogLine, language: LanguageCode): string {
 	if (language === "zh-CN") return line.text;

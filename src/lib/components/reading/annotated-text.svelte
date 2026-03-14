@@ -1,4 +1,5 @@
 ﻿<script lang="ts">
+	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { EntityReference, EntityType } from "$lib/types";
 
 	interface Segment {
@@ -21,6 +22,12 @@
 	} = $props();
 
 	const segments = $derived.by(() => splitTextWithEntities(text, entities));
+	const copy = $derived.by(() =>
+		pickByLanguage($i18nPreferences.primaryLanguage, {
+			"zh-CN": { person: "人物", place: "地点", concept: "概念", related: "关联" },
+			"en-US": { person: "Person", place: "Place", concept: "Concept", related: "Related" }
+		})
+	);
 
 	function splitTextWithEntities(source: string, refs: EntityReference[]): Segment[] {
 		const matches: Match[] = [];
@@ -74,9 +81,9 @@
 	}
 
 	function entityLabel(type: EntityType): string {
-		if (type === "person") return "人物";
-		if (type === "place") return "地点";
-		return "概念";
+		if (type === "person") return copy.person;
+		if (type === "place") return copy.place;
+		return copy.concept;
 	}
 </script>
 
@@ -87,7 +94,7 @@
 				<button
 					type="button"
 					class={`cursor-help rounded-sm ${entityClass(segment.entity.type)}`}
-					aria-label={`${segment.text}（${entityLabel(segment.entity.type)}）`}
+					aria-label={`${segment.text} (${entityLabel(segment.entity.type)})`}
 				>
 					{segment.text}
 				</button>
@@ -99,7 +106,7 @@
 					{segment.entity.summary}
 					{#if segment.entity.relatedChapter}
 						<br />
-						<span class="text-muted-foreground">关联：{segment.entity.relatedChapter}</span>
+						<span class="text-muted-foreground">{copy.related}: {segment.entity.relatedChapter}</span>
 					{/if}
 				</span>
 			</span>

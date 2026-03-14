@@ -1,7 +1,12 @@
 ﻿<script lang="ts">
 	import { Button } from "$lib/components/ui/button/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
-	import type { I18nPreferences, LanguageCode, LanguageOption } from "$lib/stores/i18n";
+	import {
+		pickByLanguage,
+		type I18nPreferences,
+		type LanguageCode,
+		type LanguageOption
+	} from "$lib/stores/i18n";
 
 	let {
 		open = $bindable(false),
@@ -25,12 +30,45 @@
 	const languageByCode = $derived.by(() =>
 		Object.fromEntries(languages.map((language) => [language.code, language.label])) as Record<string, string>
 	);
+	const copy = $derived.by(() =>
+		pickByLanguage(preferences.primaryLanguage, {
+			"zh-CN": {
+				dialogTitle: "语言与翻译配置",
+				closeDialog: "关闭语言与翻译配置",
+				primaryLanguage: "主语言",
+				translation: "翻译",
+				enable: "开启",
+				done: "完成",
+				statusPrefix: "主语言",
+				translationOn: "开",
+				translationOff: "关",
+				targetPrefix: "目标",
+				translationHint: "翻译功能用于阅读辅助，默认隐藏，按行点击图标展开。"
+			},
+			"en-US": {
+				dialogTitle: "Language & Translation Settings",
+				closeDialog: "Close language and translation settings",
+				primaryLanguage: "Primary Language",
+				translation: "Translation",
+				enable: "Enable",
+				done: "Done",
+				statusPrefix: "Primary",
+				translationOn: "On",
+				translationOff: "Off",
+				targetPrefix: "Target",
+				translationHint:
+					"Translation is optional for reading support and stays hidden until you expand it per line."
+			}
+		})
+	);
 
 	const statusSummary = $derived.by(() => {
 		const primary = languageByCode[preferences.primaryLanguage] ?? preferences.primaryLanguage;
 		const target = languageByCode[preferences.targetLanguage] ?? preferences.targetLanguage;
-		const translation = preferences.translationEnabled ? `开（目标：${target}）` : "关";
-		return `主语言：${primary}｜翻译：${translation}`;
+		const translation = preferences.translationEnabled
+			? `${copy.translationOn} (${copy.targetPrefix}: ${target})`
+			: copy.translationOff;
+		return `${copy.statusPrefix}: ${primary} | ${copy.translation}: ${translation}`;
 	});
 	let primaryLanguageSelect = $state<HTMLSelectElement | null>(null);
 
@@ -57,24 +95,24 @@
 			type="button"
 			class="absolute inset-0 bg-black/45"
 			onclick={close}
-			aria-label="关闭语言与翻译配置"
+			aria-label={copy.closeDialog}
 		></button>
 		<Card.Root
 			class="relative w-full max-w-md gap-0 py-0 shadow-xl"
 			role="dialog"
 			aria-modal="true"
-			aria-label="语言与翻译配置"
+			aria-label={copy.dialogTitle}
 			aria-describedby="i18n-settings-summary"
 			tabindex={-1}
 		>
 			<Card.Header class="border-b py-4">
-				<Card.Title class="text-lg">语言与翻译配置</Card.Title>
+				<Card.Title class="text-lg">{copy.dialogTitle}</Card.Title>
 				<Card.Description id="i18n-settings-summary">{statusSummary}</Card.Description>
 			</Card.Header>
 
 			<Card.Content class="space-y-4 py-4">
 				<section class="space-y-2 rounded-lg border border-border bg-muted/20 p-3">
-					<label for="primary-language-select" class="block text-sm font-medium">主语言</label>
+					<label for="primary-language-select" class="block text-sm font-medium">{copy.primaryLanguage}</label>
 					<select
 						id="primary-language-select"
 						bind:this={primaryLanguageSelect}
@@ -91,7 +129,7 @@
 
 				<section class="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
 					<div class="flex items-center justify-between gap-3">
-						<h3 id="translation-settings-heading" class="text-sm font-medium">翻译</h3>
+						<h3 id="translation-settings-heading" class="text-sm font-medium">{copy.translation}</h3>
 						<label class="flex items-center gap-2 text-sm">
 							<input
 								type="checkbox"
@@ -100,7 +138,7 @@
 								onchange={(event) =>
 									onTranslationToggle((event.currentTarget as HTMLInputElement).checked)}
 							/>
-							<span>开启</span>
+							<span>{copy.enable}</span>
 						</label>
 					</div>
 					<select
@@ -115,14 +153,12 @@
 							<option value={language.code}>{language.label}</option>
 						{/each}
 					</select>
-					<p class="text-xs text-muted-foreground">
-						翻译功能用于阅读辅助，默认隐藏，按行点击图标展开。
-					</p>
+					<p class="text-xs text-muted-foreground">{copy.translationHint}</p>
 				</section>
 			</Card.Content>
 
 			<Card.Footer class="justify-end border-t py-4">
-				<Button variant="secondary" size="sm" onclick={close}>完成</Button>
+				<Button variant="secondary" size="sm" onclick={close}>{copy.done}</Button>
 			</Card.Footer>
 		</Card.Root>
 	</div>
