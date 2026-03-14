@@ -8,7 +8,6 @@
   --radius: 0.625rem;
   --ease-ritual-out: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-ritual-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-ritual-settle: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-feedback-fast: 160ms;
   --motion-feedback-medium: 220ms;
   --motion-feedback-strong: 300ms;
@@ -129,7 +128,6 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --ease-ritual-out: var(--ease-ritual-out);
   --ease-ritual-expo: var(--ease-ritual-expo);
-  --ease-ritual-settle: var(--ease-ritual-settle);
   --motion-feedback-fast: var(--motion-feedback-fast);
   --motion-feedback-medium: var(--motion-feedback-medium);
   --motion-feedback-strong: var(--motion-feedback-strong);
@@ -168,20 +166,6 @@
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes ritual-settle {
-  0% {
-    transform: translate3d(0, var(--motion-distance-sm), 0) scale(0.98);
-  }
-
-  60% {
-    transform: translate3d(0, calc(var(--motion-distance-xs) * -1), 0) scale(1.012);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
@@ -252,11 +236,6 @@
     animation-delay: var(--motion-stagger-4);
   }
 
-  .motion-settle {
-    will-change: transform;
-    animation: ritual-settle var(--motion-feedback-strong) var(--ease-ritual-settle);
-  }
-
   .motion-sheen {
     position: relative;
     overflow: hidden;
@@ -324,8 +303,7 @@
 
   .motion-stage,
   .motion-stage-soft,
-  .motion-stage-hero,
-  .motion-settle {
+  .motion-stage-hero {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

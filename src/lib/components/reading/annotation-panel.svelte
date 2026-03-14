@@ -1,4 +1,4 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import * as Separator from "$lib/components/ui/separator/index.js";
@@ -8,11 +8,13 @@
 	let {
 		line,
 		speaker,
-		annotations
+		annotations,
+		compact = false
 	}: {
 		line: DialogLine | null;
 		speaker?: Character;
 		annotations: Annotation[];
+		compact?: boolean;
 	} = $props();
 
 	const displayText = $derived.by(() =>
@@ -21,7 +23,7 @@
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
-				title: "注解侧栏",
+				title: compact ? "注解" : "注解侧栏",
 				currentLine: "当前选中",
 				unknown: "未知",
 				emptyPrompt: "点击左侧任意发言以查看注解",
@@ -32,7 +34,7 @@
 				intertext: "互文"
 			},
 			"en-US": {
-				title: "Annotation Panel",
+				title: compact ? "Annotations" : "Annotation Panel",
 				currentLine: "Selected",
 				unknown: "Unknown",
 				emptyPrompt: "Select any line on the left to view annotations",
@@ -54,8 +56,14 @@
 	}
 </script>
 
-<Card.Root class="motion-stage-soft motion-delay-3 flex flex-col border-border/60 bg-card/74 lg:sticky lg:top-24 lg:h-[calc(100dvh-7.25rem)]">
-	<Card.Header class="shrink-0">
+<Card.Root
+	class={`motion-stage-soft ${
+		compact
+			? "gap-4 border-border/55 bg-secondary/20 py-4"
+			: "motion-delay-3 flex flex-col border-border/60 bg-card/74 lg:sticky lg:top-24 lg:h-[calc(100dvh-7.25rem)]"
+	}`}
+>
+	<Card.Header class={compact ? "space-y-1 pb-0" : "shrink-0"}>
 		<Card.Title class="text-[0.82rem] font-medium tracking-[0.16em] text-muted-foreground uppercase">
 			{copy.title}
 		</Card.Title>
@@ -67,8 +75,8 @@
 			{/if}
 		</Card.Description>
 	</Card.Header>
-	<Card.Content class="min-h-0 flex-1 space-y-4 overflow-y-auto">
-		{#if line}
+	<Card.Content class={compact ? "space-y-4 pt-0" : "min-h-0 flex-1 space-y-4 overflow-y-auto"}>
+		{#if line && !compact}
 			{#key line.id}
 				<blockquote class="motion-stage-soft rounded-[1.15rem] border-l-2 border-primary/40 bg-secondary/38 px-4 py-3 text-sm leading-6">
 					{displayText}
@@ -80,7 +88,7 @@
 		{#if annotations.length === 0}
 			<p class="motion-stage-soft text-sm text-muted-foreground">{copy.noAnnotation}</p>
 		{:else}
-			{#key `${line?.id ?? "none"}:${annotations.length}`}
+			{#key `${line?.id ?? "none"}:${annotations.length}:${compact ? "compact" : "sidebar"}`}
 				<ul class="space-y-3">
 					{#each annotations as annotation, index (annotation.id)}
 						<li

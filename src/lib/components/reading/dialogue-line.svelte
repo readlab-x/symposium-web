@@ -1,18 +1,21 @@
-﻿<script lang="ts">
-	import { EyeOff, Languages } from "@lucide/svelte";
+<script lang="ts">
+	import { EyeOff, FileText, Languages } from "@lucide/svelte";
+	import AnnotationPanel from "$lib/components/reading/annotation-panel.svelte";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import AnnotatedText from "$lib/components/reading/annotated-text.svelte";
+	import { getDialogueLineRootClass } from "$lib/components/reading/dialogue-line-state.js";
 	import { getDisplayText, hasDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
-	import type { Character, DialogLine, EntityReference } from "$lib/types";
+	import type { Annotation, Character, DialogLine, EntityReference } from "$lib/types";
 
 	let {
 		line,
 		index = 0,
 		speaker,
 		isSelected,
+		annotations,
 		entities,
 		onSelect
 	}: {
@@ -20,11 +23,13 @@
 		index?: number;
 		speaker?: Character;
 		isSelected: boolean;
+		annotations: Annotation[];
 		entities: EntityReference[];
 		onSelect?: (lineId: string) => void;
 	} = $props();
 
 	let translationVisible = $state(false);
+	let annotationVisible = $state(false);
 
 	const primaryText = $derived.by(() => getDisplayText(line, $i18nPreferences.primaryLanguage));
 	const canToggleTranslation = $derived.by(
@@ -34,19 +39,26 @@
 	);
 	const targetHasText = $derived.by(() => hasDisplayText(line, $i18nPreferences.targetLanguage));
 	const targetText = $derived.by(() => getDisplayText(line, $i18nPreferences.targetLanguage));
+	const hasAnnotations = $derived.by(() => annotations.length > 0);
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
 				unknownSpeaker: "未知发言者",
 				hideTranslation: "收起翻译",
 				showTranslation: "查看翻译",
-				noTranslation: "当前行暂无目标语言译文"
+				noTranslation: "当前行暂无目标语言译文",
+				hideAnnotation: "收起注解",
+				showAnnotation: "查看注解",
+				noAnnotation: "当前行暂无注解"
 			},
 			"en-US": {
 				unknownSpeaker: "Unknown Speaker",
 				hideTranslation: "Hide Translation",
 				showTranslation: "Show Translation",
-				noTranslation: "No translation available for this line in target language"
+				noTranslation: "No translation available for this line in target language",
+				hideAnnotation: "Hide Annotation",
+				showAnnotation: "Show Annotation",
+				noAnnotation: "No annotation available for this line"
 			}
 		})
 	);
@@ -56,10 +68,22 @@
 	const translationControlTitle = $derived.by(() =>
 		targetHasText ? translationControlLabel : copy.noTranslation
 	);
+	const annotationControlLabel = $derived.by(() =>
+		annotationVisible ? copy.hideAnnotation : copy.showAnnotation
+	);
+	const annotationControlTitle = $derived.by(() =>
+		hasAnnotations ? annotationControlLabel : copy.noAnnotation
+	);
 
 	$effect(() => {
 		if (!canToggleTranslation) {
 			translationVisible = false;
+		}
+	});
+
+	$effect(() => {
+		if (!isSelected || !hasAnnotations) {
+			annotationVisible = false;
 		}
 	});
 
@@ -78,29 +102,23 @@
 		translationVisible = !translationVisible;
 	}
 
-	function entryDelayClass(position: number): string {
-		if (position === 0) return "";
-		if (position === 1) return "motion-delay-1";
-		if (position === 2) return "motion-delay-2";
-		if (position === 3) return "motion-delay-3";
-		if (position === 4) return "motion-delay-4";
-		return "";
+	function toggleAnnotation(event: MouseEvent) {
+		event.stopPropagation();
+		onSelect?.(line.id);
+		if (!hasAnnotations) return;
+		annotationVisible = !annotationVisible;
 	}
 </script>
 
 <article id={line.id}>
 	<Card.Root
-		class={`${
-			index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""
-		} transition-[transform,color,background-color,border-color,box-shadow] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] ${
-			isSelected
-				? "motion-settle border-primary/28 bg-secondary/62 shadow-[0_20px_40px_-32px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
-				: "border-border/55 bg-background/58 hover:-translate-y-0.5 hover:border-border/80 hover:bg-card/94"
-		}`}
+		class={getDialogueLineRootClass({ index, isSelected })}
 		onclick={selectLine}
 		onkeydown={onCardKeydown}
 		role="button"
 		tabindex={0}
+		aria-pressed={isSelected}
+		data-selected={isSelected}
 	>
 		<Card.Header class="gap-3 pb-1">
 			<div class="flex items-center justify-between gap-4">
@@ -140,24 +158,45 @@
 				</div>
 			{/if}
 
-			{#if canToggleTranslation}
-				<div class="mt-2 flex justify-end">
-					<Button
-						variant="ghost"
-						size="icon-sm"
-						class="motion-sheen size-9 rounded-full text-muted-foreground transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground sm:size-8"
-						onclick={toggleTranslation}
-						disabled={!targetHasText}
-						aria-label={translationControlLabel}
-						aria-pressed={translationVisible}
-						title={translationControlTitle}
-					>
-						{#if translationVisible}
-							<EyeOff class="size-4" />
-						{:else}
-							<Languages class="size-4" />
-						{/if}
-					</Button>
+			{#if canToggleTranslation || hasAnnotations}
+				<div class="mt-2 flex justify-end gap-2">
+					{#if hasAnnotations}
+						<Button
+							variant="ghost"
+							size="icon-sm"
+							class="motion-sheen size-9 rounded-full text-muted-foreground transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground sm:size-8 lg:hidden"
+							onclick={toggleAnnotation}
+							aria-label={annotationControlLabel}
+							aria-pressed={annotationVisible}
+							title={annotationControlTitle}
+						>
+							<FileText class="size-4" />
+						</Button>
+					{/if}
+					{#if canToggleTranslation}
+						<Button
+							variant="ghost"
+							size="icon-sm"
+							class="motion-sheen size-9 rounded-full text-muted-foreground transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground sm:size-8"
+							onclick={toggleTranslation}
+							disabled={!targetHasText}
+							aria-label={translationControlLabel}
+							aria-pressed={translationVisible}
+							title={translationControlTitle}
+						>
+							{#if translationVisible}
+								<EyeOff class="size-4" />
+							{:else}
+								<Languages class="size-4" />
+							{/if}
+						</Button>
+					{/if}
+				</div>
+			{/if}
+
+			{#if hasAnnotations && annotationVisible}
+				<div class="mt-3 border-t border-border/50 pt-3 lg:hidden">
+					<AnnotationPanel compact line={line} {speaker} {annotations} />
 				</div>
 			{/if}
 		</Card.Content>

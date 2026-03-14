@@ -76,12 +76,12 @@
 
 	function entityClass(type: EntityType): string {
 		if (type === "person") {
-			return "motion-sheen rounded-[0.4rem] bg-amber-900/8 px-1 py-px font-medium text-foreground underline decoration-amber-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-amber-900/12 hover:decoration-amber-900/70 dark:bg-amber-200/8 dark:decoration-amber-200/45 dark:hover:bg-amber-200/14 dark:hover:decoration-amber-100/70";
+			return "motion-sheen font-medium text-foreground underline decoration-amber-800/45 decoration-[1px] underline-offset-[0.2em] transition-[text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:decoration-amber-900/70 dark:decoration-amber-200/45 dark:hover:decoration-amber-100/70";
 		}
 		if (type === "place") {
-			return "motion-sheen rounded-[0.4rem] bg-emerald-900/8 px-1 py-px font-medium text-foreground underline decoration-emerald-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-emerald-900/12 hover:decoration-emerald-900/70 dark:bg-emerald-200/8 dark:decoration-emerald-200/45 dark:hover:bg-emerald-200/14 dark:hover:decoration-emerald-100/70";
+			return "motion-sheen font-medium text-foreground underline decoration-emerald-800/45 decoration-[1px] underline-offset-[0.2em] transition-[text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:decoration-emerald-900/70 dark:decoration-emerald-200/45 dark:hover:decoration-emerald-100/70";
 		}
-		return "motion-sheen rounded-[0.4rem] bg-sky-900/8 px-1 py-px font-medium text-foreground underline decoration-sky-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:bg-sky-900/12 hover:decoration-sky-900/70 dark:bg-sky-200/8 dark:decoration-sky-200/45 dark:hover:bg-sky-200/14 dark:hover:decoration-sky-100/70";
+		return "motion-sheen font-medium text-foreground underline decoration-sky-800/45 decoration-[1px] underline-offset-[0.2em] transition-[text-decoration-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:decoration-sky-900/70 dark:decoration-sky-200/45 dark:hover:decoration-sky-100/70";
 	}
 
 	function entityLabel(type: EntityType): string {

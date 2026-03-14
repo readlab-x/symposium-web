@@ -1,19 +1,21 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import DialogueLine from "$lib/components/reading/dialogue-line.svelte";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
-	import type { Character, DialogLine, EntityReference } from "$lib/types";
+	import type { Annotation, Character, DialogLine, EntityReference } from "$lib/types";
 
 	let {
 		lines,
 		speakersById,
 		selectedLineId,
 		entities,
+		annotationsByLine,
 		onSelectLine
 	}: {
 		lines: DialogLine[];
 		speakersById: Record<string, Character>;
 		selectedLineId: string | null;
 		entities: EntityReference[];
+		annotationsByLine: Record<string, Annotation[]>;
 		onSelectLine?: (lineId: string) => void;
 	} = $props();
 
@@ -39,6 +41,7 @@
 				{index}
 				speaker={speakersById[line.speakerId]}
 				isSelected={selectedLineId === line.id}
+				annotations={annotationsByLine[line.id] ?? []}
 				{entities}
 				onSelect={onSelectLine}
 			/>

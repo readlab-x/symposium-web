@@ -6,6 +6,11 @@
 	import { onMount } from "svelte";
 	import I18nSettingsDialog from "$lib/components/i18n/i18n-settings-dialog.svelte";
 	import {
+		getSiteShellBackdropClass,
+		getSiteShellHeaderClass,
+		getSiteShellRootClass
+	} from "$lib/components/site-shell-layout.js";
+	import {
 		i18nPreferences,
 		languageOptions,
 		pickByLanguage,
@@ -144,12 +149,12 @@
 	}
 </script>
 
-<div class="relative min-h-screen overflow-x-hidden bg-background">
+<div class={getSiteShellRootClass()}>
 	<div
 		aria-hidden="true"
-		class="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_top,rgba(156,121,74,0.12),transparent_72%)] dark:bg-[radial-gradient(circle_at_top,rgba(212,188,145,0.08),transparent_74%)]"
+		class={getSiteShellBackdropClass()}
 	></div>
-	<header class="sticky top-0 z-40 border-b border-border/70 bg-background/88 backdrop-blur-md">
+	<header class={getSiteShellHeaderClass()}>
 		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3">
 			<a href="/" class="motion-stage-hero min-w-0 space-y-1">
 				<span class="block text-[0.68rem] tracking-[0.26em] text-muted-foreground uppercase">
