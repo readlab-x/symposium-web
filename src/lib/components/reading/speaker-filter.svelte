@@ -23,16 +23,19 @@
 	);
 </script>
 
-<section class="space-y-3">
+<section class="space-y-2.5">
 	<div class="flex items-center justify-between">
-		<h2 class="text-sm font-medium text-muted-foreground">{copy.title}</h2>
-		<Button size="sm" variant="outline" onclick={() => onSelectAll?.()}>{copy.selectAll}</Button>
+		<h2 class="text-[0.72rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
+			{copy.title}
+		</h2>
+		<Button size="sm" variant="ghost" onclick={() => onSelectAll?.()}>{copy.selectAll}</Button>
 	</div>
 	<div class="flex flex-wrap gap-2">
 		{#each speakers as speaker (speaker.id)}
 			<Button
 				size="sm"
-				variant={activeSpeakerIds.includes(speaker.id) ? "default" : "outline"}
+				variant={activeSpeakerIds.includes(speaker.id) ? "secondary" : "outline"}
+				class="rounded-full"
 				onclick={() => onToggleSpeaker?.(speaker.id)}
 			>
 				{speaker.name}

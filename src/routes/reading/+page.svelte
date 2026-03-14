@@ -146,23 +146,26 @@
 </script>
 
 <section class="space-y-5">
-	<header class="space-y-2">
+	<header class="max-w-3xl space-y-2">
 		<h1 class="text-2xl font-semibold tracking-tight">{copy.title}</h1>
 		<p class="text-sm text-muted-foreground">{copy.description}</p>
 	</header>
 
-	<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
 		<div class="space-y-4">
-			<Card.Root class="gap-0 border-border/60 bg-background/70 py-0 shadow-none">
-				<Card.Header class="py-2.5">
+			<Card.Root class="gap-0 border-border/55 bg-card/66 py-0">
+				<Card.Header class="py-3">
 					<div class="flex items-center justify-between gap-3">
 						<div class="space-y-1">
-							<Card.Title class="text-sm font-medium">{copy.toolsTitle}</Card.Title>
+							<Card.Title class="text-[0.8rem] font-medium tracking-[0.16em] text-muted-foreground uppercase">
+								{copy.toolsTitle}
+							</Card.Title>
 							<Card.Description class="text-xs">{toolSummary}</Card.Description>
 						</div>
 						<Button
 							variant="ghost"
 							size="sm"
+							class="text-muted-foreground hover:text-foreground"
 							onclick={() => (toolsExpanded = !toolsExpanded)}
 							aria-expanded={toolsExpanded}
 							aria-controls="reading-tools"
@@ -173,7 +176,7 @@
 					</div>
 				</Card.Header>
 				{#if toolsExpanded}
-					<Card.Content id="reading-tools" class="space-y-2.5 border-t pt-2 pb-2">
+					<Card.Content id="reading-tools" class="space-y-3 border-t border-border/55 pt-3 pb-3">
 						<SpeakerFilter
 							{speakers}
 							activeSpeakerIds={activeSpeakerIds}

@@ -81,22 +81,22 @@
 	<Card.Root
 		class={`transition-colors duration-200 ease-out ${
 			isSelected
-				? "border-primary/50 bg-primary/5 shadow-sm"
-				: "border-border/50 bg-background/55 hover:border-border hover:bg-background"
+				? "border-primary/28 bg-secondary/62"
+				: "border-border/55 bg-background/58 hover:border-border/80 hover:bg-card/94"
 		}`}
 		onclick={selectLine}
 		onkeydown={onCardKeydown}
 		role="button"
 		tabindex={0}
 	>
-		<Card.Header class="gap-3 pb-2">
+		<Card.Header class="gap-3 pb-1">
 			<div class="flex items-center justify-between gap-4">
 				<div class="flex items-center gap-3">
-					<Avatar.Root class="size-8 border">
+					<Avatar.Root class="size-8 border border-border/65 bg-secondary/38">
 						<Avatar.Fallback>{speaker?.avatar ?? "?"}</Avatar.Fallback>
 					</Avatar.Root>
 					<div>
-						<Card.Title class="text-sm">{speaker?.name ?? copy.unknownSpeaker}</Card.Title>
+						<Card.Title class="text-sm font-medium">{speaker?.name ?? copy.unknownSpeaker}</Card.Title>
 						<Card.Description>{line.chapter}</Card.Description>
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 				</div>
 			</div>
 		</Card.Header>
-		<Card.Content class="pt-0">
+		<Card.Content class="space-y-3 pt-0">
 			<AnnotatedText text={primaryText} entities={entities} />
 
 			{#if canToggleTranslation && targetHasText}
@@ -116,7 +116,7 @@
 						translationVisible ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
 					}`}
 				>
-					<p class="min-h-0 overflow-hidden border-l-2 border-primary/35 pl-3 text-sm leading-7 text-muted-foreground">
+					<p class="min-h-0 overflow-hidden rounded-r-2xl border-l border-primary/35 bg-secondary/32 px-3 py-2 text-sm leading-7 text-muted-foreground">
 						{targetText}
 					</p>
 				</div>
@@ -127,7 +127,7 @@
 					<Button
 						variant="ghost"
 						size="icon-sm"
-						class="size-11 text-muted-foreground hover:text-foreground sm:size-8"
+						class="size-9 rounded-full text-muted-foreground hover:text-foreground sm:size-8"
 						onclick={toggleTranslation}
 						disabled={!targetHasText}
 						aria-label={translationControlLabel}

@@ -27,9 +27,9 @@
 	);
 </script>
 
-<div class="space-y-3">
+<div class="space-y-2.5">
 	{#if lines.length === 0}
-		<div class="rounded-xl border border-dashed p-6 text-sm text-muted-foreground">
+		<div class="rounded-[1.25rem] border border-dashed border-border/70 bg-secondary/30 p-6 text-sm text-muted-foreground">
 			{copy.empty}
 		</div>
 	{:else}

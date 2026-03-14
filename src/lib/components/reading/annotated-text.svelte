@@ -75,9 +75,13 @@
 	}
 
 	function entityClass(type: EntityType): string {
-		if (type === "person") return "font-semibold text-sky-700 dark:text-sky-300";
-		if (type === "place") return "font-semibold text-emerald-700 dark:text-emerald-300";
-		return "font-semibold text-rose-700 dark:text-rose-300";
+		if (type === "person") {
+			return "rounded-[0.4rem] bg-amber-900/8 px-1 py-px font-medium text-foreground underline decoration-amber-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-amber-900/12 hover:decoration-amber-900/70 dark:bg-amber-200/8 dark:decoration-amber-200/45 dark:hover:bg-amber-200/14 dark:hover:decoration-amber-100/70";
+		}
+		if (type === "place") {
+			return "rounded-[0.4rem] bg-emerald-900/8 px-1 py-px font-medium text-foreground underline decoration-emerald-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-emerald-900/12 hover:decoration-emerald-900/70 dark:bg-emerald-200/8 dark:decoration-emerald-200/45 dark:hover:bg-emerald-200/14 dark:hover:decoration-emerald-100/70";
+		}
+		return "rounded-[0.4rem] bg-sky-900/8 px-1 py-px font-medium text-foreground underline decoration-sky-800/45 decoration-[1px] underline-offset-[0.2em] transition-[background-color,text-decoration-color] hover:bg-sky-900/12 hover:decoration-sky-900/70 dark:bg-sky-200/8 dark:decoration-sky-200/45 dark:hover:bg-sky-200/14 dark:hover:decoration-sky-100/70";
 	}
 
 	function entityLabel(type: EntityType): string {
@@ -93,13 +97,13 @@
 			<span class="group relative inline-flex">
 				<button
 					type="button"
-					class={`cursor-help rounded-sm ${entityClass(segment.entity.type)}`}
+					class={`cursor-help ${entityClass(segment.entity.type)}`}
 					aria-label={`${segment.text} (${entityLabel(segment.entity.type)})`}
 				>
 					{segment.text}
 				</button>
 				<span
-					class="pointer-events-none absolute bottom-full left-1/2 z-10 hidden w-56 -translate-x-1/2 rounded-md border bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground shadow-md group-hover:block group-focus-within:block"
+					class="pointer-events-none absolute bottom-full left-1/2 z-10 hidden w-56 -translate-x-1/2 rounded-2xl border border-border/70 bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground shadow-none group-hover:block group-focus-within:block"
 				>
 					<span class="font-semibold">{entityLabel(segment.entity.type)}</span>
 					<br />

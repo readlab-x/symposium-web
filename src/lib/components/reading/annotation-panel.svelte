@@ -54,9 +54,11 @@
 	}
 </script>
 
-<Card.Root class="flex flex-col lg:sticky lg:top-20 lg:h-[calc(100dvh-6.5rem)]">
+<Card.Root class="flex flex-col border-border/60 bg-card/74 lg:sticky lg:top-24 lg:h-[calc(100dvh-7.25rem)]">
 	<Card.Header class="shrink-0">
-		<Card.Title class="text-base">{copy.title}</Card.Title>
+		<Card.Title class="text-[0.82rem] font-medium tracking-[0.16em] text-muted-foreground uppercase">
+			{copy.title}
+		</Card.Title>
 		<Card.Description>
 			{#if line}
 				{copy.currentLine}: {speaker?.name ?? copy.unknown} · {line.chapter}
@@ -67,7 +69,7 @@
 	</Card.Header>
 	<Card.Content class="min-h-0 flex-1 space-y-4 overflow-y-auto">
 		{#if line}
-			<blockquote class="rounded-md border-l-4 border-primary/50 bg-muted p-3 text-sm leading-6">
+			<blockquote class="rounded-[1.15rem] border-l-2 border-primary/40 bg-secondary/38 px-4 py-3 text-sm leading-6">
 				{displayText}
 			</blockquote>
 			<Separator.Root />
@@ -78,9 +80,9 @@
 		{:else}
 			<ul class="space-y-3">
 				{#each annotations as annotation (annotation.id)}
-					<li class="space-y-2 rounded-md border p-3">
+					<li class="space-y-2 rounded-[1.15rem] border border-border/60 bg-secondary/28 p-3.5">
 						<div class="flex items-center justify-between gap-3">
-							<h3 class="text-sm font-semibold">{annotation.title}</h3>
+							<h3 class="text-sm font-medium">{annotation.title}</h3>
 							<Badge variant="outline">{labelForAnnotationType(annotation.type)}</Badge>
 						</div>
 						<p class="text-sm leading-6 text-muted-foreground">{annotation.content}</p>
