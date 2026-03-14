@@ -6,6 +6,24 @@
 
 :root {
   --radius: 0.625rem;
+  --ease-ritual-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-ritual-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ritual-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-feedback-fast: 160ms;
+  --motion-feedback-medium: 220ms;
+  --motion-feedback-strong: 300ms;
+  --motion-panel: 380ms;
+  --motion-panel-slow: 520ms;
+  --motion-page: 760ms;
+  --motion-page-hero: 900ms;
+  --motion-distance-xs: 0.35rem;
+  --motion-distance-sm: 0.6rem;
+  --motion-distance-md: 1rem;
+  --motion-distance-lg: 1.5rem;
+  --motion-stagger-1: 80ms;
+  --motion-stagger-2: 140ms;
+  --motion-stagger-3: 220ms;
+  --motion-stagger-4: 320ms;
   --background: oklch(0.982 0.008 84);
   --foreground: oklch(0.255 0.018 58);
   --card: oklch(0.992 0.005 84);
@@ -109,6 +127,145 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --ease-ritual-out: var(--ease-ritual-out);
+  --ease-ritual-expo: var(--ease-ritual-expo);
+  --ease-ritual-settle: var(--ease-ritual-settle);
+  --motion-feedback-fast: var(--motion-feedback-fast);
+  --motion-feedback-medium: var(--motion-feedback-medium);
+  --motion-feedback-strong: var(--motion-feedback-strong);
+  --motion-panel: var(--motion-panel);
+  --motion-panel-slow: var(--motion-panel-slow);
+  --motion-page: var(--motion-page);
+  --motion-page-hero: var(--motion-page-hero);
+  --motion-distance-xs: var(--motion-distance-xs);
+  --motion-distance-sm: var(--motion-distance-sm);
+  --motion-distance-md: var(--motion-distance-md);
+  --motion-distance-lg: var(--motion-distance-lg);
+  --motion-stagger-1: var(--motion-stagger-1);
+  --motion-stagger-2: var(--motion-stagger-2);
+  --motion-stagger-3: var(--motion-stagger-3);
+  --motion-stagger-4: var(--motion-stagger-4);
+}
+
+@keyframes ritual-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, var(--motion-distance-lg), 0) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ritual-enter-soft {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, var(--motion-distance-md), 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ritual-settle {
+  0% {
+    transform: translate3d(0, var(--motion-distance-sm), 0) scale(0.98);
+  }
+
+  60% {
+    transform: translate3d(0, calc(var(--motion-distance-xs) * -1), 0) scale(1.012);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ritual-sheen {
+  0% {
+    opacity: 0;
+    transform: translate3d(-115%, 0, 0);
+  }
+
+  30% {
+    opacity: 0.18;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(135%, 0, 0);
+  }
+}
+
+@layer utilities {
+  .motion-stage {
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: ritual-enter var(--motion-page) var(--ease-ritual-out) forwards;
+  }
+
+  .motion-stage-soft {
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: ritual-enter-soft var(--motion-panel) var(--ease-ritual-out) forwards;
+  }
+
+  .motion-stage-hero {
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: ritual-enter var(--motion-page-hero) var(--ease-ritual-expo) forwards;
+  }
+
+  .motion-delay-1 {
+    animation-delay: var(--motion-stagger-1);
+  }
+
+  .motion-delay-2 {
+    animation-delay: var(--motion-stagger-2);
+  }
+
+  .motion-delay-3 {
+    animation-delay: var(--motion-stagger-3);
+  }
+
+  .motion-delay-4 {
+    animation-delay: var(--motion-stagger-4);
+  }
+
+  .motion-settle {
+    will-change: transform;
+    animation: ritual-settle var(--motion-feedback-strong) var(--ease-ritual-settle);
+  }
+
+  .motion-sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .motion-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--color-primary) 12%, transparent) 45%,
+      transparent 100%
+    );
+    pointer-events: none;
+    transform: translate3d(-115%, 0, 0);
+  }
+
+  .motion-sheen:hover::after,
+  .motion-sheen:focus-visible::after,
+  .motion-sheen[data-active="true"]::after {
+    animation: ritual-sheen var(--motion-panel-slow) var(--ease-ritual-expo);
+  }
 }
 
 @layer base {
@@ -117,5 +274,44 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-feedback-fast: 1ms;
+    --motion-feedback-medium: 1ms;
+    --motion-feedback-strong: 1ms;
+    --motion-panel: 1ms;
+    --motion-panel-slow: 1ms;
+    --motion-page: 1ms;
+    --motion-page-hero: 1ms;
+    --motion-distance-xs: 0rem;
+    --motion-distance-sm: 0rem;
+    --motion-distance-md: 0rem;
+    --motion-distance-lg: 0rem;
+    --motion-stagger-1: 0ms;
+    --motion-stagger-2: 0ms;
+    --motion-stagger-3: 0ms;
+    --motion-stagger-4: 0ms;
+  }
+
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  .motion-stage,
+  .motion-stage-soft,
+  .motion-stage-hero,
+  .motion-settle {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .motion-sheen::after {
+    animation: none !important;
+    opacity: 0 !important;
+    transform: none !important;
   }
 }
