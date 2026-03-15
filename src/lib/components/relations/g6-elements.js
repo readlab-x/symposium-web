@@ -1,0 +1,37 @@
+/**
+ * @param {{
+ *   nodes: Array<{ id: string, label: string, type: string, summary: string, x: number, y: number }>;
+ *   edges: Array<{ id: string, source: string, target: string, relation: string }>;
+ * }} graph
+ */
+export function createG6Elements(graph) {
+	return {
+		nodes: graph.nodes.map((node) => ({
+			id: node.id,
+			data: {
+				label: node.label,
+				type: node.type,
+				summary: node.summary
+			},
+			style: {
+				x: node.x,
+				y: node.y,
+				size: 42,
+				labelText: node.label
+			}
+		})),
+		edges: graph.edges.map((edge) => ({
+			id: edge.id,
+			source: edge.source,
+			target: edge.target,
+			data: {
+				relation: edge.relation
+			},
+			style: {
+				labelText: edge.relation,
+				labelBackground: true,
+				labelWordWrap: true
+			}
+		}))
+	};
+}

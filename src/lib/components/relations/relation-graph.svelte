@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import cytoscape from "cytoscape";
-	import type { Core } from "cytoscape";
-	import { createActiveRelationState } from "$lib/components/relations/cytoscape-active-state.js";
-	import { createCytoscapeElements } from "$lib/components/relations/cytoscape-elements.js";
-	import { createRelationGraphStyles } from "$lib/components/relations/cytoscape-styles.js";
+	import type { Graph as G6Graph } from "@antv/g6";
+	import { createG6Elements } from "$lib/components/relations/g6-elements.js";
+	import { createRelationGraphOptions } from "$lib/components/relations/g6-graph-config.js";
+	import { createLatestTaskRunner } from "$lib/components/relations/g6-render-queue.js";
+	import { createG6ElementStates } from "$lib/components/relations/g6-state.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { RelationEdge, RelationNode } from "$lib/types";
 
@@ -21,14 +21,18 @@
 	} = $props();
 
 	let container = $state<HTMLDivElement | null>(null);
-	let graph = $state<Core | null>(null);
+	let graph = $state<G6Graph | null>(null);
 	let darkMode = $state(false);
+	let graphReady = $state(false);
+	let mounted = $state(false);
 
 	const graphData = $derived.by(() => ({ nodes, edges }));
+	const graphElements = $derived.by(() => createG6Elements(graphData));
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
-				canvasLabel: "人物关系图，可拖拽、缩放并点击节点查看关系"
+				canvasLabel:
+					"\u4eba\u7269\u5173\u7cfb\u56fe\uff0c\u53ef\u62d6\u62fd\u3001\u7f29\u653e\u5e76\u70b9\u51fb\u8282\u70b9\u67e5\u770b\u5173\u7cfb"
 			},
 			"en-US": {
 				canvasLabel: "Interactive relations graph. Drag, zoom, and select nodes to inspect links."
@@ -38,85 +42,98 @@
 
 	function syncThemeState() {
 		darkMode = document.documentElement.classList.contains("dark");
+	}
+
+	function destroyGraph() {
+		graphReady = false;
+
 		if (!graph) return;
 
-		graph.style(createRelationGraphStyles({ darkMode }));
-		applyActiveClasses(graph, activeNodeId);
+		const instance = graph;
+		graph = null;
+
+		if (!instance.destroyed) {
+			instance.destroy();
+		}
 	}
 
-	function applyActiveClasses(instance: Core, selectedNodeId: string | null) {
-		const state = createActiveRelationState(graphData, selectedNodeId);
-		const highlightedNodeIds = new Set([...state.activeNodeIds, ...state.neighborNodeIds]);
-		const highlightedEdgeIds = new Set(state.activeEdgeIds);
-
-		instance.batch(() => {
-			const allNodes = instance.nodes();
-			const allEdges = instance.edges();
-
-			allNodes.removeClass("is-active is-neighbor is-dimmed");
-			allEdges.removeClass("is-active-edge is-dimmed");
-
-			if (!selectedNodeId) return;
-
-			allNodes.forEach((node) => {
-				if (state.activeNodeIds.includes(node.id())) {
-					node.addClass("is-active");
-					return;
-				}
-
-				if (highlightedNodeIds.has(node.id())) {
-					node.addClass("is-neighbor");
-					return;
-				}
-
-				node.addClass("is-dimmed");
-			});
-
-			allEdges.forEach((edge) => {
-				if (highlightedEdgeIds.has(edge.id())) {
-					edge.addClass("is-active-edge");
-					return;
-				}
-
-				edge.addClass("is-dimmed");
-			});
-		});
+	async function applyElementStates(
+		instance: G6Graph,
+		data: typeof graphData,
+		selectedNodeId: string | null
+	) {
+		await instance.setElementState(createG6ElementStates(data, selectedNodeId), false);
 	}
+
+	const renderQueue = createLatestTaskRunner(
+		async ({
+			graphContainer,
+			data,
+			relationData,
+			isDarkMode
+		}: {
+			graphContainer: HTMLDivElement;
+			data: ReturnType<typeof createG6Elements>;
+			relationData: typeof graphData;
+			isDarkMode: boolean;
+		}) => {
+			const { Graph } = await import("@antv/g6");
+
+			if (!mounted) return;
+
+			const previousGraph = graph;
+			graph = null;
+			graphReady = false;
+
+			if (previousGraph && !previousGraph.destroyed) {
+				previousGraph.destroy();
+			}
+
+			const instance = new Graph(
+				createRelationGraphOptions({
+					container: graphContainer,
+					data,
+					darkMode: isDarkMode
+				})
+			);
+
+			instance.on("node:click", (event) => {
+				const nodeTarget = (event as { target?: { id?: unknown } }).target;
+				const nodeId = typeof nodeTarget?.id === "string" ? nodeTarget.id : null;
+				onSelectNode?.(nodeId);
+			});
+
+			instance.on("canvas:click", () => {
+				onSelectNode?.(null);
+			});
+
+			try {
+				await instance.render();
+			} catch (error) {
+				if (!instance.destroyed) {
+					instance.destroy();
+				}
+
+				throw error;
+			}
+
+			if (!mounted) {
+				if (!instance.destroyed) {
+					instance.destroy();
+				}
+
+				return;
+			}
+
+			graph = instance;
+			await applyElementStates(instance, relationData, activeNodeId);
+			graphReady = true;
+		}
+	);
 
 	onMount(() => {
-		if (!container) return;
-
-		darkMode = document.documentElement.classList.contains("dark");
-
-		const instance = cytoscape({
-			container,
-			elements: createCytoscapeElements(graphData),
-			style: createRelationGraphStyles({ darkMode }),
-			layout: {
-				name: "cose",
-				animate: false,
-				padding: 24
-			},
-			minZoom: 0.6,
-			maxZoom: 1.8,
-			wheelSensitivity: 0.16,
-			boxSelectionEnabled: false,
-			userPanningEnabled: true,
-			userZoomingEnabled: true
-		});
-
-		instance.on("tap", "node", (event) => {
-			onSelectNode?.(event.target.id());
-		});
-
-		instance.on("tap", (event) => {
-			if (event.target === instance) {
-				onSelectNode?.(null);
-			}
-		});
-
-		graph = instance;
-		applyActiveClasses(instance, activeNodeId);
+		syncThemeState();
+		mounted = true;
 
 		const themeObserver = new MutationObserver(() => {
 			syncThemeState();
@@ -127,22 +144,43 @@
 		});
 
 		const resizeObserver = new ResizeObserver(() => {
-			instance.resize();
-			instance.fit(undefined, 24);
+			graph?.resize();
 		});
-		resizeObserver.observe(container);
+		if (container) {
+			resizeObserver.observe(container);
+		}
 
 		return () => {
+			mounted = false;
 			themeObserver.disconnect();
 			resizeObserver.disconnect();
-			instance.destroy();
-			graph = null;
+			destroyGraph();
 		};
 	});
 
 	$effect(() => {
-		if (!graph) return;
-		applyActiveClasses(graph, activeNodeId);
+		const graphContainer = container;
+		const data = graphElements;
+		const relationData = graphData;
+		const isDarkMode = darkMode;
+
+		if (!mounted || !graphContainer) return;
+
+		void renderQueue.run({ graphContainer, data, relationData, isDarkMode }).catch((error: unknown) => {
+			if (mounted) {
+				console.error(error);
+			}
+		});
+	});
+
+	$effect(() => {
+		const instance = graph;
+		const data = graphData;
+		const selectedNodeId = activeNodeId;
+
+		if (!instance || !graphReady) return;
+
+		void applyElementStates(instance, data, selectedNodeId);
 	});
 </script>
 
