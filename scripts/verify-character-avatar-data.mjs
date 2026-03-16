@@ -11,6 +11,10 @@ for (const character of characters) {
 		throw new Error(`Missing avatar fallback for ${character.id}`);
 	}
 
+	if (Array.from(character.avatar.trim()).length !== 1) {
+		throw new Error(`Fallback avatar should remain a single visible character for ${character.id}`);
+	}
+
 	if (typeof character.avatarImage !== "string" || character.avatarImage.length === 0) {
 		throw new Error(`Missing avatarImage for ${character.id}`);
 	}

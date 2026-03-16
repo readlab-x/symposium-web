@@ -1,4 +1,5 @@
-﻿<script lang="ts">
+<script lang="ts">
+	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import characterData from "$lib/data/characters.json";
@@ -63,13 +64,21 @@
 			<article
 				class={`${index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""} grid gap-4 px-5 py-4 transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/34 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}
 			>
-				<div class="space-y-2">
-					<div class="flex flex-wrap items-center gap-2">
-						<h2 class="text-base font-semibold">{character.name}</h2>
-						<Badge variant="outline">{entityTypeLabel(character.type)}</Badge>
+				<div class="flex items-start gap-4">
+					<Avatar.Root class="size-14 border border-border/60 bg-secondary/35 shadow-sm">
+						{#if character.avatarImage}
+							<Avatar.Image src={character.avatarImage} alt={character.name} class="object-cover" />
+						{/if}
+						<Avatar.Fallback class="text-sm font-medium">{character.avatar}</Avatar.Fallback>
+					</Avatar.Root>
+					<div class="min-w-0 space-y-2">
+						<div class="flex flex-wrap items-center gap-2">
+							<h2 class="text-base font-semibold">{character.name}</h2>
+							<Badge variant="outline">{entityTypeLabel(character.type)}</Badge>
+						</div>
+						<p class="text-sm text-muted-foreground">{character.role}</p>
+						<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
 					</div>
-					<p class="text-sm text-muted-foreground">{character.role}</p>
-					<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
 				</div>
 				<div class="flex min-w-[10rem] flex-col items-start gap-2 text-xs text-muted-foreground md:items-end">
 					<span>{copy.speechCount}: {speechCount(character.id)}</span>

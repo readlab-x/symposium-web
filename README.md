@@ -26,6 +26,13 @@ SvelteKit 骨架项目，用于《会饮》数字化研读。
 - `src/lib/data/themes.json`
 - `src/lib/data/relations.json`
 
+## 人物头像
+
+- 人物头像资源放在 `static/avatars/characters/<id>.svg`
+- `src/lib/data/characters.json` 中的 `avatarImage` 指向对应静态资源路径
+- 现有 `avatar` 字段保留为单字 fallback，在图片缺失或加载失败时继续显示
+- 可用 `node scripts/verify-character-avatar-data.mjs` 校验头像字段与资源是否齐全
+
 ## 启动与构建
 
 ```bash
