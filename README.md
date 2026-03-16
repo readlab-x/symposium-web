@@ -44,3 +44,10 @@ npm run dev
 npm run check
 npm run build
 ```
+
+## Relation Graph Avatar Join
+
+- `src/lib/data/relations.json` keeps relation topology and coordinates only.
+- `src/lib/data/characters.json` owns `avatar` and `avatarImage`.
+- `/relations` joins avatar data at runtime by shared `id`.
+- Verify the contract with `node scripts/verify-relation-avatar-join.mjs`.

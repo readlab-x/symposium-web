@@ -6,7 +6,7 @@
 	import { createLatestTaskRunner } from "$lib/components/relations/g6-render-queue.js";
 	import { createG6ElementStates } from "$lib/components/relations/g6-state.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
-	import type { RelationEdge, RelationNode } from "$lib/types";
+	import type { RelationEdge, RelationGraphNode } from "$lib/types";
 
 	let {
 		nodes,
@@ -14,7 +14,7 @@
 		activeNodeId,
 		onSelectNode
 	}: {
-		nodes: RelationNode[];
+		nodes: RelationGraphNode[];
 		edges: RelationEdge[];
 		activeNodeId: string | null;
 		onSelectNode?: (id: string | null) => void;

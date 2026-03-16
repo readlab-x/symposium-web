@@ -1,6 +1,15 @@
 /**
  * @param {{
- *   nodes: Array<{ id: string, label: string, type: string, summary: string, x: number, y: number }>;
+ *   nodes: Array<{
+ *     id: string,
+ *     label: string,
+ *     type: string,
+ *     summary: string,
+ *     x: number,
+ *     y: number,
+ *     avatarImage?: string,
+ *     avatarFallback?: string
+ *   }>;
  *   edges: Array<{ id: string, source: string, target: string, relation: string }>;
  * }} graph
  */
@@ -11,13 +20,17 @@ export function createG6Elements(graph) {
 			data: {
 				label: node.label,
 				type: node.type,
-				summary: node.summary
+				summary: node.summary,
+				avatarImage: node.avatarImage,
+				avatarFallback: node.avatarFallback
 			},
 			style: {
 				x: node.x,
 				y: node.y,
-				size: 42,
-				labelText: node.label
+				size: 56,
+				labelText: node.label,
+				avatarImage: node.avatarImage,
+				avatarFallback: node.avatarFallback
 			}
 		})),
 		edges: graph.edges.map((edge) => ({

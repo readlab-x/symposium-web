@@ -1,75 +1,152 @@
 function createLightTheme() {
 	return {
-		text: "#3b2d22",
+		text: "#36281d",
+		fallbackText: "#24170d",
 		mutedText: "#7d6b58",
-		edgeStroke: "#8d7a67",
-		edgeActive: "#8b6332",
+		edgeStroke: "rgba(122, 99, 72, 0.34)",
+		edgeActive: "#7f5c32",
 		edgeLabelFill: "#6f5a45",
-		edgeLabelBackgroundFill: "rgba(251, 245, 235, 0.96)",
-		edgeLabelBackgroundStroke: "rgba(123, 94, 51, 0.18)",
+		edgeLabelBackgroundFill: "rgba(252, 247, 239, 0.82)",
+		edgeLabelBackgroundStroke: "rgba(123, 94, 51, 0.14)",
 		node: {
 			person: {
-				fill: "#f5ebd8",
-				stroke: "#d1b07a"
+				fill: "#f4ead8",
+				stroke: "#ba9462"
 			},
 			deity: {
-				fill: "#f3e3e1",
-				stroke: "#d7a0a0"
+				fill: "#f6e4df",
+				stroke: "#cf8d8a"
 			},
 			place: {
-				fill: "#e7f0e9",
-				stroke: "#97c0a8"
+				fill: "#e6efe6",
+				stroke: "#8aad95"
 			},
 			active: {
-				fill: "#f1ddbc",
-				stroke: "#6b5131"
+				ring: "#7b5f3d"
 			},
 			neighbor: {
-				fill: "#fbf3e5",
-				stroke: "#b08c5d"
+				ring: "#b08c5d"
 			}
-		},
-		edge: {
-			labelBackground: true
 		}
 	};
 }
 
 function createDarkTheme() {
 	return {
-		text: "#ece7da",
-		mutedText: "#b7ab98",
-		edgeStroke: "rgba(183, 171, 152, 0.42)",
-		edgeActive: "rgba(214, 194, 158, 0.8)",
-		edgeLabelFill: "#d7c9b4",
-		edgeLabelBackgroundFill: "rgba(42, 32, 27, 0.92)",
-		edgeLabelBackgroundStroke: "rgba(214, 194, 158, 0.34)",
+		text: "#eee6d7",
+		fallbackText: "#f7eee0",
+		mutedText: "#b8aa96",
+		edgeStroke: "rgba(186, 171, 149, 0.3)",
+		edgeActive: "#e2caa1",
+		edgeLabelFill: "#d8cab7",
+		edgeLabelBackgroundFill: "rgba(35, 28, 25, 0.86)",
+		edgeLabelBackgroundStroke: "rgba(226, 202, 161, 0.18)",
 		node: {
 			person: {
-				fill: "#3c3128",
-				stroke: "#d1b07a"
+				fill: "#3b3028",
+				stroke: "#d0ab77"
 			},
 			deity: {
-				fill: "#40302f",
-				stroke: "#d7a0a0"
+				fill: "#443130",
+				stroke: "#d7a1a1"
 			},
 			place: {
-				fill: "#29382f",
-				stroke: "#97c0a8"
+				fill: "#26362c",
+				stroke: "#90b39a"
 			},
 			active: {
-				fill: "#f1e4ca",
-				stroke: "#8a6a3f"
+				ring: "#e2caa1"
 			},
 			neighbor: {
-				fill: "#463a32",
-				stroke: "#ccb182"
+				ring: "#d0ab77"
 			}
-		},
-		edge: {
-			labelBackground: true
 		}
 	};
+}
+
+/** @typedef {import("@antv/g6").NodeData} RelationGraphDatum */
+
+/**
+ * @param {Record<string, unknown> | undefined} data
+ * @returns {"person" | "deity" | "place"}
+ */
+function resolveNodeType(data) {
+	if (data?.type === "deity" || data?.type === "place") return data.type;
+	return "person";
+}
+
+/**
+ * @param {ReturnType<typeof createRelationGraphTheme>} theme
+ * @param {string} type
+ */
+function resolveNodeTone(theme, type) {
+	if (type === "deity") return theme.node.deity;
+	if (type === "place") return theme.node.place;
+	return theme.node.person;
+}
+
+/**
+ * @param {RelationGraphDatum | undefined} datum
+ */
+function resolveAvatarImage(datum) {
+	const data = /** @type {{ avatarImage?: unknown }} */ (datum?.data ?? {});
+	const style = /** @type {{ avatarImage?: unknown }} */ (datum?.style ?? {});
+
+	if (typeof data.avatarImage === "string" && data.avatarImage.length > 0) {
+		return data.avatarImage;
+	}
+
+	if (typeof style.avatarImage === "string" && style.avatarImage.length > 0) {
+		return style.avatarImage;
+	}
+
+	return undefined;
+}
+
+/**
+ * @param {RelationGraphDatum | undefined} datum
+ */
+function resolveAvatarFallback(datum) {
+	const data = /** @type {{ avatarFallback?: unknown }} */ (datum?.data ?? {});
+	const style = /** @type {{ avatarFallback?: unknown; labelText?: unknown }} */ (datum?.style ?? {});
+
+	if (typeof data.avatarFallback === "string" && data.avatarFallback.length > 0) {
+		return data.avatarFallback;
+	}
+
+	if (typeof style.avatarFallback === "string" && style.avatarFallback.length > 0) {
+		return style.avatarFallback;
+	}
+
+	if (typeof style.labelText === "string" && style.labelText.length > 0) {
+		return style.labelText.slice(0, 1);
+	}
+
+	return "?";
+}
+
+/**
+ * @param {RelationGraphDatum | undefined} datum
+ */
+function resolveBaseSize(datum) {
+	const style = /** @type {{ size?: unknown }} */ (datum?.style ?? {});
+	const size = style.size;
+
+	if (typeof size === "number" && Number.isFinite(size)) return size;
+	if (Array.isArray(size) && typeof size[0] === "number") return size[0];
+	if (ArrayBuffer.isView(size) && !(size instanceof DataView)) {
+		const vectorSize = /** @type {ArrayLike<number>} */ (/** @type {unknown} */ (size));
+		if (typeof vectorSize[0] === "number") return vectorSize[0];
+	}
+
+	return 56;
+}
+
+/**
+ * @param {number} size
+ */
+function resolveIconSize(size) {
+	return Math.max(Math.round(size - 10), 28);
 }
 
 /**
@@ -95,21 +172,21 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 		data,
 		autoFit: "view",
 		autoResize: true,
-		padding: 40,
+		padding: 52,
 		animation: true,
-		zoomRange: [0.55, 2],
+		zoomRange: [0.48, 2.1],
 		layout: {
 			type: "d3-force",
 			animation: true,
 			preventOverlap: true,
-			linkDistance: 460,
-			nodeStrength: -160,
-			edgeStrength: 0.08,
-			alphaDecay: 0.08,
-			velocityDecay: 0.7,
+			linkDistance: 500,
+			nodeStrength: -180,
+			edgeStrength: 0.09,
+			alphaDecay: 0.06,
+			velocityDecay: 0.72,
 			collide: {
-				strength: 0.45,
-				radius: 128
+				strength: 0.48,
+				radius: 144
 			}
 		},
 		behaviors: [
@@ -134,37 +211,64 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 		node: {
 			type: "circle",
 			style: {
-				size: 42,
-				lineWidth: 2,
+				cursor: "pointer",
+				size: (datum) => resolveBaseSize(datum),
+				opacity: 1,
+				fillOpacity: 1,
+				fill: (datum) => resolveNodeTone(theme, resolveNodeType(datum?.data)).fill,
+				strokeOpacity: 1,
+				stroke: (datum) => resolveNodeTone(theme, resolveNodeType(datum?.data)).stroke,
+				lineWidth: 2.6,
+				halo: false,
+				haloStrokeOpacity: 0,
 				labelPlacement: "bottom",
-				labelMaxWidth: "230%",
+				labelMaxWidth: "250%",
 				labelWordWrap: true,
 				labelFontSize: 11,
 				labelFill: theme.text,
-				labelOffsetY: 14,
-				labelFontWeight: 520
+				labelOpacity: 1,
+				labelOffsetY: 16,
+				labelFontWeight: 560,
+				icon: true,
+				iconSrc: (datum) => resolveAvatarImage(datum),
+				iconText: (datum) => (resolveAvatarImage(datum) ? undefined : resolveAvatarFallback(datum)),
+				iconFill: theme.fallbackText,
+				iconOpacity: 1,
+				iconFontSize: 18,
+				iconFontWeight: 700,
+				iconWidth: (datum) => resolveIconSize(resolveBaseSize(datum)),
+				iconHeight: (datum) => resolveIconSize(resolveBaseSize(datum)),
+				iconRadius: (datum) => resolveIconSize(resolveBaseSize(datum)) / 2
 			},
 			state: {
 				active: {
-					size: 48,
-					fill: theme.node.active.fill,
-					stroke: theme.node.active.stroke,
-					lineWidth: 3,
-					labelFontWeight: 600,
+					size: 60,
+					lineWidth: 3.6,
+					labelOffsetY: 18,
+					labelFontWeight: 650,
+					iconWidth: 50,
+					iconHeight: 50,
+					iconRadius: 25,
 					halo: true,
-					haloLineWidth: 10,
-					haloStrokeOpacity: 0.14,
-					haloStroke: theme.node.active.stroke
+					haloLineWidth: 18,
+					haloStroke: theme.node.active.ring,
+					haloStrokeOpacity: 0.3
 				},
 				neighbor: {
-					size: 44,
-					fill: theme.node.neighbor.fill,
-					stroke: theme.node.neighbor.stroke,
-					lineWidth: 2.4
+					size: 58,
+					lineWidth: 3.1,
+					labelFontWeight: 610,
+					iconWidth: 48,
+					iconHeight: 48,
+					iconRadius: 24,
+					halo: true,
+					haloLineWidth: 10,
+					haloStroke: theme.node.neighbor.ring,
+					haloStrokeOpacity: 0.2
 				},
 				dimmed: {
-					opacity: 0.42,
-					labelOpacity: 0.48
+					opacity: 0.32,
+					labelOpacity: 0.5
 				}
 			}
 		},
@@ -172,16 +276,18 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 			type: "line",
 			style: {
 				stroke: theme.edgeStroke,
-				lineWidth: 1.8,
+				lineWidth: 1.6,
+				opacity: 0.82,
 				endArrow: false,
 				labelPlacement: "center",
 				labelAutoRotate: false,
 				labelWordWrap: true,
-				labelMaxWidth: "82%",
+				labelMaxWidth: "76%",
 				labelMaxLines: 2,
 				labelTextAlign: "center",
 				labelFill: theme.edgeLabelFill,
-				labelFontSize: 9,
+				labelOpacity: 1,
+				labelFontSize: 8.5,
 				labelBackground: true,
 				labelBackgroundFill: theme.edgeLabelBackgroundFill,
 				labelBackgroundStroke: theme.edgeLabelBackgroundStroke,
@@ -193,13 +299,13 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 			state: {
 				active: {
 					stroke: theme.edgeActive,
-					lineWidth: 2.6,
+					lineWidth: 2.5,
 					labelFill: theme.text,
 					opacity: 1
 				},
 				dimmed: {
-					opacity: 0.24,
-					labelOpacity: 0.42
+					opacity: 0.18,
+					labelOpacity: 0.38
 				}
 			}
 		}

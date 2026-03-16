@@ -57,6 +57,11 @@ export interface RelationNode {
 	y: number;
 }
 
+export interface RelationGraphNode extends RelationNode {
+	avatarImage?: string;
+	avatarFallback?: string;
+}
+
 export interface RelationEdge {
 	id: string;
 	source: string;
