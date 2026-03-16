@@ -1,68 +1,114 @@
 [
   {
-    "id": "theme-narrative-frame",
-    "name": "叙事框架",
-    "summary": "从“听闻-复述-再复述”进入对话，使哲学讨论带有历史回响与戏剧距离。",
+    "id": "theme-frame",
+    "name": "叙事与记忆",
+    "summary": "《会饮篇》不是直接实录，而是经阿里司托得姆、阿波罗多洛再到格老孔的多层转述。",
     "lineIds": [
       "line-001",
       "line-002",
-      "line-003",
-      "line-016"
+      "line-005",
+      "line-008",
+      "line-073"
     ],
     "characterIds": [
       "apollodorus",
-      "aristodemus",
-      "agathon"
+      "glaucon",
+      "aristodemus"
     ]
   },
   {
-    "id": "theme-plural-eros",
-    "name": "多重爱的定义",
-    "summary": "多位发言者从伦理、医学、神话和修辞角度给出不同的爱之图像。",
+    "id": "theme-honor",
+    "name": "爱与荣誉",
+    "summary": "斐德罗把爱描述为羞耻感、牺牲和战场勇气的源泉。",
     "lineIds": [
-      "line-005",
-      "line-006",
-      "line-007",
-      "line-008",
-      "line-009"
+      "line-023",
+      "line-024",
+      "line-068"
     ],
     "characterIds": [
       "phaedrus",
-      "pausanias",
-      "eryximachus",
-      "aristophanes",
-      "agathon"
+      "alcibiades",
+      "eros"
     ]
   },
   {
-    "id": "theme-ladder-of-love",
-    "name": "爱的阶梯",
-    "summary": "苏格拉底借狄奥提玛把爱定义为上升运动：由个别之美走向美本身。",
+    "id": "theme-two-loves",
+    "name": "双重爱与伦理",
+    "summary": "鲍萨尼亚通过双重阿佛洛狄忒区分高下两类爱，把爱情纳入法与德性。",
     "lineIds": [
-      "line-010",
-      "line-011",
-      "line-012",
-      "line-013"
+      "line-025",
+      "line-026",
+      "line-027",
+      "line-028"
+    ],
+    "characterIds": [
+      "pausanias",
+      "aphrodite"
+    ]
+  },
+  {
+    "id": "theme-cosmic-order",
+    "name": "和谐、身体与宇宙秩序",
+    "summary": "厄律克西马库把爱扩展到医学、音乐、季节与神人交通之中。",
+    "lineIds": [
+      "line-031",
+      "line-032"
+    ],
+    "characterIds": [
+      "eryximachus",
+      "eros"
+    ]
+  },
+  {
+    "id": "theme-wholeness",
+    "name": "分裂的人与寻找另一半",
+    "summary": "阿里斯托芬用圆人神话描绘人的匮乏感，并把爱情解释为对完整性的追寻。",
+    "lineIds": [
+      "line-034",
+      "line-035",
+      "line-036",
+      "line-037"
+    ],
+    "characterIds": [
+      "aristophanes",
+      "eros"
+    ]
+  },
+  {
+    "id": "theme-ladder",
+    "name": "爱之阶梯",
+    "summary": "狄奥提玛将爱理解为向善与不朽的欲求，并引向对美本身的观照。",
+    "lineIds": [
+      "line-048",
+      "line-049",
+      "line-052",
+      "line-053",
+      "line-056",
+      "line-057",
+      "line-058"
     ],
     "characterIds": [
       "socrates",
       "diotima",
-      "agathon"
+      "eros"
     ]
   },
   {
     "id": "theme-socratic-portrait",
-    "name": "苏格拉底肖像",
-    "summary": "阿尔基比亚德的证言将“哲学的爱”转化为可见人格：节制、坚忍与精神魅力。",
+    "name": "苏格拉底的人格证词",
+    "summary": "阿尔基比亚德把抽象的爱之哲学落实为苏格拉底的克制、羞耻感和战场德性。",
     "lineIds": [
-      "line-014",
-      "line-015",
-      "line-016"
+      "line-065",
+      "line-066",
+      "line-067",
+      "line-068",
+      "line-069",
+      "line-070"
     ],
     "characterIds": [
       "alcibiades",
       "socrates",
-      "aristodemus"
+      "agathon"
     ]
   }
 ]

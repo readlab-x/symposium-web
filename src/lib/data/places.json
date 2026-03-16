@@ -1,61 +1,79 @@
 [
   {
-    "id": "athens",
-    "name": "雅典",
-    "type": "place",
-    "summary": "对话叙事与思想交锋的城市背景。",
-    "relatedLineIds": [
-      "line-001",
-      "line-002",
-      "line-016"
-    ]
-  },
-  {
     "id": "phalerum",
     "name": "法勒伦",
     "type": "place",
-    "summary": "阿波罗多洛进城途中被拦下并开启转述的地点。",
+    "summary": "阿波罗多洛从海港地区进城的起点，也是这场转述展开的现实场景。",
     "relatedLineIds": [
       "line-001"
+    ]
+  },
+  {
+    "id": "athens",
+    "name": "雅典",
+    "type": "place",
+    "summary": "整部对话的政治与文化背景，关于法律、德性、修辞与哲学的争论都以此为参照。",
+    "relatedLineIds": [
+      "line-003",
+      "line-026",
+      "line-032"
     ]
   },
   {
     "id": "agathon-house",
     "name": "阿伽松宅邸",
     "type": "place",
-    "summary": "会饮主场，主要发言与戏剧转折都在此发生。",
+    "summary": "会饮发生的主场所，爱神赞辞、苏格拉底反诘和阿尔基比亚德的醉后颂辞都在这里展开。",
     "relatedLineIds": [
-      "line-003",
-      "line-004",
-      "line-016"
+      "line-012",
+      "line-016",
+      "line-059"
+    ]
+  },
+  {
+    "id": "cydathenaeum",
+    "name": "居达塞奈乌姆",
+    "type": "place",
+    "summary": "阿里司托得姆所属的雅典居住区，点明转述来源的具体身份。",
+    "relatedLineIds": [
+      "line-005"
     ]
   },
   {
     "id": "mantinea",
     "name": "曼提尼亚",
     "type": "place",
-    "summary": "狄奥提玛相关背景地，承载苏格拉底转述的思想来源。",
+    "summary": "狄奥提玛的来处，苏格拉底在此引入另一条知识传统来重新定义爱。",
     "relatedLineIds": [
-      "line-011",
-      "line-012"
+      "line-051",
+      "line-052"
     ]
   },
   {
     "id": "potidaea",
     "name": "波提狄亚",
     "type": "place",
-    "summary": "阿尔基比亚德回忆中的战场场景，用于证明苏格拉底的坚忍。",
+    "summary": "阿尔基比亚德回忆中与苏格拉底共同从军的战场，用以证明其坚忍与勇敢。",
     "relatedLineIds": [
-      "line-015"
+      "line-068"
+    ]
+  },
+  {
+    "id": "delium",
+    "name": "代立昂",
+    "type": "place",
+    "summary": "撤退场景中的另一处战场，凸显苏格拉底在危险中的镇定与自持。",
+    "relatedLineIds": [
+      "line-068"
     ]
   },
   {
     "id": "lyceum",
     "name": "吕克昂",
     "type": "place",
-    "summary": "会饮结束后苏格拉底照常活动的地点，体现其日常节律。",
+    "summary": "会饮结束后苏格拉底照常洗澡、度过白天的地点，显示其日常节律没有被醉宴打乱。",
     "relatedLineIds": [
-      "line-016"
+      "line-073"
     ]
   }
 ]

@@ -1,126 +1,182 @@
 {
   "nodes": [
     {
+      "id": "glaucon",
+      "label": "格老孔",
+      "type": "person",
+      "summary": "向阿波罗多洛追问会饮内容。",
+      "x": 70,
+      "y": 90
+    },
+    {
       "id": "apollodorus",
       "label": "阿波罗多洛",
       "type": "person",
-      "summary": "会饮故事的外层转述者。",
-      "x": 60,
-      "y": 140
+      "summary": "最外层转述者。",
+      "x": 190,
+      "y": 90
+    },
+    {
+      "id": "aristodemus",
+      "label": "阿里司托得姆",
+      "type": "person",
+      "summary": "会饮在场见证者。",
+      "x": 320,
+      "y": 110
     },
     {
       "id": "phaedrus",
       "label": "斐德罗",
       "type": "person",
-      "summary": "赞颂爱神议题发起者。",
-      "x": 190,
-      "y": 70
+      "summary": "提出赞美爱神的议题。",
+      "x": 110,
+      "y": 250
     },
     {
       "id": "pausanias",
       "label": "鲍萨尼亚",
       "type": "person",
-      "summary": "提出两类爱的伦理分层。",
-      "x": 320,
-      "y": 70
+      "summary": "区分两类爱。",
+      "x": 250,
+      "y": 250
+    },
+    {
+      "id": "eryximachus",
+      "label": "厄律克西马库",
+      "type": "person",
+      "summary": "从医学与和谐解释爱。",
+      "x": 390,
+      "y": 250
+    },
+    {
+      "id": "aristophanes",
+      "label": "阿里斯托芬",
+      "type": "person",
+      "summary": "以神话讲述人的分裂。",
+      "x": 530,
+      "y": 250
     },
     {
       "id": "agathon",
       "label": "阿伽松",
       "type": "person",
-      "summary": "宴会主人与诗人。",
-      "x": 450,
-      "y": 120
+      "summary": "宴会主人与修辞赞颂者。",
+      "x": 600,
+      "y": 390
     },
     {
       "id": "socrates",
       "label": "苏格拉底",
       "type": "person",
-      "summary": "全篇论证转折中心。",
-      "x": 320,
-      "y": 190
+      "summary": "把赞歌推进为哲学追问。",
+      "x": 390,
+      "y": 390
     },
     {
       "id": "diotima",
       "label": "狄奥提玛",
       "type": "person",
-      "summary": "爱的阶梯理论来源。",
-      "x": 450,
-      "y": 230
+      "summary": "提出爱之阶梯。",
+      "x": 520,
+      "y": 520
     },
     {
       "id": "alcibiades",
       "label": "阿尔基比亚德",
       "type": "person",
-      "summary": "以亲历证言塑造苏格拉底。",
-      "x": 190,
-      "y": 250
+      "summary": "以亲历证言赞颂苏格拉底。",
+      "x": 250,
+      "y": 520
     },
     {
       "id": "eros",
-      "label": "厄洛斯",
+      "label": "爱若斯",
       "type": "deity",
-      "summary": "全体发言共同围绕的概念中心。",
-      "x": 320,
-      "y": 15
+      "summary": "所有发言共同围绕的主题中心。",
+      "x": 390,
+      "y": 20
     },
     {
       "id": "aphrodite",
       "label": "阿佛洛狄忒",
       "type": "deity",
-      "summary": "两类爱区分中的关键神祇。",
-      "x": 560,
-      "y": 55
+      "summary": "双重爱区分中的关键神祇。",
+      "x": 620,
+      "y": 120
     }
   ],
   "edges": [
     {
-      "id": "edge-1",
-      "source": "apollodorus",
-      "target": "socrates",
-      "relation": "长期追随并转述其言行"
+      "id": "edge-001",
+      "source": "glaucon",
+      "target": "apollodorus",
+      "relation": "请求重讲会饮"
     },
     {
-      "id": "edge-2",
+      "id": "edge-002",
+      "source": "apollodorus",
+      "target": "aristodemus",
+      "relation": "从其处听来宴席经过"
+    },
+    {
+      "id": "edge-003",
+      "source": "aristodemus",
+      "target": "socrates",
+      "relation": "追随并见证其赴宴与发言"
+    },
+    {
+      "id": "edge-004",
       "source": "phaedrus",
       "target": "eros",
-      "relation": "提议众人依次赞颂爱神"
+      "relation": "倡议众人赞美爱神"
     },
     {
-      "id": "edge-3",
+      "id": "edge-005",
       "source": "pausanias",
       "target": "aphrodite",
       "relation": "借双重阿佛洛狄忒区分两类爱"
     },
     {
-      "id": "edge-4",
-      "source": "agathon",
-      "target": "socrates",
-      "relation": "华美赞歌被苏格拉底辩证追问"
+      "id": "edge-006",
+      "source": "eryximachus",
+      "target": "eros",
+      "relation": "把爱扩展到医学与宇宙和谐"
     },
     {
-      "id": "edge-5",
+      "id": "edge-007",
+      "source": "aristophanes",
+      "target": "eros",
+      "relation": "以圆人神话解释爱情"
+    },
+    {
+      "id": "edge-008",
+      "source": "agathon",
+      "target": "eros",
+      "relation": "以修辞赞歌礼赞爱神"
+    },
+    {
+      "id": "edge-009",
+      "source": "socrates",
+      "target": "agathon",
+      "relation": "通过反诘检验其赞辞"
+    },
+    {
+      "id": "edge-010",
       "source": "socrates",
       "target": "diotima",
-      "relation": "以其教导完成爱的哲学定义"
+      "relation": "转述其关于爱的教导"
     },
     {
-      "id": "edge-6",
+      "id": "edge-011",
       "source": "diotima",
       "target": "eros",
-      "relation": "定义爱为介于匮乏与富足的中介"
+      "relation": "将爱定义为介于匮乏与资源之间的精灵"
     },
     {
-      "id": "edge-7",
+      "id": "edge-012",
       "source": "alcibiades",
       "target": "socrates",
-      "relation": "以私人经历赞其节制与坚忍"
-    },
-    {
-      "id": "edge-8",
-      "source": "socrates",
-      "target": "eros",
-      "relation": "提出爱的阶梯并导向美本身"
+      "relation": "以亲身经历刻画其德性与魅力"
     }
   ]
 }

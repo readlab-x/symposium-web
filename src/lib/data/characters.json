@@ -5,17 +5,26 @@
     "type": "person",
     "role": "外层叙事者",
     "avatar": "阿",
-    "summary": "与友人步行进城时重述会饮经过，负责搭建整部对话的回忆框架。",
+    "summary": "在进城途中应格老孔之请复述整场会饮，是《会饮篇》最外层的记忆框架。",
     "firstLineId": "line-001"
+  },
+  {
+    "id": "glaucon",
+    "name": "格老孔",
+    "type": "person",
+    "role": "提问者",
+    "avatar": "格",
+    "summary": "在城外拦住阿波罗多洛，请他完整重讲阿伽松家关于爱的话语。",
+    "firstLineId": "line-002"
   },
   {
     "id": "aristodemus",
     "name": "阿里司托得姆",
     "type": "person",
     "role": "在场见证者",
-    "avatar": "里",
-    "summary": "会饮的实际目击者，阿波罗多洛转述内容的主要来源。",
-    "firstLineId": "line-003"
+    "avatar": "亚",
+    "summary": "实际参加会饮并见闻全程，阿波罗多洛的主要转述来源。",
+    "firstLineId": "line-009"
   },
   {
     "id": "phaedrus",
@@ -23,8 +32,8 @@
     "type": "person",
     "role": "议题发起者",
     "avatar": "斐",
-    "summary": "提议众人依次赞颂爱神，并以荣誉与勇气为核心开启讨论。",
-    "firstLineId": "line-005"
+    "summary": "提议席间众人依次赞美爱神，以荣誉、勇气与牺牲开启整场讨论。",
+    "firstLineId": "line-021"
   },
   {
     "id": "pausanias",
@@ -32,8 +41,8 @@
     "type": "person",
     "role": "伦理区分者",
     "avatar": "鲍",
-    "summary": "区分高下两种爱，强调评价爱情必须看其道德方向与目的。",
-    "firstLineId": "line-006"
+    "summary": "区分天上的爱与凡俗之爱，把爱情导向德性与城邦伦理的讨论。",
+    "firstLineId": "line-017"
   },
   {
     "id": "eryximachus",
@@ -41,26 +50,26 @@
     "type": "person",
     "role": "医生与调和论者",
     "avatar": "厄",
-    "summary": "把爱的秩序扩展到医学、音乐与天象，主张节制性的和谐。",
-    "firstLineId": "line-007"
+    "summary": "把爱扩展到身体、音乐、季节与祭仪之中，强调秩序、节制与和谐。",
+    "firstLineId": "line-019"
   },
   {
     "id": "aristophanes",
     "name": "阿里斯托芬",
     "type": "person",
     "role": "神话叙述者",
-    "avatar": "芬",
-    "summary": "通过圆人神话解释亲密欲望，提供诗性且深刻的人性图像。",
-    "firstLineId": "line-008"
+    "avatar": "阿",
+    "summary": "用圆人神话解释人的匮乏感与寻伴冲动，提供最著名的诗性图景。",
+    "firstLineId": "line-018"
   },
   {
     "id": "agathon",
     "name": "阿伽松",
     "type": "person",
-    "role": "宴会主人",
+    "role": "宴会主人与悲剧诗人",
     "avatar": "伽",
-    "summary": "悲剧诗人，发言辞采华美，并在苏格拉底追问中转入哲学讨论。",
-    "firstLineId": "line-004"
+    "summary": "以华美修辞赞颂爱神的青春、柔美与幸福，随后接受苏格拉底的追问。",
+    "firstLineId": "line-012"
   },
   {
     "id": "socrates",
@@ -68,7 +77,7 @@
     "type": "person",
     "role": "核心论证者",
     "avatar": "苏",
-    "summary": "通过辩证追问与转述狄奥提玛教导，将赞歌推进为哲学定义。",
+    "summary": "通过反诘拆解赞歌，并转述狄奥提玛的教导，把讨论推进为哲学定义。",
     "firstLineId": "line-010"
   },
   {
@@ -77,25 +86,26 @@
     "type": "person",
     "role": "苏格拉底的思想导师",
     "avatar": "狄",
-    "summary": "提出爱之中介本性与“爱的阶梯”，构成《会饮》的思想高潮。",
-    "firstLineId": "line-011"
+    "summary": "提出爱是介于匮乏与资源之间的精灵，并给出“爱之阶梯”的上升路线。",
+    "firstLineId": "line-052"
   },
   {
     "id": "alcibiades",
     "name": "阿尔基比亚德",
     "type": "person",
-    "role": "酒后闯入者",
-    "avatar": "阿",
-    "summary": "以亲历证言刻画苏格拉底的精神魅力与实际德性，形成戏剧收束。",
-    "firstLineId": "line-014"
+    "role": "酒后闯入者与见证人",
+    "avatar": "基",
+    "summary": "以亲身经历勾勒苏格拉底的克制、勇敢与精神魅力，为全篇提供人格证词。",
+    "firstLineId": "line-059"
   },
   {
     "id": "eros",
-    "name": "厄洛斯",
+    "name": "爱若斯",
     "type": "deity",
-    "role": "爱之神灵",
+    "role": "爱的神灵 / 主题中心",
     "avatar": "爱",
-    "summary": "全篇讨论中心：在不同发言中被定义为勇气之源、秩序原则与上升动力。"
+    "summary": "全书争论共同围绕的对象：被描述为勇气之源、和谐原则、匮乏中的追求者。",
+    "firstLineId": "line-023"
   },
   {
     "id": "aphrodite",
@@ -103,6 +113,7 @@
     "type": "deity",
     "role": "爱与美之神",
     "avatar": "美",
-    "summary": "鲍萨尼亚借“双重阿佛洛狄忒”区分两类爱，建立伦理分层。"
+    "summary": "鲍萨尼亚借双重阿佛洛狄忒区分天上之爱与凡俗之爱，建立伦理分层。",
+    "firstLineId": "line-025"
   }
 ]
