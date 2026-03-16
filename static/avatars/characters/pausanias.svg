@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title>??????</title>
+  <desc>????????????????????</desc>
+  <rect width="96" height="96" rx="24" fill="#f5ecde"/>
+  <circle cx="48" cy="48" r="38" fill="#a45b43"/>
+  <path d="M 20 80 C 28 65 39 60 49 60 C 59 60 70 65 78 80 L 78 86 L 20 86 Z" fill="#231916"/>
+  <path d="M 33 78 C 35 70 41 64 49 64 C 57 64 63 70 65 78" stroke="#efe2c9" stroke-width="2" stroke-linecap="round" opacity="0.35" fill="none"/>
+  
+      <path d="M 34 38 C 35 27 42 20 52 20 C 60 20 66 25 67 34 C 63 29 58 26 52 26 C 43 26 37 30 34 38 Z" fill="#231916"/>
+      <path d="M 35 29 L 66 29" stroke="#efe2c9" stroke-width="2" opacity="0.7"/>
+    
+  
+  <path d="M 39 60 C 41 53 45 49 49 49 C 53 49 57 53 59 60 L 56 70 C 51 73 47 73 42 70 Z" fill="#efe2c9"/>
+  <ellipse cx="49" cy="37" rx="13.5" ry="17" fill="#efe2c9"/>
+  
+  <path d="M 55 34 C 58 36 58 40 55 42 C 54.5 43 54.7 44 56.8 45.3" stroke="#231916" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <path d="M 46.8 34.9 L 50.3 34.9" stroke="#231916" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 49.4 44.4 C 50.8 45.2 52.6 45.2 54.1 44.3" stroke="#231916" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  
+  
+      <path d="M 42 49 C 46 48 52 49 57 53 C 58.5 56 57 60 53 62 C 47 62.5 42 58 40 53 C 40 51 40.8 49.5 42 49 Z" fill="#231916"/>
+      <path d="M 44 54 C 48 54 51 55 54 58" stroke="#efe2c9" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.45"/>
+    
+  
+  <circle cx="48" cy="48" r="38" stroke="#8b4734" stroke-width="2" fill="none"/>
+</svg>

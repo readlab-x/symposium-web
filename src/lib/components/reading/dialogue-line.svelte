@@ -124,6 +124,13 @@
 			<div class="flex items-center justify-between gap-4">
 				<div class="flex items-center gap-3">
 					<Avatar.Root class="size-8 border border-border/65 bg-secondary/38">
+						{#if speaker?.avatarImage}
+							<Avatar.Image
+								src={speaker.avatarImage}
+								alt={speaker.name ?? copy.unknownSpeaker}
+								class="object-cover"
+							/>
+						{/if}
 						<Avatar.Fallback>{speaker?.avatar ?? "?"}</Avatar.Fallback>
 					</Avatar.Root>
 					<div>
