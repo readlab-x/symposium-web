@@ -23,6 +23,15 @@ for (const character of characters) {
 	if (!fs.existsSync(imagePath)) {
 		throw new Error(`Missing avatar asset for ${character.id}: ${character.avatarImage}`);
 	}
+
+	const svg = fs.readFileSync(imagePath, "utf8");
+	if (!svg.includes('data-avatar-style="greek-profile-v2"')) {
+		throw new Error(`Legacy avatar style detected for ${character.id}`);
+	}
+
+	if (svg.includes("<ellipse")) {
+		throw new Error(`Legacy frontal-face geometry detected for ${character.id}`);
+	}
 }
 
 console.log(`Verified ${characters.length} character avatar records.`);
