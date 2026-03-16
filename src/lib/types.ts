@@ -6,6 +6,7 @@ export interface Character {
 	type: EntityType;
 	role: string;
 	avatar: string;
+	avatarImage?: string;
 	summary: string;
 	firstLineId?: string;
 }
