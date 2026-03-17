@@ -7,7 +7,10 @@ export interface Character {
 	role: string;
 	avatar: string;
 	avatarImage?: string;
+	bio?: string;
 	summary: string;
+	wikipediaUrl?: string;
+	baiduBaikeUrl?: string;
 	firstLineId?: string;
 }
 

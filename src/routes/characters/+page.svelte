@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { ExternalLink } from "@lucide/svelte";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
-	import * as Card from "$lib/components/ui/card/index.js";
+	import { Button } from "$lib/components/ui/button/index.js";
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
@@ -13,9 +14,13 @@
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
 				title: "人物索引",
-				description: "人物、神祇统一管理。后续可在这里扩展生平、出处、关键词和跨篇章索引。",
+				description: "人物与神祇统一管理，补充人物简介、百科入口和篇内索引，便于在文本与背景之间来回切换。",
 				speechCount: "发言数",
 				firstAppearance: "首次出场",
+				bio: "人物简介",
+				inSymposium: "篇内定位",
+				wikipedia: "维基百科",
+				baiduBaike: "百度百科",
 				person: "人物",
 				place: "地点",
 				deity: "神祇"
@@ -23,9 +28,13 @@
 			"en-US": {
 				title: "Character Index",
 				description:
-					"Unified management for people and deities. You can extend this with biography, sources, keywords, and cross-chapter references.",
+					"Unified profiles for people and deities, with bios, encyclopedia links, and in-text anchors for quick context switching.",
 				speechCount: "Lines",
 				firstAppearance: "First Appearance",
+				bio: "Bio",
+				inSymposium: "In Symposium",
+				wikipedia: "Wikipedia",
+				baiduBaike: "Baidu Baike",
 				person: "Person",
 				place: "Place",
 				deity: "Deity"
@@ -77,7 +86,20 @@
 							<Badge variant="outline">{entityTypeLabel(character.type)}</Badge>
 						</div>
 						<p class="text-sm text-muted-foreground">{character.role}</p>
-						<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
+						{#if character.bio}
+							<div class="space-y-1.5">
+								<p class="text-[0.7rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
+									{copy.bio}
+								</p>
+								<p class="max-w-3xl text-sm leading-7 text-foreground/85">{character.bio}</p>
+							</div>
+						{/if}
+						<div class="space-y-1.5">
+							<p class="text-[0.7rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
+								{copy.inSymposium}
+							</p>
+							<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
+						</div>
 					</div>
 				</div>
 				<div class="flex min-w-[10rem] flex-col items-start gap-2 text-xs text-muted-foreground md:items-end">
@@ -90,6 +112,34 @@
 							{copy.firstAppearance}
 						</a>
 					{/if}
+					<div class="flex flex-wrap gap-2 pt-1 md:justify-end">
+						{#if character.wikipediaUrl}
+							<Button
+								href={character.wikipediaUrl}
+								target="_blank"
+								rel="noreferrer"
+								variant="outline"
+								size="sm"
+								class="h-8 rounded-full bg-background/70"
+							>
+								<ExternalLink class="size-3.5" />
+								{copy.wikipedia}
+							</Button>
+						{/if}
+						{#if character.baiduBaikeUrl}
+							<Button
+								href={character.baiduBaikeUrl}
+								target="_blank"
+								rel="noreferrer"
+								variant="outline"
+								size="sm"
+								class="h-8 rounded-full bg-background/70"
+							>
+								<ExternalLink class="size-3.5" />
+								{copy.baiduBaike}
+							</Button>
+						{/if}
+					</div>
 				</div>
 			</article>
 		{/each}
