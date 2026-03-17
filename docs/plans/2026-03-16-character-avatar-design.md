@@ -9,7 +9,7 @@
 
 这次重做有三个明确约束：
 
-1. `static/avatars/test/` 中现有 5 张 PNG 只作风格参考，不直接作为正式成品。
+1. `static/avatars/characters-test/` 中现有 5 张 PNG 只作风格参考，不直接作为正式成品。
 2. `static/avatars/characters/` 下现有 13 个角色都要重新做，不能保留旧 SVG。
 3. 执行过程在当前工作区完成，不使用 worktree。
 
@@ -42,13 +42,13 @@
 
 PNG 更适合这次目标：
 
-- 可以直接承接 `static/avatars/test/` 已经验证过的正面人像方向
+- 可以直接承接 `static/avatars/characters-test/` 已经验证过的正面人像方向
 - 正面头像在阅读页与人物索引页的小尺寸显示里更容易识别
 - 不再需要继续维护复杂而脆弱的 SVG 线稿约束
 
 ## Reference Style
 
-`static/avatars/test/` 中的 5 张参考图定义了这次重做的主方向：
+`static/avatars/characters-test/` 中的 5 张参考图定义了这次重做的主方向：
 
 - 正面而非侧面
 - 人物占画面主体，背景极简
@@ -85,7 +85,7 @@ PNG 更适合这次目标：
 
 参考图与正式图分离：
 
-- `static/avatars/test/` 继续保留为参考素材，不参与正式引用
+- `static/avatars/characters-test/` 继续保留为参考素材，不参与正式引用
 - `static/avatars/characters/` 只放正式头像
 
 迁移完成后：
@@ -144,4 +144,4 @@ PNG 更适合这次目标：
 
 ## Approved Outcome
 
-本项目的人物头像体系改为统一的正面胸像 PNG 方案。`static/avatars/test/` 仅作为风格参考，`static/avatars/characters/` 下 13 个角色全部重生成正式 PNG，数据层全部切换到 `.png` 路径，保留单字 fallback，并通过逐角色验证与最终全量验证完成迁移。
+本项目的人物头像体系改为统一的正面胸像 PNG 方案。`static/avatars/characters-test/` 仅作为风格参考，`static/avatars/characters/` 下 13 个角色全部重生成正式 PNG，数据层全部切换到 `.png` 路径，保留单字 fallback，并通过逐角色验证与最终全量验证完成迁移。

@@ -1,0 +1,93 @@
+[
+	{
+		"id": "socrates",
+		"seed": 3101,
+		"output": "static/avatars/characters/socrates.png",
+		"prompt": "front-facing bust portrait of Socrates, elderly Athenian philosopher, high bald crown with thin side hair, broad snub nose, heavy full beard, weathered intelligent face, stern but calm expression, terracotta himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "alcibiades",
+		"seed": 3102,
+		"output": "static/avatars/characters/alcibiades.png",
+		"prompt": "front-facing bust portrait of Alcibiades, strikingly handsome young Athenian aristocrat, lush dark ringlets, neatly shaped short beard, subtle laurel wreath, confident gaze, elegant pale violet himation with Greek trim, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "aristophanes",
+		"seed": 3103,
+		"output": "static/avatars/characters/aristophanes.png",
+		"prompt": "front-facing bust portrait of Aristophanes, mature comic poet, curly hair with slight recession, medium full beard, visible crow's feet, sharp knowing expression, dusty rose himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "agathon",
+		"seed": 3104,
+		"output": "static/avatars/characters/agathon.png",
+		"prompt": "front-facing bust portrait of Agathon, beautiful refined young tragic poet, soft almost androgynous facial structure, dark sculpted curls, elegant short beard, polished expression, warm terracotta robe with delicate Greek neckline detail, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "phaedrus",
+		"seed": 3105,
+		"output": "static/avatars/characters/phaedrus.png",
+		"prompt": "front-facing bust portrait of Phaedrus, youthful aristocratic speaker, idealized curly hair, balanced medium beard, bright attentive eyes, energetic but composed expression, terracotta himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "pausanias",
+		"seed": 3106,
+		"output": "static/avatars/characters/pausanias.png",
+		"prompt": "front-facing bust portrait of Pausanias, mature thoughtful legal-minded man, orderly dark curls, carefully groomed beard, restrained expression, composed mouth, muted clay-red himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "eryximachus",
+		"seed": 3107,
+		"output": "static/avatars/characters/eryximachus.png",
+		"prompt": "front-facing bust portrait of Eryximachus, disciplined physician, carefully arranged hair, trimmed professional beard, rational steady expression, understated earth-tone himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "aristodemus",
+		"seed": 3108,
+		"output": "static/avatars/characters/aristodemus.png",
+		"prompt": "front-facing bust portrait of Aristodemus, modest companion, simpler hairstyle, shorter beard, slimmer quieter face, humble unadorned robe, subdued expression, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "apollodorus",
+		"seed": 3109,
+		"output": "static/avatars/characters/apollodorus.png",
+		"prompt": "front-facing bust portrait of Apollodorus, intense devoted narrator, slightly gaunt face, deep-set eyes, darker curls, medium beard, earnest fervent expression, muted red-brown himation, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "glaucon",
+		"seed": 3110,
+		"output": "static/avatars/characters/glaucon.png",
+		"prompt": "front-facing bust portrait of Glaucon, intelligent young listener, youthful clear face, soft curls, very light beard or early stubble, attentive expression, understated warm robe, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "diotima",
+		"seed": 3111,
+		"output": "static/avatars/characters/diotima.png",
+		"prompt": "front-facing bust portrait of Diotima, dignified female priestess and philosopher, mature serene face, veiled head covering, calm authoritative gaze, refined classical drapery, sacred but restrained presence, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle, no glamour styling",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "eros",
+		"seed": 3112,
+		"output": "static/avatars/characters/eros.png",
+		"prompt": "front-facing bust portrait of Eros, idealized young divine figure, androgynous beauty, soft dark curls, smooth luminous face, subtle sacred elegance, refined pale robe, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle, not a child, no cupid wings",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	},
+	{
+		"id": "aphrodite",
+		"seed": 3113,
+		"output": "static/avatars/characters/aphrodite.png",
+		"prompt": "front-facing bust portrait of Aphrodite, idealized divine feminine figure, graceful wavy hair, serene elevated expression, refined classical veil or diadem, elegant pale rose drapery, restrained beauty, classical ancient Greek symposium character, centered symmetrical composition, refined editorial illustration, crisp dark ink outlines, soft cel shading, warm ivory parchment background, museum-quality character illustration, clean silhouette, no text, no sparkle, no glamour styling",
+		"negativePrompt": "photorealistic, 3d render, anime, manga, chibi, caricature, exaggerated cartoon, glossy game art, cinematic lighting, dramatic shadows, busy background, architecture, crowd, props covering face, hands near face, side profile, three-quarter profile, full body, cropped forehead, cropped chin, armor, helmet, modern clothes, jewelry overload, wings spread behind body, child cupid, sensual glamour pose, low detail, blurry eyes, deformed facial features, asymmetrical eyes, double pupils, text, logo, signature, sparkles"
+	}
+]
