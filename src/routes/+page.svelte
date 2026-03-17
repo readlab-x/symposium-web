@@ -82,25 +82,25 @@
 							speaker: "斐德罗",
 							title: "爱使人追求荣誉",
 							summary: "爱先把人带到羞耻、勇气与牺牲的问题上。",
-							href: "/reading"
+							href: "/reading?speakers=phaedrus"
 						},
 						{
 							speaker: "阿里斯托芬",
 							title: "爱是在寻找失落的完整",
 							summary: "人因为分裂而匮乏，于是不断朝另一半靠近。",
-							href: "/reading"
+							href: "/reading?speakers=aristophanes"
 						},
 						{
 							speaker: "狄奥提玛",
 							title: "爱欲求自身所缺乏之物",
 							summary: "爱不是占有，而是从匮乏出发，走向生成、不朽与上升。",
-							href: "/reading"
+							href: "/reading?speakers=diotima"
 						},
 						{
 							speaker: "苏格拉底",
 							title: "爱必须经受反诘",
 							summary: "所有动人的赞辞，最后都要被逼问成更严格的哲学定义。",
-							href: "/reading"
+							href: "/reading?speakers=socrates"
 						}
 					]
 				},
@@ -166,25 +166,25 @@
 							speaker: "Phaedrus",
 							title: "Love drives us toward honor",
 							summary: "Love first draws human beings into questions of shame, courage, and sacrifice.",
-							href: "/reading"
+							href: "/reading?speakers=phaedrus"
 						},
 						{
 							speaker: "Aristophanes",
 							title: "Love searches for a lost wholeness",
 							summary: "Human beings are poor because they are divided, and so they keep moving toward the missing half.",
-							href: "/reading"
+							href: "/reading?speakers=aristophanes"
 						},
 						{
 							speaker: "Diotima",
 							title: "Love desires what it lacks",
 							summary: "Love is not possession but a movement from lack toward generation, immortality, and ascent.",
-							href: "/reading"
+							href: "/reading?speakers=diotima"
 						},
 						{
 							speaker: "Socrates",
 							title: "Love must withstand questioning",
 							summary: "Every moving speech of praise is eventually forced into a stricter philosophical definition.",
-							href: "/reading"
+							href: "/reading?speakers=socrates"
 						}
 					]
 				},
