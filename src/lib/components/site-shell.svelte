@@ -156,12 +156,19 @@
 	></div>
 	<header class={getSiteShellHeaderClass()}>
 		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3">
-			<a href="/" class="motion-stage-hero min-w-0 space-y-1">
-				<span class="block text-[0.68rem] tracking-[0.26em] text-muted-foreground uppercase">
-					Symposium
-				</span>
-				<span class="block truncate text-base font-semibold tracking-[0.01em] text-foreground">
-					{shellCopy.siteTitle}
+			<a href="/" class="motion-stage-hero flex min-w-0 items-center gap-3">
+				<img
+					src="/branding/logo-mark.png"
+					alt=""
+					class="size-11 shrink-0 rounded-full border border-border/60 bg-background/80 object-cover shadow-[0_14px_28px_-22px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
+				/>
+				<span class="min-w-0 space-y-1">
+					<span class="block text-[0.68rem] tracking-[0.26em] text-muted-foreground uppercase">
+						Symposium
+					</span>
+					<span class="block truncate text-base font-semibold tracking-[0.01em] text-foreground">
+						{shellCopy.siteTitle}
+					</span>
 				</span>
 			</a>
 			<nav class="motion-stage flex flex-wrap items-center gap-4 motion-delay-1 sm:gap-5">

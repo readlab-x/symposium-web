@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './layout.css';
 	import { page } from '$app/stores';
-	import favicon from '$lib/assets/favicon.svg';
 	import SiteShell from '$lib/components/site-shell.svelte';
 	import { getDocumentTitle } from '$lib/seo/page-title';
 	import { i18nPreferences } from '$lib/stores/i18n';
@@ -14,7 +13,7 @@
 
 <svelte:head>
 	<title>{documentTitle}</title>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/branding/favicon.png" type="image/png" />
 </svelte:head>
 <SiteShell routeKey={$page.url.pathname}>
 	{@render children()}
