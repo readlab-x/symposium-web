@@ -3,7 +3,7 @@
 	import { getReadingToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
-	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import { getDisplayCharacterName, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { Character } from "$lib/types";
 
 	let {
@@ -112,7 +112,7 @@
 							{#if speaker.avatarImage}
 								<Avatar.Image
 									src={speaker.avatarImage}
-									alt={speaker.name}
+									alt={getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)}
 									class="object-cover"
 								/>
 							{/if}
@@ -120,7 +120,7 @@
 								{speaker.avatar ?? speaker.name.slice(0, 1)}
 							</Avatar.Fallback>
 						</Avatar.Root>
-						<span class="truncate">{speaker.name}</span>
+						<span class="truncate">{getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)}</span>
 					</span>
 					<span
 						class={`inline-flex size-5 shrink-0 items-center justify-center rounded-full border transition-[color,background-color,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] ${

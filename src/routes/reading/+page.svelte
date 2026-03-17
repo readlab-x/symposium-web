@@ -11,7 +11,14 @@
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
 	import placeData from "$lib/data/places.json";
-	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayCharacterName,
+		getDisplayCharacterSummary,
+		getDisplayPlaceName,
+		getDisplayPlaceSummary,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type {
 		Annotation,
 		Character,
@@ -31,22 +38,25 @@
 		characters.map((character) => [character.id, character])
 	) as Record<string, Character>;
 
-	const entityReferences: EntityReference[] = [
-		...characters.map((character) => ({
-			id: character.id,
-			name: character.name,
-			type: character.type,
-			summary: character.summary,
-			avatarImage: character.avatarImage,
-			avatarFallback: character.avatar
-		})),
-		...places.map((place) => ({
-			id: place.id,
-			name: place.name,
-			type: place.type,
-			summary: place.summary
-		}))
-	];
+	const entityReferences = $derived.by(
+		() =>
+			[
+				...characters.map((character) => ({
+					id: character.id,
+					name: getDisplayCharacterName(character, $i18nPreferences.primaryLanguage),
+					type: character.type,
+					summary: getDisplayCharacterSummary(character, $i18nPreferences.primaryLanguage),
+					avatarImage: character.avatarImage,
+					avatarFallback: character.avatar
+				})),
+				...places.map((place) => ({
+					id: place.id,
+					name: getDisplayPlaceName(place, $i18nPreferences.primaryLanguage),
+					type: place.type,
+					summary: getDisplayPlaceSummary(place, $i18nPreferences.primaryLanguage)
+				}))
+			] satisfies EntityReference[]
+	);
 
 	const annotationsByLine = annotations.reduce<Record<string, Annotation[]>>((acc, annotation) => {
 		acc[annotation.lineId] ??= [];

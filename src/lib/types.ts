@@ -3,6 +3,7 @@ export type EntityType = "person" | "place" | "deity";
 export interface Character {
 	id: string;
 	name: string;
+	nameTranslations?: Record<string, string>;
 	type: EntityType;
 	role: string;
 	avatar: string;
@@ -26,6 +27,7 @@ export interface DialogLine {
 	id: string;
 	sequence: number;
 	chapter: string;
+	chapterTranslations?: Record<string, string>;
 	speakerId: string;
 	text: string;
 	translations?: Record<string, string>;

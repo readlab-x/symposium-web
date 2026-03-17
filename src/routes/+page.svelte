@@ -6,7 +6,7 @@
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
-				title: "《会饮》数字研读原型",
+				title: "会饮研读台",
 				description:
 					"SvelteKit + Tailwind + shadcn-svelte 骨架，已包含阅读视图、主题卡、人物索引与关系图页面。",
 				intro:
@@ -23,7 +23,7 @@
 				]
 			},
 			"en-US": {
-				title: "Digital Reading Prototype for Symposium",
+				title: "Symposium Reading Desk",
 				description:
 					"SvelteKit + Tailwind + shadcn-svelte scaffold, including reading view, themes, character index, and relation graph.",
 				intro:

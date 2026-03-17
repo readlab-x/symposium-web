@@ -1,7 +1,15 @@
 <script lang="ts">
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
-	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayAnnotationContent,
+		getDisplayAnnotationTitle,
+		getDisplayChapter,
+		getDisplayCharacterName,
+		getDisplayTag,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Annotation, Character, DialogLine } from "$lib/types";
 
 	let {
@@ -50,6 +58,13 @@
 		if (type === "term") return copy.term;
 		return copy.intertext;
 	}
+
+	const displaySpeakerName = $derived.by(() =>
+		line && speaker ? getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage) : copy.unknown
+	);
+	const displayChapter = $derived.by(() =>
+		line ? getDisplayChapter(line, $i18nPreferences.primaryLanguage) : ""
+	);
 </script>
 
 <Card.Root
@@ -65,7 +80,7 @@
 		</Card.Title>
 		<Card.Description>
 			{#if line}
-				{copy.currentLine}: {speaker?.name ?? copy.unknown} · {line.chapter}
+				{copy.currentLine}: {displaySpeakerName} · {displayChapter}
 			{:else}
 				{copy.emptyPrompt}
 			{/if}
@@ -92,13 +107,19 @@
 							}`}
 						>
 							<div class="flex items-center justify-between gap-3">
-								<h3 class="text-sm font-medium">{annotation.title}</h3>
+								<h3 class="text-sm font-medium">
+									{getDisplayAnnotationTitle(annotation, $i18nPreferences.primaryLanguage)}
+								</h3>
 								<Badge variant="outline">{labelForAnnotationType(annotation.type)}</Badge>
 							</div>
-							<p class="text-sm leading-6 text-muted-foreground">{annotation.content}</p>
+							<p class="text-sm leading-6 text-muted-foreground">
+								{getDisplayAnnotationContent(annotation, $i18nPreferences.primaryLanguage)}
+							</p>
 							<div class="flex flex-wrap gap-1">
 								{#each annotation.tags as tag (tag)}
-									<Badge variant="secondary">{tag}</Badge>
+									<Badge variant="secondary">
+										{getDisplayTag(tag, $i18nPreferences.primaryLanguage)}
+									</Badge>
 								{/each}
 							</div>
 						</li>

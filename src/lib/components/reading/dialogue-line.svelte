@@ -7,7 +7,15 @@
 	import * as Card from "$lib/components/ui/card/index.js";
 	import AnnotatedText from "$lib/components/reading/annotated-text.svelte";
 	import { getDialogueLineRootClass } from "$lib/components/reading/dialogue-line-state.js";
-	import { getDisplayText, hasDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayChapter,
+		getDisplayCharacterName,
+		getDisplayTag,
+		getDisplayText,
+		hasDisplayText,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Annotation, Character, DialogLine, EntityReference } from "$lib/types";
 
 	let {
@@ -32,6 +40,10 @@
 	let annotationVisible = $state(false);
 
 	const primaryText = $derived.by(() => getDisplayText(line, $i18nPreferences.primaryLanguage));
+	const displaySpeakerName = $derived.by(() =>
+		speaker ? getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage) : copy.unknownSpeaker
+	);
+	const displayChapter = $derived.by(() => getDisplayChapter(line, $i18nPreferences.primaryLanguage));
 	const canToggleTranslation = $derived.by(
 		() =>
 			$i18nPreferences.translationEnabled &&
@@ -127,20 +139,20 @@
 						{#if speaker?.avatarImage}
 							<Avatar.Image
 								src={speaker.avatarImage}
-								alt={speaker.name ?? copy.unknownSpeaker}
+								alt={displaySpeakerName}
 								class="object-cover"
 							/>
 						{/if}
 						<Avatar.Fallback>{speaker?.avatar ?? "?"}</Avatar.Fallback>
 					</Avatar.Root>
 					<div>
-						<Card.Title class="text-sm font-medium">{speaker?.name ?? copy.unknownSpeaker}</Card.Title>
-						<Card.Description>{line.chapter}</Card.Description>
+						<Card.Title class="text-sm font-medium">{displaySpeakerName}</Card.Title>
+						<Card.Description>{displayChapter}</Card.Description>
 					</div>
 				</div>
 				<div class="flex flex-wrap justify-end gap-1">
 					{#each line.tags as tag (tag)}
-						<Badge variant="outline">{tag}</Badge>
+						<Badge variant="outline">{getDisplayTag(tag, $i18nPreferences.primaryLanguage)}</Badge>
 					{/each}
 				</div>
 			</div>

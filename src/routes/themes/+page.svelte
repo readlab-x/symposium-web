@@ -4,7 +4,15 @@
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
 	import themeData from "$lib/data/themes.json";
-	import { getDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayChapter,
+		getDisplayCharacterName,
+		getDisplayText,
+		getDisplayThemeName,
+		getDisplayThemeSummary,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Character, DialogLine, Theme } from "$lib/types";
 
 	const themes = themeData as Theme[];
@@ -52,13 +60,24 @@
 				class={`motion-stage-soft ${entryDelayClass(index)} border-border/60 bg-card/60 transition-[transform,background-color,border-color,box-shadow] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:-translate-y-1 hover:bg-card/74 hover:shadow-[0_26px_42px_-34px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]`}
 			>
 				<Card.Header>
-					<Card.Title class="text-base">{theme.name}</Card.Title>
-					<Card.Description>{theme.summary}</Card.Description>
+					<Card.Title class="text-base">
+						{getDisplayThemeName(theme, $i18nPreferences.primaryLanguage)}
+					</Card.Title>
+					<Card.Description>
+						{getDisplayThemeSummary(theme, $i18nPreferences.primaryLanguage)}
+					</Card.Description>
 				</Card.Header>
 				<Card.Content class="space-y-4">
 					<div class="flex flex-wrap gap-1.5">
 						{#each theme.characterIds as characterId (characterId)}
-							<Badge variant="secondary">{characterById[characterId]?.name ?? characterId}</Badge>
+							<Badge variant="secondary">
+								{characterById[characterId]
+									? getDisplayCharacterName(
+											characterById[characterId],
+											$i18nPreferences.primaryLanguage
+										)
+									: characterId}
+							</Badge>
 						{/each}
 					</div>
 					<ul class="space-y-3">
@@ -67,7 +86,13 @@
 							{#if line}
 								<li class="border-l border-border/65 pl-4 transition-[transform,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:border-primary/38">
 									<p class="text-xs text-muted-foreground">
-										{characterById[line.speakerId]?.name} · {line.chapter}
+										{characterById[line.speakerId]
+											? getDisplayCharacterName(
+													characterById[line.speakerId],
+													$i18nPreferences.primaryLanguage
+												)
+											: line.speakerId}
+										· {getDisplayChapter(line, $i18nPreferences.primaryLanguage)}
 									</p>
 									<p class="mt-1 text-sm leading-7">
 										{getDisplayText(line, $i18nPreferences.primaryLanguage)}

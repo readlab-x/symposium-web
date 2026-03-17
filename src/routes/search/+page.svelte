@@ -4,7 +4,14 @@
 	import { Input } from "$lib/components/ui/input/index.js";
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
-	import { getDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayChapter,
+		getDisplayCharacterName,
+		getDisplayTag,
+		getDisplayText,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Character, DialogLine } from "$lib/types";
 
 	const dialogs = dialogData as DialogLine[];
@@ -45,10 +52,17 @@
 		return dialogs.filter((line) => {
 			const speaker = speakerById[line.speakerId];
 			const visibleText = getDisplayText(line, $i18nPreferences.primaryLanguage);
+			const visibleSpeakerName = speaker
+				? getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)
+				: "";
 			return (
 				visibleText.includes(trimmed) ||
-				line.tags.some((tag) => tag.includes(trimmed)) ||
-				(speaker?.name ?? "").includes(trimmed)
+				line.tags.some(
+					(tag) =>
+						tag.includes(trimmed) ||
+						getDisplayTag(tag, $i18nPreferences.primaryLanguage).includes(trimmed)
+				) ||
+				visibleSpeakerName.includes(trimmed)
 			);
 		});
 	});
@@ -88,7 +102,12 @@
 					class={`${index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""} space-y-2 px-5 py-4 transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/32 ${index > 0 ? "border-t border-border/55" : ""}`}
 				>
 					<p class="text-sm font-medium">
-						{speakerById[line.speakerId]?.name ?? copy.unknownSpeaker} · {line.chapter}
+						{speakerById[line.speakerId]
+							? getDisplayCharacterName(
+									speakerById[line.speakerId],
+									$i18nPreferences.primaryLanguage
+								)
+							: copy.unknownSpeaker} · {getDisplayChapter(line, $i18nPreferences.primaryLanguage)}
 					</p>
 					<p class="text-sm leading-7">
 						{getDisplayText(line, $i18nPreferences.primaryLanguage)}
@@ -96,7 +115,9 @@
 					<div class="flex flex-wrap items-center gap-2">
 						<div class="flex flex-wrap gap-1">
 							{#each line.tags as tag (tag)}
-								<Badge variant="secondary">{tag}</Badge>
+								<Badge variant="secondary">
+									{getDisplayTag(tag, $i18nPreferences.primaryLanguage)}
+								</Badge>
 							{/each}
 						</div>
 						<a

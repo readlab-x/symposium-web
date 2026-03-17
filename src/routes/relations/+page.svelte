@@ -5,7 +5,14 @@
 	import * as Card from "$lib/components/ui/card/index.js";
 	import charactersData from "$lib/data/characters.json";
 	import relationsData from "$lib/data/relations.json";
-	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayCharacterName,
+		getDisplayRelationEdgeRelation,
+		getDisplayRelationNodeLabel,
+		getDisplayRelationNodeSummary,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Character, RelationGraphNode, RelationsGraph } from "$lib/types";
 
 	const characters = charactersData as Character[];
@@ -19,13 +26,24 @@
 		() =>
 			relations.nodes.map((node) => {
 				const character = charactersById[node.id];
+				const label = character
+					? getDisplayCharacterName(character, $i18nPreferences.primaryLanguage)
+					: getDisplayRelationNodeLabel(node, $i18nPreferences.primaryLanguage);
 
 				return {
 					...node,
+					label,
+					summary: getDisplayRelationNodeSummary(node, $i18nPreferences.primaryLanguage),
 					avatarImage: character?.avatarImage,
-					avatarFallback: character?.avatar || node.label.trim().slice(0, 1) || "?"
+					avatarFallback: character?.avatar || label.trim().slice(0, 1) || "?"
 				} satisfies RelationGraphNode;
 			}) as RelationGraphNode[]
+	);
+	const graphEdges = $derived.by(() =>
+		relations.edges.map((edge) => ({
+			...edge,
+			relation: getDisplayRelationEdgeRelation(edge, $i18nPreferences.primaryLanguage)
+		}))
 	);
 	const nodesById = $derived.by(
 		() => Object.fromEntries(graphNodes.map((node) => [node.id, node])) as Record<string, RelationGraphNode>
@@ -59,7 +77,7 @@
 	const activeNode = $derived.by(() => (activeNodeId ? nodesById[activeNodeId] ?? null : null));
 	const relatedEdges = $derived.by(() =>
 		activeNodeId
-			? relations.edges.filter(
+			? graphEdges.filter(
 					(edge) => edge.source === activeNodeId || edge.target === activeNodeId
 				)
 			: []
@@ -97,7 +115,7 @@
 	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
 		<RelationGraph
 			nodes={graphNodes}
-			edges={relations.edges}
+			edges={graphEdges}
 			{activeNodeId}
 			onSelectNode={(id) => (activeNodeId = id)}
 		/>

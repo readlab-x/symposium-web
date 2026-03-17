@@ -5,7 +5,14 @@
 	import { Button } from "$lib/components/ui/button/index.js";
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
-	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import {
+		getDisplayCharacterBio,
+		getDisplayCharacterName,
+		getDisplayCharacterRole,
+		getDisplayCharacterSummary,
+		i18nPreferences,
+		pickByLanguage
+	} from "$lib/stores/i18n";
 	import type { Character, DialogLine } from "$lib/types";
 
 	const characters = characterData as Character[];
@@ -76,29 +83,41 @@
 				<div class="flex items-start gap-4">
 					<Avatar.Root class="size-14 border border-border/60 bg-secondary/35 shadow-sm">
 						{#if character.avatarImage}
-							<Avatar.Image src={character.avatarImage} alt={character.name} class="object-cover" />
+							<Avatar.Image
+								src={character.avatarImage}
+								alt={getDisplayCharacterName(character, $i18nPreferences.primaryLanguage)}
+								class="object-cover"
+							/>
 						{/if}
 						<Avatar.Fallback class="text-sm font-medium">{character.avatar}</Avatar.Fallback>
 					</Avatar.Root>
 					<div class="min-w-0 space-y-2">
 						<div class="flex flex-wrap items-center gap-2">
-							<h2 class="text-base font-semibold">{character.name}</h2>
+							<h2 class="text-base font-semibold">
+								{getDisplayCharacterName(character, $i18nPreferences.primaryLanguage)}
+							</h2>
 							<Badge variant="outline">{entityTypeLabel(character.type)}</Badge>
 						</div>
-						<p class="text-sm text-muted-foreground">{character.role}</p>
-						{#if character.bio}
+						<p class="text-sm text-muted-foreground">
+							{getDisplayCharacterRole(character, $i18nPreferences.primaryLanguage)}
+						</p>
+						{#if getDisplayCharacterBio(character, $i18nPreferences.primaryLanguage)}
 							<div class="space-y-1.5">
 								<p class="text-[0.7rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
 									{copy.bio}
 								</p>
-								<p class="max-w-3xl text-sm leading-7 text-foreground/85">{character.bio}</p>
+								<p class="max-w-3xl text-sm leading-7 text-foreground/85">
+									{getDisplayCharacterBio(character, $i18nPreferences.primaryLanguage)}
+								</p>
 							</div>
 						{/if}
 						<div class="space-y-1.5">
 							<p class="text-[0.7rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
 								{copy.inSymposium}
 							</p>
-							<p class="max-w-3xl text-sm leading-7 text-muted-foreground">{character.summary}</p>
+							<p class="max-w-3xl text-sm leading-7 text-muted-foreground">
+								{getDisplayCharacterSummary(character, $i18nPreferences.primaryLanguage)}
+							</p>
 						</div>
 					</div>
 				</div>
