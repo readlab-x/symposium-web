@@ -146,7 +146,7 @@ function resolveBaseSize(datum) {
  * @param {number} size
  */
 function resolveIconSize(size) {
-	return Math.max(Math.round(size - 10), 28);
+	return Math.max(Math.round(size), 28);
 }
 
 /**
@@ -216,9 +216,9 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 				opacity: 1,
 				fillOpacity: 1,
 				fill: (datum) => resolveNodeTone(theme, resolveNodeType(datum?.data)).fill,
-				strokeOpacity: 1,
+				strokeOpacity: 0,
 				stroke: (datum) => resolveNodeTone(theme, resolveNodeType(datum?.data)).stroke,
-				lineWidth: 2.6,
+				lineWidth: 0,
 				halo: false,
 				haloStrokeOpacity: 0,
 				labelPlacement: "bottom",
@@ -243,28 +243,26 @@ export function createRelationGraphOptions({ container, data, darkMode = false }
 			state: {
 				active: {
 					size: 60,
-					lineWidth: 3.6,
+					lineWidth: 0,
+					strokeOpacity: 0,
 					labelOffsetY: 18,
 					labelFontWeight: 650,
-					iconWidth: 50,
-					iconHeight: 50,
-					iconRadius: 25,
-					halo: true,
-					haloLineWidth: 18,
-					haloStroke: theme.node.active.ring,
-					haloStrokeOpacity: 0.3
+					iconWidth: 60,
+					iconHeight: 60,
+					iconRadius: 30,
+					halo: false,
+					haloStrokeOpacity: 0
 				},
 				neighbor: {
 					size: 58,
-					lineWidth: 3.1,
+					lineWidth: 0,
+					strokeOpacity: 0,
 					labelFontWeight: 610,
-					iconWidth: 48,
-					iconHeight: 48,
-					iconRadius: 24,
-					halo: true,
-					haloLineWidth: 10,
-					haloStroke: theme.node.neighbor.ring,
-					haloStrokeOpacity: 0.2
+					iconWidth: 58,
+					iconHeight: 58,
+					iconRadius: 29,
+					halo: false,
+					haloStrokeOpacity: 0
 				},
 				dimmed: {
 					opacity: 0.32,

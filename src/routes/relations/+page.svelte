@@ -95,14 +95,12 @@
 	</header>
 
 	<div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
-		<div class="motion-stage-soft motion-delay-1 rounded-[1.5rem] border border-border/60 bg-card/62 p-4">
-			<RelationGraph
-				nodes={graphNodes}
-				edges={relations.edges}
-				{activeNodeId}
-				onSelectNode={(id) => (activeNodeId = id)}
-			/>
-		</div>
+		<RelationGraph
+			nodes={graphNodes}
+			edges={relations.edges}
+			{activeNodeId}
+			onSelectNode={(id) => (activeNodeId = id)}
+		/>
 		<Card.Root class="motion-stage-soft motion-delay-2 border-border/60 bg-card/72">
 			<Card.Header class="space-y-4">
 				{#if activeNode}

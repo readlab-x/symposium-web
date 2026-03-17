@@ -31,11 +31,10 @@
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
-				canvasLabel:
-					"\u4eba\u7269\u5173\u7cfb\u56fe\uff0c\u53ef\u62d6\u62fd\u3001\u7f29\u653e\u5e76\u70b9\u51fb\u8282\u70b9\u67e5\u770b\u5173\u7cfb"
+				canvasLabel: "\u4eba\u7269\u5173\u7cfb\u56fe"
 			},
 			"en-US": {
-				canvasLabel: "Interactive relations graph. Drag, zoom, and select nodes to inspect links."
+				canvasLabel: "Relation graph"
 			}
 		})
 	);
@@ -184,14 +183,9 @@
 	});
 </script>
 
-<div class="space-y-2">
-	<div
-		bind:this={container}
-		class="h-[min(72dvh,40rem)] min-h-[28rem] w-full rounded-[1.2rem] border border-border/60 bg-card/70"
-		aria-label={copy.canvasLabel}
-		role="img"
-	></div>
-	<p class="px-1 text-xs text-muted-foreground">
-		{copy.canvasLabel}
-	</p>
-</div>
+<div
+	bind:this={container}
+	class="h-[min(72dvh,40rem)] min-h-[28rem] w-full rounded-[1.2rem] border border-border/60 bg-card/70"
+	aria-label={copy.canvasLabel}
+	role="img"
+></div>
