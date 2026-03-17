@@ -305,10 +305,11 @@
 					</p>
 				</div>
 
-				<div class="flex flex-wrap gap-3">
+				<div class="flex flex-wrap items-center gap-3">
 					<Button
 						href="/reading"
-						class="motion-sheen group rounded-full px-5 py-2.5 transition-[transform,box-shadow,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:shadow-[0_18px_34px_-24px_color-mix(in_oklab,var(--color-primary)_48%,transparent)]"
+						size="lg"
+						class="motion-sheen group rounded-full px-5 transition-[transform,box-shadow,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:shadow-[0_18px_34px_-24px_color-mix(in_oklab,var(--color-primary)_48%,transparent)]"
 					>
 						<span>{copy.hero.primaryAction}</span>
 						<ArrowRight
@@ -319,7 +320,8 @@
 					<Button
 						href="/themes"
 						variant="outline"
-						class="motion-sheen rounded-full border-border/70 bg-background/72 px-5 py-2.5 transition-[transform,box-shadow,border-color,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:border-border hover:bg-background/86 hover:shadow-[0_18px_30px_-24px_color-mix(in_oklab,var(--color-primary)_24%,transparent)]"
+						size="lg"
+						class="motion-sheen rounded-full border-border/70 bg-background/72 px-5 transition-[transform,box-shadow,border-color,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:border-border hover:bg-background/86 hover:shadow-[0_18px_30px_-24px_color-mix(in_oklab,var(--color-primary)_24%,transparent)]"
 					>
 						{copy.hero.secondaryAction}
 					</Button>
