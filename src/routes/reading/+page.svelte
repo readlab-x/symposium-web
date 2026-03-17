@@ -37,14 +37,14 @@
 			name: character.name,
 			type: character.type,
 			summary: character.summary,
-			relatedChapter: character.firstLineId
+			avatarImage: character.avatarImage,
+			avatarFallback: character.avatar
 		})),
 		...places.map((place) => ({
 			id: place.id,
 			name: place.name,
 			type: place.type,
-			summary: place.summary,
-			relatedChapter: place.relatedLineIds[0]
+			summary: place.summary
 		}))
 	];
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Check, ChevronDown } from "@lucide/svelte";
 	import { getReadingToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
+	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { Character } from "$lib/types";
@@ -106,7 +107,21 @@
 					}`}
 					onclick={() => onToggleSpeaker?.(speaker.id)}
 				>
-					<span class="truncate">{speaker.name}</span>
+					<span class="flex min-w-0 items-center gap-3">
+						<Avatar.Root class="size-8 shrink-0 border border-border/60 bg-secondary/30">
+							{#if speaker.avatarImage}
+								<Avatar.Image
+									src={speaker.avatarImage}
+									alt={speaker.name}
+									class="object-cover"
+								/>
+							{/if}
+							<Avatar.Fallback class="text-[0.72rem] font-medium">
+								{speaker.avatar ?? speaker.name.slice(0, 1)}
+							</Avatar.Fallback>
+						</Avatar.Root>
+						<span class="truncate">{speaker.name}</span>
+					</span>
 					<span
 						class={`inline-flex size-5 shrink-0 items-center justify-center rounded-full border transition-[color,background-color,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] ${
 							active

@@ -1,4 +1,5 @@
-﻿<script lang="ts">
+<script lang="ts">
+	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { EntityReference, EntityType } from "$lib/types";
 
@@ -24,8 +25,8 @@
 	const segments = $derived.by(() => splitTextWithEntities(text, entities));
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
-			"zh-CN": { person: "人物", place: "地点", concept: "概念", related: "关联" },
-			"en-US": { person: "Person", place: "Place", concept: "Concept", related: "Related" }
+			"zh-CN": { person: "人物", place: "地点", concept: "概念" },
+			"en-US": { person: "Person", place: "Place", concept: "Concept" }
 		})
 	);
 
@@ -89,7 +90,11 @@
 		if (type === "place") return copy.place;
 		return copy.concept;
 	}
-</script>
+
+	function shouldShowAvatar(entity: EntityReference): boolean {
+		return entity.type === "person" && (Boolean(entity.avatarImage) || Boolean(entity.avatarFallback));
+	}
+ </script>
 
 <p class="text-sm leading-7 text-foreground">
 	{#each segments as segment, index (`${index}-${segment.text}`)}
@@ -103,15 +108,29 @@
 					{segment.text}
 				</button>
 				<span
-					class="pointer-events-none invisible absolute bottom-full left-1/2 z-10 w-56 -translate-x-1/2 translate-y-2 rounded-2xl border border-border/70 bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground opacity-0 shadow-none transition-[opacity,transform] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] group-hover:visible group-hover:-translate-y-1 group-hover:opacity-100 group-focus-within:visible group-focus-within:-translate-y-1 group-focus-within:opacity-100"
+					class="pointer-events-none invisible absolute bottom-full left-1/2 z-10 w-56 -translate-x-1/2 translate-y-1 select-text rounded-2xl border border-border/70 bg-popover px-3 py-2 text-xs leading-5 text-popover-foreground opacity-0 shadow-none transition-[opacity,transform] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
 				>
-					<span class="font-semibold">{entityLabel(segment.entity.type)}</span>
-					<br />
-					{segment.entity.summary}
-					{#if segment.entity.relatedChapter}
+					{#if shouldShowAvatar(segment.entity)}
+						<span class="mb-2 flex items-center gap-2">
+							<Avatar.Root class="size-9 shrink-0 border border-border/60 bg-secondary/28">
+								{#if segment.entity.avatarImage}
+									<Avatar.Image
+										src={segment.entity.avatarImage}
+										alt={segment.entity.name}
+										class="object-cover"
+									/>
+								{/if}
+								<Avatar.Fallback class="text-[0.7rem] font-medium">
+									{segment.entity.avatarFallback ?? segment.entity.name.slice(0, 1)}
+								</Avatar.Fallback>
+							</Avatar.Root>
+							<span class="min-w-0 font-semibold">{entityLabel(segment.entity.type)}</span>
+						</span>
+					{:else}
+						<span class="font-semibold">{entityLabel(segment.entity.type)}</span>
 						<br />
-						<span class="text-muted-foreground">{copy.related}: {segment.entity.relatedChapter}</span>
 					{/if}
+					{segment.entity.summary}
 				</span>
 			</span>
 		{:else}

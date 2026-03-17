@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
-	import * as Separator from "$lib/components/ui/separator/index.js";
-	import { getDisplayText, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
+	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { Annotation, Character, DialogLine } from "$lib/types";
 
 	let {
@@ -17,9 +16,6 @@
 		compact?: boolean;
 	} = $props();
 
-	const displayText = $derived.by(() =>
-		line ? getDisplayText(line, $i18nPreferences.primaryLanguage) : ""
-	);
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
@@ -76,15 +72,6 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Content class={compact ? "space-y-4 pt-0" : "min-h-0 flex-1 space-y-4 overflow-y-auto"}>
-		{#if line && !compact}
-			{#key line.id}
-				<blockquote class="motion-stage-soft rounded-[1.15rem] border-l-2 border-primary/40 bg-secondary/38 px-4 py-3 text-sm leading-6">
-					{displayText}
-				</blockquote>
-			{/key}
-			<Separator.Root />
-		{/if}
-
 		{#if annotations.length === 0}
 			<p class="motion-stage-soft text-sm text-muted-foreground">{copy.noAnnotation}</p>
 		{:else}

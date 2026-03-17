@@ -79,5 +79,6 @@ export interface EntityReference {
 	name: string;
 	type: EntityType;
 	summary: string;
-	relatedChapter?: string;
+	avatarImage?: string;
+	avatarFallback?: string;
 }
