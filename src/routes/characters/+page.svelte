@@ -78,7 +78,7 @@
 	<div class="overflow-hidden rounded-[1.5rem] border border-border/60 bg-card/58">
 		{#each characters as character, index (character.id)}
 			<article
-				class={`${index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""} grid gap-4 px-5 py-4 transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:translate-x-1 hover:bg-secondary/34 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}
+				class={`${index < 5 ? `motion-stage-soft ${entryDelayClass(index)}` : ""} grid gap-4 px-5 py-4 transition-[transform,background-color,border-color] [transition-duration:var(--motion-panel)] ease-[var(--ease-ritual-out)] hover:bg-secondary/34 md:grid-cols-[minmax(0,1fr)_auto] md:items-start ${index > 0 ? "border-t border-border/55" : ""}`}
 			>
 				<div class="flex items-start gap-4">
 					<Avatar.Root class="size-14 border border-border/60 bg-secondary/35 shadow-sm">
