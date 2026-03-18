@@ -4,6 +4,7 @@ import {
 	getReadingAnnotationWrapClass,
 	getReadingDialogueColumnClass,
 	getReadingHeaderLayoutClass,
+	getReadingSceneToolbarSummary,
 	getReadingToolbarSummary
 } from "../src/lib/components/reading/reading-toolbar-layout.js";
 
@@ -19,9 +20,21 @@ assert.equal(
 	"partial English speaker selections should show a compact count summary"
 );
 
+assert.equal(
+	getReadingSceneToolbarSummary({ activeCount: 12, totalCount: 12, language: "zh-CN" }),
+	"场景 · 全部",
+	"when all scenes are active, the Chinese summary should read as all selected"
+);
+
+assert.equal(
+	getReadingSceneToolbarSummary({ activeCount: 2, totalCount: 12, language: "en-US" }),
+	"Scenes · 2/12",
+	"partial English scene selections should show a compact count summary"
+);
+
 assert.ok(
-	getReadingHeaderLayoutClass().includes("lg:grid-cols-[minmax(0,1fr)_14rem]"),
-	"desktop reading header should reserve a narrow right-side filter column"
+	getReadingHeaderLayoutClass().includes("lg:grid-cols-[minmax(0,1fr)_auto]"),
+	"desktop reading header should reserve a right-side toolbar column for both filters"
 );
 
 assert.ok(

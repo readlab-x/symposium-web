@@ -1,8 +1,8 @@
 /**
- * @param {{ activeCount: number; totalCount: number; language: string }} params
+ * @param {{ activeCount: number; totalCount: number; language: string; prefixZh: string; prefixEn: string }} params
  */
-export function getReadingToolbarSummary({ activeCount, totalCount, language }) {
-	const prefix = language === "zh-CN" ? "人物" : "Speakers";
+function getCompactToolbarSummary({ activeCount, totalCount, language, prefixZh, prefixEn }) {
+	const prefix = language === "zh-CN" ? prefixZh : prefixEn;
 	if (activeCount >= totalCount) {
 		return language === "zh-CN" ? `${prefix} · 全部` : `${prefix} · All`;
 	}
@@ -10,8 +10,34 @@ export function getReadingToolbarSummary({ activeCount, totalCount, language }) 
 	return `${prefix} · ${activeCount}/${totalCount}`;
 }
 
+/**
+ * @param {{ activeCount: number; totalCount: number; language: string }} params
+ */
+export function getReadingToolbarSummary({ activeCount, totalCount, language }) {
+	return getCompactToolbarSummary({
+		activeCount,
+		totalCount,
+		language,
+		prefixZh: "人物",
+		prefixEn: "Speakers"
+	});
+}
+
+/**
+ * @param {{ activeCount: number; totalCount: number; language: string }} params
+ */
+export function getReadingSceneToolbarSummary({ activeCount, totalCount, language }) {
+	return getCompactToolbarSummary({
+		activeCount,
+		totalCount,
+		language,
+		prefixZh: "场景",
+		prefixEn: "Scenes"
+	});
+}
+
 export function getReadingHeaderLayoutClass() {
-	return "grid gap-4 lg:grid-cols-[minmax(0,1fr)_14rem] lg:items-start";
+	return "grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start";
 }
 
 export function getReadingDialogueColumnClass() {

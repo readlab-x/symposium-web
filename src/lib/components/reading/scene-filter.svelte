@@ -1,20 +1,18 @@
 <script lang="ts">
 	import { Check, ChevronDown } from "@lucide/svelte";
-	import { getReadingToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
-	import * as Avatar from "$lib/components/ui/avatar/index.js";
+	import { getReadingSceneToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
 	import { Button } from "$lib/components/ui/button/index.js";
-	import { getDisplayCharacterName, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
-	import type { Character } from "$lib/types";
+	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 
 	let {
-		speakers,
-		activeSpeakerIds,
-		onToggleSpeaker,
+		scenes,
+		activeSceneIds,
+		onToggleScene,
 		onSelectAll
 	}: {
-		speakers: Character[];
-		activeSpeakerIds: string[];
-		onToggleSpeaker?: (id: string) => void;
+		scenes: string[];
+		activeSceneIds: string[];
+		onToggleScene?: (id: string) => void;
 		onSelectAll?: () => void;
 	} = $props();
 
@@ -24,22 +22,22 @@
 	const copy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
-				title: "按人物筛选",
+				title: "按场景筛选",
 				selectAll: "全选",
-				triggerLabel: "筛选人物"
+				triggerLabel: "筛选场景"
 			},
 			"en-US": {
-				title: "Filter by Speaker",
+				title: "Filter by Scene",
 				selectAll: "Select All",
-				triggerLabel: "Filter Speakers"
+				triggerLabel: "Filter Scenes"
 			}
 		})
 	);
 
 	const triggerSummary = $derived.by(() =>
-		getReadingToolbarSummary({
-			activeCount: activeSpeakerIds.length,
-			totalCount: speakers.length,
+		getReadingSceneToolbarSummary({
+			activeCount: activeSceneIds.length,
+			totalCount: scenes.length,
 			language: $i18nPreferences.primaryLanguage
 		})
 	);
@@ -100,8 +98,8 @@
 			</Button>
 		</div>
 		<div class="max-h-72 space-y-1 overflow-y-auto pr-1">
-			{#each speakers as speaker (speaker.id)}
-				{@const active = activeSpeakerIds.includes(speaker.id)}
+			{#each scenes as scene (scene)}
+				{@const active = activeSceneIds.includes(scene)}
 				<button
 					type="button"
 					class={`flex w-full items-center justify-between gap-3 rounded-[1rem] px-3 py-2 text-left text-sm transition-[transform,color,background-color,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] ${
@@ -109,23 +107,9 @@
 							? "bg-secondary/72 text-foreground"
 							: "text-muted-foreground hover:bg-secondary/38 hover:text-foreground"
 					}`}
-					onclick={() => onToggleSpeaker?.(speaker.id)}
+					onclick={() => onToggleScene?.(scene)}
 				>
-					<span class="flex min-w-0 items-center gap-3">
-						<Avatar.Root class="size-8 shrink-0 border border-border/60 bg-secondary/30">
-							{#if speaker.avatarImage}
-								<Avatar.Image
-									src={speaker.avatarImage}
-									alt={getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)}
-									class="object-cover"
-								/>
-							{/if}
-							<Avatar.Fallback class="text-[0.72rem] font-medium">
-								{speaker.avatar ?? speaker.name.slice(0, 1)}
-							</Avatar.Fallback>
-						</Avatar.Root>
-						<span class="truncate">{getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)}</span>
-					</span>
+					<span class="min-w-0 truncate">{scene}</span>
 					<span
 						class={`inline-flex size-5 shrink-0 items-center justify-center rounded-full border transition-[color,background-color,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] ${
 							active

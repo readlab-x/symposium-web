@@ -7,6 +7,7 @@
 		getReadingDialogueColumnClass,
 		getReadingHeaderLayoutClass
 	} from "$lib/components/reading/reading-toolbar-layout.js";
+	import SceneFilter from "$lib/components/reading/scene-filter.svelte";
 	import SpeakerFilter from "$lib/components/reading/speaker-filter.svelte";
 	import annotationData from "$lib/data/annotations.json";
 	import characterData from "$lib/data/characters.json";
@@ -35,6 +36,7 @@
 	const annotations = annotationData as Annotation[];
 
 	const defaultSpeakerIds = Array.from(new Set(dialogs.map((line) => line.speakerId)));
+	const defaultSceneIds = Array.from(new Set(dialogs.map((line) => line.chapter)));
 	const speakers = characters.filter((character) => defaultSpeakerIds.includes(character.id));
 	const speakersById = Object.fromEntries(
 		characters.map((character) => [character.id, character])
@@ -69,6 +71,7 @@
 	let activeSpeakerIds = $state<string[]>(
 		resolveSpeakerIdsFromQuery($page.url.searchParams.get("speakers"), defaultSpeakerIds, defaultSpeakerIds)
 	);
+	let activeSceneIds = $state<string[]>(defaultSceneIds);
 	let lastAppliedSpeakerQuery = $state($page.url.searchParams.get("speakers") ?? "");
 	let selectedLineId = $state<string | null>(dialogs[0]?.id ?? null);
 
@@ -86,7 +89,10 @@
 	);
 
 	const filteredLines = $derived.by(() =>
-		dialogs.filter((line) => activeSpeakerIds.includes(line.speakerId))
+		dialogs.filter(
+			(line) =>
+				activeSceneIds.includes(line.chapter) && activeSpeakerIds.includes(line.speakerId)
+		)
 	);
 
 	$effect(() => {
@@ -135,6 +141,19 @@
 	function resetSpeakers() {
 		activeSpeakerIds = defaultSpeakerIds;
 	}
+
+	function toggleScene(sceneId: string) {
+		if (activeSceneIds.includes(sceneId)) {
+			activeSceneIds = activeSceneIds.filter((id) => id !== sceneId);
+			return;
+		}
+
+		activeSceneIds = [...activeSceneIds, sceneId];
+	}
+
+	function resetScenes() {
+		activeSceneIds = defaultSceneIds;
+	}
 </script>
 
 <section class="space-y-5">
@@ -144,13 +163,21 @@
 			<p class="text-sm text-muted-foreground">{copy.description}</p>
 		</header>
 
-		<aside class="motion-stage-soft motion-delay-1 relative z-30 min-w-0 lg:justify-self-end lg:w-[14rem]">
-			<SpeakerFilter
-				{speakers}
-				activeSpeakerIds={activeSpeakerIds}
-				onToggleSpeaker={toggleSpeaker}
-				onSelectAll={resetSpeakers}
-			/>
+		<aside class="motion-stage-soft motion-delay-1 relative z-30 min-w-0 lg:justify-self-end">
+			<div class="flex flex-wrap items-start gap-2 lg:flex-nowrap lg:justify-end">
+				<SceneFilter
+					scenes={defaultSceneIds}
+					activeSceneIds={activeSceneIds}
+					onToggleScene={toggleScene}
+					onSelectAll={resetScenes}
+				/>
+				<SpeakerFilter
+					{speakers}
+					activeSpeakerIds={activeSpeakerIds}
+					onToggleSpeaker={toggleSpeaker}
+					onSelectAll={resetSpeakers}
+				/>
+			</div>
 		</aside>
 	</div>
 
