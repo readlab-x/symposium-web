@@ -164,6 +164,516 @@ export const annotationEnglishById = {
 		title: "The Unity of Comedy and Tragedy",
 		content:
 			"The dawn debate at the end points toward an important judgment: the true poet should understand both comedy and tragedy."
+	},
+	"ann-013": {
+		title: "Agathon's Victory Banquet",
+		content:
+			"The banquet takes place after Agathon's first tragic victory, giving the whole discussion both literary prestige and the social aura of a rising young celebrity."
+	},
+	"ann-014": {
+		title: "Socrates Unusually Dressed Up",
+		content:
+			"Aristodemus pointedly notes that Socrates has bathed, put on shoes, and dressed carefully. The detail highlights his usual austerity and adds a small theatrical contrast to the visit."
+	},
+	"ann-015": {
+		title: "The Joke About Arriving Uninvited",
+		content:
+			"This scene plays with a proverb about going uninvited to a good man's feast. Socrates bends etiquette into a joke, suggesting that his relation to Agathon is not entirely formal."
+	},
+	"ann-016": {
+		title: "The Trance at the Porch",
+		content:
+			"Socrates stops outside and falls into thought while his companion enters first. The moment reinforces a recurring image of him as someone who can suddenly detach from ordinary social time."
+	},
+	"ann-017": {
+		title: "Discussion Begins After Libation",
+		content:
+			"The guests pour libations and sing a hymn before turning to conversation. Philosophy here grows out of symposium ritual rather than replacing it."
+	},
+	"ann-018": {
+		title: "The Flute-Girl Is Dismissed",
+		content:
+			"Greek symposia often included entertainers, musicians, and other forms of performance. Here the flute-girl is sent away so the evening can become a more orderly contest of speeches."
+	},
+	"ann-019": {
+		title: "The Physician Becomes Moderator",
+		content:
+			"Eryximachus does not only speak about medicine; he also regulates the pace of drinking. Bodily management, restraint, and conversational order are folded into the same medical logic."
+	},
+	"ann-020": {
+		title: "Sacrifice as Proof of Love's Power",
+		content:
+			"Phaedrus does not begin with definition but with examples such as Alcestis and Achilles. The encomiastic mode relies on heroic cases to show love as a force that can motivate self-sacrifice."
+	},
+	"ann-021": {
+		title: "Civic Law Enters the Question of Love",
+		content:
+			"Pausanias refuses to treat love as a purely private passion. Whether love is noble depends in part on how cities, laws, and customs give it shape."
+	},
+	"ann-022": {
+		title: "The Educational Frame of 'Noble' Love",
+		content:
+			"For Pausanias, a young man may accept pursuit without shame when the aim is virtue, wisdom, and long-term formation. The issue is not desire alone but the end toward which it is directed."
+	},
+	"ann-023": {
+		title: "Love Expanded into a Medical Principle",
+		content:
+			"Eryximachus extends Pausanias's distinction into the body itself: health comes from the right ordering of opposed elements, so love becomes a principle for organizing living balance."
+	},
+	"ann-024": {
+		title: "Seasons, Ritual, and Cosmic Order",
+		content:
+			"In Eryximachus's speech, love governs not only people but the seasons, cultivation, ritual, and the traffic between gods and mortals. Desire is rewritten as an almost cosmological principle of harmony."
+	},
+	"ann-025": {
+		title: "A Mythic Change of Register",
+		content:
+			"Aristophanes openly says he will not speak in the same way as the earlier speakers. The dialogue thus places medicine, law, poetry, and myth side by side as rival ways of explaining love."
+	},
+	"ann-026": {
+		title: "\"The Other Half\" Is Not Just a Soulmate",
+		content:
+			"In the round-human myth, the other half first explains the pain of division. What the lover seeks is not merely a predestined partner but a recovery of lost wholeness."
+	},
+	"ann-027": {
+		title: "Praise the God Before the Gifts",
+		content:
+			"Agathon argues that a proper encomium should first describe what the god is before listing the benefits he gives. It is a highly self-aware attempt to discipline the rhetoric of praise."
+	},
+	"ann-028": {
+		title: "The High Point of Ornate Encomium",
+		content:
+			"Agathon presents love as the youngest, softest, and happiest of gods in deliberately polished language. The speech's beauty is precisely what leaves room for Socrates to interrogate it."
+	},
+	"ann-029": {
+		title: "Applause Before Philosophical Scrutiny",
+		content:
+			"Aristodemus records the burst of applause. Plato lets rhetoric win socially before philosophy asks whether it is actually true."
+	},
+	"ann-030": {
+		title: "From Encomium to Examination",
+		content:
+			"Socrates does not answer with an even finer speech. He turns instead to questioning, shifting the dialogue from performative praise to dialectical testing."
+	},
+	"ann-031": {
+		title: "The Lover Does Not Possess What He Loves",
+		content:
+			"If love loves beauty and goodness, then the lover cannot already possess them in the same full sense. Socrates flips 'Eros is most beautiful' into the claim that love itself implies lack."
+	},
+	"ann-032": {
+		title: "\"Daimon\" Is Not a Modern Demon",
+		content:
+			"Here daimon means an in-between spiritual being, messenger, or mediator, not a later Christian-style demon. Diotima uses the term to place love between gods and humans, knowledge and ignorance."
+	},
+	"ann-033": {
+		title: "Child of Poverty and Resource",
+		content:
+			"Love is born from Poverty and Resource, so it is neither wealthy nor helpless. It lacks, yet it is also clever, scheming, and able to pursue what it wants."
+	},
+	"ann-034": {
+		title: "The Soul Can Also Give Birth",
+		content:
+			"Diotima treats poetry, law, education, and the creation of virtue as forms of spiritual reproduction. The search for immortality therefore extends beyond bloodline into cultural transmission."
+	},
+	"ann-035": {
+		title: "Philosophy Cast as an Initiatory Ascent",
+		content:
+			"Diotima divides the education of love into lower and higher stages, using language close to religious initiation. Plato presents philosophy as a discipline of gradual revelation."
+	},
+	"ann-036": {
+		title: "\"Beauty\" Also Means Nobility",
+		content:
+			"In Symposium, the beautiful often shades into what is admirable, noble, and worthy. The ascent toward Beauty itself therefore remains ethical and intellectual, not merely aesthetic."
+	},
+	"ann-037": {
+		title: "Alcibiades Interrupts the Ascent",
+		content:
+			"Immediately after the abstract climax of Beauty itself, the drunken Alcibiades bursts in and drags the discussion back toward bodies, desire, jealousy, and social theater."
+	},
+	"ann-038": {
+		title: "A Scene of Jealousy with Wreaths",
+		content:
+			"Alcibiades crowns Agathon and complains about Socrates at the same time. The symposium wreath suddenly becomes a prop in a public display of jealousy."
+	},
+	"ann-039": {
+		title: "Praising Socrates Instead of Eros",
+		content:
+			"Alcibiades formally departs from the assigned theme: he no longer defines love but bears witness to Socrates. The deviation also works like a counterexample, since attraction to Socrates does not automatically equal ascent to Beauty itself."
+	},
+	"ann-040": {
+		title: "Battlefield Testimony Replaces Definition",
+		content:
+			"The scenes at Potidaea and in retreat make Socrates' restraint and courage concrete. Here virtue is no longer argued for abstractly but supported by eyewitness testimony."
+	},
+	"ann-041": {
+		title: "Seating as Relationship Politics",
+		content:
+			"Agathon, Socrates, and Alcibiades keep shifting seats and contesting proximity. Physical placement becomes a visible map of intimacy, exclusion, and rivalry."
+	},
+	"ann-042": {
+		title: "From Ordered Symposium to Chaotic Drinking",
+		content:
+			"At the start the guests negotiate rules for drinking; at the end intruders collapse the whole event into disorderly revelry. The dialogue deliberately juxtaposes moderated symposium with uncontrolled intoxication."
+	},
+	"ann-043": {
+		title: "Glaucon's Question Opens the Outer Frame",
+		content:
+			"Glaucon's request is not casual small talk. It reopens a banquet long past and puts the questions of who asks, who remembers, and who retells directly in front of the reader."
+	},
+	"ann-044": {
+		title: "Temporal Distance Makes the Dialogue a Memory Experiment",
+		content:
+			"Apollodorus first corrects the date of the banquet, reminding us that this is not recent conversation but an old exchange preserved and reshaped by memory."
+	},
+	"ann-045": {
+		title: "Apollodorus's Philosophical Zeal",
+		content:
+			"He treats philosophical conversation as the one truly joyful and useful activity, while money and ordinary business strike him as empty. That almost obsessive tone helps explain why others view him as half-mad."
+	},
+	"ann-046": {
+		title: "A Homeric Joke About Going to Dinner",
+		content:
+			"Aristodemus invokes a Homeric-style scene to excuse his arrival without an invitation. The allusion is lightly self-mocking rather than a serious confession of bad manners."
+	},
+	"ann-047": {
+		title: "Agathon Wants to 'Share' Wisdom",
+		content:
+			"Agathon treats Socrates' pause in the porch as if it had just yielded some precious discovery and wants to sit close enough to partake in it. The line sets up a joke about whether wisdom can really be shared that way."
+	},
+	"ann-048": {
+		title: "Wisdom Does Not Flow Like Water",
+		content:
+			"Socrates responds with the image of water running through a thread from one cup into another. The joke grants our wish for transferable wisdom while quietly suggesting that genuine thought cannot simply be poured over."
+	},
+	"ann-049": {
+		title: "The Hangover Makes Light Drinking Plausible",
+		content:
+			"The guests openly admit that they drank heavily the night before, which makes the later decision to drink lightly feel practical rather than idealized. Philosophy begins here amid bodily fatigue."
+	},
+	"ann-050": {
+		title: "Why Phaedrus Speaks First",
+		content:
+			"Phaedrus sits first and is also treated as the one who raised the theme, so he naturally begins. Order of speaking is therefore tied to thematic ownership as well as seating."
+	},
+	"ann-051": {
+		title: "The Contradictory Zone of Erotic Custom",
+		content:
+			"Pausanias stresses that the same city can both encourage and police erotic attachments. Greek love is thus embedded in family honor, civic discipline, and education rather than left as a purely private matter."
+	},
+	"ann-052": {
+		title: "The Hiccup Pulls High Speech Back to the Body",
+		content:
+			"Just as Aristophanes is about to speak, he is interrupted by a fit of hiccups. The comic bodily interruption reminds the reader that even exalted talk of love remains tied to a body that coughs, hiccups, and sneezes."
+	},
+	"ann-053": {
+		title: "The Physician's Way of Treating Hiccups",
+		content:
+			"Eryximachus immediately offers a medical remedy, mixing comedy with professional confidence. Bodily disorder and restored order preview the structure of his later speech."
+	},
+	"ann-054": {
+		title: "Love So Intense That Life Pauses",
+		content:
+			"Aristophanes describes the split halves clinging to one another so fiercely that they forget to eat or act. Love becomes the urge to rejoin oneself, even at the expense of ordinary life."
+	},
+	"ann-055": {
+		title: "Why Original Wholeness Was Lost",
+		content:
+			"The round humans were not innocently divided; they were punished for arrogant overreach against the gods. The myth therefore explains not only the search for another half but the moral background of that loss."
+	},
+	"ann-056": {
+		title: "Theater Applause Versus Rational Judgment",
+		content:
+			"Agathon distinguishes the crowd in the theater from the few who can judge well, bringing the problem of applause into the banquet itself. The line anticipates the coming contrast between what sounds good and what proves true."
+	},
+	"ann-057": {
+		title: "Phaedrus Protects the Agenda",
+		content:
+			"Phaedrus worries that if Socrates starts questioning too early, the whole evening will slide into argument. He acts here as more than a listener: he is the unofficial chair guarding the agreed format."
+	},
+	"ann-058": {
+		title: "Socrates Retreats Before He Strikes",
+		content:
+			"When he says there is little left for him to add, the remark sounds modest but prepares the ground for dialectic. Socrates often steps back rhetorically before reorganizing the conversation around questions."
+	},
+	"ann-059": {
+		title: "Diotima as an Outsider Authority",
+		content:
+			"Socrates assigns the dialogue's most important teaching on love to a wise woman from Mantinea. The authority to define eros is thus displaced away from the Athenian male speakers seated at the banquet."
+	},
+	"ann-060": {
+		title: "After Defining Love, Socrates Returns to Exhortation",
+		content:
+			"Once he finishes retelling Diotima, Socrates does not stop at abstract doctrine. He turns back toward advice about how we should honor Eros and learn the practice of love."
+	},
+	"ann-061": {
+		title: "Socrates Casts Himself as the Pursued One",
+		content:
+			"He jokes that Alcibiades will rage in jealousy, reversing the ordinary erotic script. Instead of Socrates chasing beauty, beauty seems to circle around Socrates."
+	},
+	"ann-062": {
+		title: "Even the Drunk Guest Must Obey the Rules",
+		content:
+			"Faced with the drunken entrance of Alcibiades, Eryximachus still tries to fold him back into the planned sequence. Symposium order collides head-on with intoxicated disruption."
+	},
+	"ann-063": {
+		title: "\"Praise\" Must Tell the Truth",
+		content:
+			"Socrates insists that if Alcibiades is going to praise him, he must speak truthfully. The demand shifts the speech away from mockery and toward risky testimony."
+	},
+	"ann-064": {
+		title: "Alcibiades Misreads Socrates Through Ordinary Desire",
+		content:
+			"He assumes Socrates must be drawn by youthful beauty like any other lover and plans to exchange bodily favor for wisdom. The mistake shows how thoroughly he still interprets Socrates through common erotic logic."
+	},
+	"ann-065": {
+		title: "The Trade of Body for Wisdom Fails",
+		content:
+			"Alcibiades imagines a profitable exchange: give beauty and intimacy, receive Socratic wisdom in return. Socrates' refusal rejects the idea that knowledge is a commodity that can be bartered."
+	},
+	"ann-066": {
+		title: "The Lover and the Beloved Reverse Places",
+		content:
+			"Alcibiades admits that Socrates behaves less like a pursuer than like someone pursued. The reversal both frustrates and fascinates him, exposing Socrates' mismatch with ordinary erotic roles."
+	},
+	"ann-067": {
+		title: "Socrates Immediately Sees the Jealous Strategy",
+		content:
+			"He identifies Alcibiades' real aim as driving a wedge between himself and Agathon. The speed of the diagnosis reframes drunken speech as a sharp contest of emotional strategy."
+	},
+	"ann-068": {
+		title: "The Middle Seat Becomes the Prize",
+		content:
+			"Alcibiades wants Agathon placed between them, turning seating arrangement into an emotional buffer and bargaining chip. Banquet space becomes a visible diagram of desire, rivalry, and embarrassment."
+	},
+	"ann-069": {
+		title: "A Spoken Performance on the Road into the City",
+		content:
+			"Glaucon asks Apollodorus to tell the whole story before they even reach the city. The opening of Symposium thus feels like an oral performance unfolding in shared motion."
+	},
+	"ann-070": {
+		title: "A 'Mad' Form of Devotion to Socrates",
+		content:
+			"Glaucon jokes that Apollodorus pities everyone except Socrates. The joke does more than tease: it frames Apollodorus as someone whose loyalty borders on religious intensity."
+	},
+	"ann-071": {
+		title: "Turning 'Madness' into Self-Reflection",
+		content:
+			"Apollodorus does not deny the charge head-on. Instead he reframes supposed madness as thinking about himself and his friends, redirecting mockery back toward philosophical self-examination."
+	},
+	"ann-072": {
+		title: "The Host's First Reflex Is Hospitality",
+		content:
+			"Agathon welcomes Aristodemus and immediately sends for Socrates. The gesture shows both the duties of a host and the special value Socrates already holds within the gathering."
+	},
+	"ann-073": {
+		title: "Light Drinking Is Not a Moral Lecture",
+		content:
+			"Aristophanes supports drinking lightly for a plain reason: everyone drank too much the night before. The resulting moderation feels bodily and practical rather than abstractly moralistic."
+	},
+	"ann-074": {
+		title: "Even the Host Stops Pretending to Be Hardy",
+		content:
+			"Agathon frankly admits he cannot keep drinking. As host he does not insist on heroic hospitality but allows the gathering to shift from competitive drinking to competitive speech."
+	},
+	"ann-075": {
+		title: "Even Sneezing Can Restore Order",
+		content:
+			"Aristophanes jokes that a harsh noise and a burst of discomfort can put the body back in order. The comic image unexpectedly fits Eryximachus's larger theme of harmony."
+	},
+	"ann-076": {
+		title: "The Pressure Is Passed to Agathon and Socrates",
+		content:
+			"Eryximachus praises Aristophanes for richness and variety, then lifts expectation onto Agathon and Socrates. The line formally hands the stage over to the dialogue's second half."
+	},
+	"ann-077": {
+		title: "Speaking Is Cast as Stepping onto a Stage",
+		content:
+			"Socrates describes his own coming speech as if it were an actor's entrance after others have already performed well. Banquet rhetoric and theatrical performance are made to mirror one another."
+	},
+	"ann-078": {
+		title: "The Allusion to Ate's Light Step",
+		content:
+			"Agathon borrows Homer's image of Ate stepping lightly to describe the delicacy of Eros. The point is less strict mythology than poetic atmosphere: love is rendered as soft, youthful, and almost weightless."
+	},
+	"ann-079": {
+		title: "Agathon Makes Love the Most Temperate Power",
+		content:
+			"Agathon claims that love rules desire and is untouched by violence, so it must be supremely temperate. Socrates will soon begin loosening this perfect portrait by asking what love still lacks."
+	},
+	"ann-080": {
+		title: "Desire Necessarily Points to Lack",
+		content:
+			"This exchange is one of the key links in Socrates' chain of reasoning: if desire reaches for what is not yet possessed, then love cannot already fully possess beauty and goodness."
+	},
+	"ann-081": {
+		title: "Exaggerated Courtesy in a Drunken Voice",
+		content:
+			"Alcibiades begins with inflated compliments and comic proverb-like banter toward Eryximachus. The style preserves the drama of drunken arrival while also signaling temporary submission to symposium procedure."
+	},
+	"ann-082": {
+		title: "The Chain of Retelling Includes a Small Verification",
+		content:
+			"Apollodorus says that he later checked a few details with Socrates himself. The memory is still layered and indirect, but it also makes a visible effort to claim a bit of reliability."
+	},
+	"ann-083": {
+		title: "Philosophy Is Embedded in Symposium Culture",
+		content:
+			"Libation, hymn, dinner, and drinking all belong to the Greek symposium setting. The dialogue's philosophy does not float free of social ritual but grows from within banquet culture."
+	},
+	"ann-084": {
+		title: "The Achilles Example Presumes Roles of Lover and Beloved",
+		content:
+			"Phaedrus insists that Achilles is younger and more beautiful, so he should count as the beloved rather than the lover. The claim reflects Greek assumptions about the roles of older pursuer and younger beloved."
+	},
+	"ann-085": {
+		title: "Pausanias Is Talking About Regulated Male Courtship",
+		content:
+			"These 'laws of love' mainly concern relations between adult men and youths under the pressure of custom and educational ideals. The passage is not a general theory of all private romance in a modern sense."
+	},
+	"ann-086": {
+		title: "Eryximachus Naturalizes Love",
+		content:
+			"In his hands, love is no longer only a human passion but a general principle of harmony in bodies, music, weather, and craft. Eros begins to take on the character of natural philosophy."
+	},
+	"ann-087": {
+		title: "The Myth Speaks in a Language of Healing",
+		content:
+			"Aristophanes describes finding one's companion as the healing of a split nature. His myth quietly reconnects with Eryximachus's medical vocabulary: love is both reunion and cure."
+	},
+	"ann-088": {
+		title: "This Is a Classic Encomium",
+		content:
+			"Agathon first defines how praise should proceed and then arranges his speech by moving from nature to benefits. The self-conscious structure is typical of classical encomiastic rhetoric."
+	},
+	"ann-089": {
+		title: "The Verbal Richness Is Part of the Argument",
+		content:
+			"Agathon's final movement piles up virtues, blessings, and balanced phrases not merely to sound beautiful. The speech uses verbal beauty itself to make Eros appear beautiful."
+	},
+	"ann-090": {
+		title: "The Plague Story Establishes Diotima's Authority",
+		content:
+			"When Socrates says that she helped delay the plague by ritual counsel, he is not tossing in trivia. He is establishing her authority in practical and religious terms before quoting her doctrine."
+	},
+	"ann-091": {
+		title: "Love Is Not Possessing Beauty but Giving Birth in It",
+		content:
+			"Diotima rewrites love's activity from acquiring a beautiful object to bringing forth in beauty. The shift is crucial because it turns love away from possession and toward generation."
+	},
+	"ann-092": {
+		title: "Contemplating Beauty Itself Gives Rise to True Virtue",
+		content:
+			"Diotima does not leave contemplation at the level of aesthetic pleasure. She says it can generate genuine virtue, reconnecting the metaphysical summit of the ascent with ethical life."
+	},
+	"ann-093": {
+		title: "Alcibiades as a Case of Incomplete Ascent",
+		content:
+			"He comes very close to Socrates and is deeply captivated by him, yet he still interprets the relationship mainly through honor, desire, and jealousy. In that sense he exemplifies someone who has not truly climbed the ladder of love."
+	},
+	"ann-094": {
+		title: "Socrates Returns to Ordinary Life After the Disorder",
+		content:
+			"While others collapse into sleep or confusion, Socrates leaves, bathes, and passes the day as usual. The ending quietly turns his restraint and endurance into lived proof."
+	},
+	"ann-095": {
+		title: "Socrates Turns Agathon's Own Method Back on Him",
+		content:
+			"He first agrees that Agathon is right to distinguish a thing's nature from its effects, then uses that very framework to ask what love is directed toward. The elenchus begins from inside Agathon's proudest definition, not from outside attack."
+	},
+	"ann-096": {
+		title: "\"Beauty\" and \"Good\" Are Brought Together Here",
+		content:
+			"Socrates gets Agathon to grant that the good is also beautiful, so that lacking beauty can be pushed further into lacking goodness. This move is crucial for Diotima's later account of love as desire for the good and for happiness."
+	},
+	"ann-097": {
+		title: "Right Opinion as an Intermediate State",
+		content:
+			"Diotima loosens the opposition between knowledge and ignorance by pointing to correct opinion. She uses this middle state to explain how love can stand between god and mortal, wisdom and foolishness."
+	},
+	"ann-098": {
+		title: "Only One Kind of Desire Gets Called 'Love'",
+		content:
+			"Diotima argues that everyone seeks the good and happiness in some way, but ordinary language reserves the word 'love' for only one especially heated form of that pursuit. Love is thus widened beyond narrow erotic attachment."
+	},
+	"ann-099": {
+		title: "Mortals Seek Immortality Through Renewal, Not Stasis",
+		content:
+			"Diotima says human beings cannot remain numerically identical the way gods can. They continue themselves through birth, memory, learning, and generational replacement, so immortality becomes ongoing renewal rather than changelessness."
+	},
+	"ann-100": {
+		title: "The Ladder Changes One's Vision, Not Just One's Object",
+		content:
+			"The ascent from one body to all bodies, then to institutions, knowledge, and Beauty itself is not merely a matter of loving more objects. It is a training of vision from possessive fixation toward universal understanding."
+	},
+	"ann-101": {
+		title: "True Virtue Versus What Only Looks Like Virtue",
+		content:
+			"Diotima distinguishes genuine virtue from things that merely resemble it. Virtue born after contemplation of Beauty itself is no longer just ambition, imitation, or social display."
+	},
+	"ann-102": {
+		title: "Philosophical Content Still Wears the Shell of Encomium",
+		content:
+			"After retelling Diotima, Socrates still says the speech may be called a praise of Eros if one likes. He does not simply abandon the banquet genre; he transforms encomium into philosophy."
+	},
+	"ann-103": {
+		title: "Alcibiades Turns Abstract Doctrine into Lived Experience",
+		content:
+			"Diotima explained love and ascent conceptually; Alcibiades shows, from experience, why Socrates attracts, unsettles, and shames those around him. The abstract account receives an emotional confirmation here."
+	},
+	"ann-104": {
+		title: "The Final Survivors Represent Three Genres",
+		content:
+			"At dawn the ones still awake are Aristophanes, Agathon, and Socrates, corresponding to comedy, tragedy, and philosophy. The last argument about whether one person can write both comedy and tragedy reads like the dialogue's own self-summary."
+	},
+	"ann-105": {
+		title: "Love Is First of All a Relational Term",
+		content:
+			"Socrates begins with examples like father and brother to show that love cannot be treated as a self-standing thing. It is always love of something, a relation directed toward an object."
+	},
+	"ann-106": {
+		title: "Socrates Puts Himself Back in the Place of a Student",
+		content:
+			"After dismantling Agathon's speech, Socrates does not present himself as the triumphant master. He says that he too once received instruction from Diotima, returning the strongest speaker to the position of a learner."
+	},
+	"ann-107": {
+		title: "Philosophy Is Born in the Middle",
+		content:
+			"The gods do not seek wisdom because they already possess it, and the purely ignorant do not seek it because they do not even feel the lack. The desire for wisdom belongs to those who stand between the two."
+	},
+	"ann-108": {
+		title: "Animals Are Also Drawn into Love's Logic",
+		content:
+			"Diotima turns to animals nursing offspring and fighting for their young in order to show that the pursuit of immortality is not a uniquely human refinement. It is a more general impulse of living things."
+	},
+	"ann-109": {
+		title: "\"The Same Person\" Is Constantly Being Renewed",
+		content:
+			"Body, character, knowledge, and memory are always being replaced, so the individual is not an unchanging identity. Mortals participate in permanence only through continuous renewal."
+	},
+	"ann-110": {
+		title: "The Final Revelation Arrives Suddenly",
+		content:
+			"The ladder of love is described as a gradual discipline up to the top, but the highest vision appears all at once. Plato uses that rhythm to portray philosophy as a sudden illumination after long preparation."
+	},
+	"ann-111": {
+		title: "Being a 'Friend of the Gods' Does Not Mean Becoming a God",
+		content:
+			"The contemplator of Beauty itself is called dear to the gods because he shares most fully in immortality, not because he ceases to be human. The dialogue preserves the distance between mortals and gods even at its highest point."
+	},
+	"ann-112": {
+		title: "Socrates Still Aims to Persuade Others",
+		content:
+			"He says he not only accepts Diotima's teaching but wants others to receive it as well. Philosophy here is not private vision alone but a practice of public persuasion."
+	},
+	"ann-113": {
+		title: "Alcibiades Also Speaks in the Language of Initiation",
+		content:
+			"He says that Socrates' words reveal who is fit for sacred mysteries. That phrasing echoes Diotima's earlier language of initiation, ascent, and final revelation."
+	},
+	"ann-114": {
+		title: "The Witness Falls Asleep and Leaves a Final Gap",
+		content:
+			"Aristodemus sleeps at the crucial moment and wakes only half-aware, so the final poetic debate is not fully preserved. The ending keeps a deliberate residue of incompleteness."
 	}
 };
 
