@@ -24,5 +24,20 @@ assert.match(
 	/toAssetPath\(\"\/branding\/logo-mark\.png\"\)/,
 	"expected site shell to resolve the branded logo mark through the asset helper"
 );
+assert.match(
+	shellSource,
+	/https:\/\/github\.com\/6iedog\/symposium-web/,
+	"expected site shell to include a GitHub repository link"
+);
+assert.match(
+	shellSource,
+	/target="_blank"/,
+	"expected the GitHub repository link to open in a new tab"
+);
+assert.match(
+	shellSource,
+	/rel="noreferrer"/,
+	"expected the GitHub repository link to use noreferrer"
+);
 
 console.log("branding-assets test passed");

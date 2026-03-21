@@ -1,6 +1,6 @@
 ﻿<script lang="ts">
 	import type { Snippet } from "svelte";
-	import { Languages, Monitor, Moon, Sun } from "@lucide/svelte";
+	import { Github, Languages, Monitor, Moon, Sun } from "@lucide/svelte";
 	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
@@ -28,6 +28,7 @@
 
 	const THEME_STORAGE_KEY = "huiyin:theme-mode";
 	const themeCycle: ThemeMode[] = ["system", "light", "dark"];
+	const GITHUB_REPOSITORY_URL = "https://github.com/6iedog/symposium-web";
 
 	const navItems: NavItem[] = [
 		{ href: "/reading", label: { "zh-CN": "阅读", "en-US": "Reading" } },
@@ -48,6 +49,7 @@
 				siteTitle: "会饮研读台",
 				languageSettings: "语言配置",
 				themeLabel: "主题",
+				githubLink: "查看 GitHub 仓库",
 				light: "浅色",
 				dark: "深色",
 				system: "跟随系统",
@@ -58,6 +60,7 @@
 				siteTitle: "Symposium Reading Desk",
 				languageSettings: "Language Settings",
 				themeLabel: "Theme",
+				githubLink: "View GitHub Repository",
 				light: "Light",
 				dark: "Dark",
 				system: "System",
@@ -218,6 +221,16 @@
 						<Moon class="size-4" />
 					{/if}
 				</button>
+				<a
+					href={GITHUB_REPOSITORY_URL}
+					target="_blank"
+					rel="noreferrer"
+					class="motion-sheen inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-background/75 text-muted-foreground transition-[color,background-color,border-color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:border-border hover:bg-accent/45 hover:text-foreground sm:size-8"
+					aria-label={shellCopy.githubLink}
+					title={shellCopy.githubLink}
+				>
+					<Github class="size-4" />
+				</a>
 			</div>
 		</div>
 	</header>
