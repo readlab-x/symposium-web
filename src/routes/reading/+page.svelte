@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
 	import AnnotationPanel from "$lib/components/reading/annotation-panel.svelte";
 	import DialogueList from "$lib/components/reading/dialogue-list.svelte";
@@ -68,11 +69,9 @@
 		return acc;
 	}, {});
 
-	let activeSpeakerIds = $state<string[]>(
-		resolveSpeakerIdsFromQuery($page.url.searchParams.get("speakers"), defaultSpeakerIds, defaultSpeakerIds)
-	);
+	let activeSpeakerIds = $state<string[]>(defaultSpeakerIds);
 	let activeSceneIds = $state<string[]>(defaultSceneIds);
-	let lastAppliedSpeakerQuery = $state($page.url.searchParams.get("speakers") ?? "");
+	let lastAppliedSpeakerQuery = $state("");
 	let selectedLineId = $state<string | null>(dialogs[0]?.id ?? null);
 
 	const copy = $derived.by(() =>
@@ -96,6 +95,8 @@
 	);
 
 	$effect(() => {
+		if (!browser) return;
+
 		const speakerQuery = $page.url.searchParams.get("speakers") ?? "";
 		if (speakerQuery === lastAppliedSpeakerQuery) return;
 
