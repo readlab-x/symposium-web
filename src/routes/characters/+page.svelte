@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ExternalLink } from "@lucide/svelte";
+	import { toAssetPath, toBasePath } from "$lib/paths/runtime-paths.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
@@ -84,7 +85,7 @@
 					<Avatar.Root class="size-14 border border-border/60 bg-secondary/35 shadow-sm">
 						{#if character.avatarImage}
 							<Avatar.Image
-								src={character.avatarImage}
+								src={toAssetPath(character.avatarImage)}
 								alt={getDisplayCharacterName(character, $i18nPreferences.primaryLanguage)}
 								class="object-cover"
 							/>
@@ -126,7 +127,7 @@
 					{#if character.firstLineId}
 						<a
 							class="motion-sheen inline-flex items-center transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground underline underline-offset-4"
-							href={`/reading#${character.firstLineId}`}
+							href={toBasePath(`/reading#${character.firstLineId}`)}
 						>
 							{copy.firstAppearance}
 						</a>

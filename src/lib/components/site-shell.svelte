@@ -5,6 +5,7 @@
 	import { page } from "$app/stores";
 	import { onMount } from "svelte";
 	import I18nSettingsDialog from "$lib/components/i18n/i18n-settings-dialog.svelte";
+	import { toAssetPath, toBasePath } from "$lib/paths/runtime-paths.js";
 	import {
 		getSiteShellBackdropClass,
 		getSiteShellHeaderClass,
@@ -40,6 +41,7 @@
 	let themeMode = $state<ThemeMode>("system");
 	let isI18nDialogOpen = $state(false);
 	let { children, routeKey = "" }: { children?: Snippet; routeKey?: string } = $props();
+	const currentPathname = $derived.by(() => $page.route.id ?? "/");
 	const shellCopy = $derived.by(() =>
 		pickByLanguage($i18nPreferences.primaryLanguage, {
 			"zh-CN": {
@@ -85,7 +87,7 @@
 	});
 
 	function isActive(href: string): boolean {
-		return $page.url.pathname === href;
+		return currentPathname === href;
 	}
 
 	function applyTheme(mode: ThemeMode) {
@@ -156,9 +158,9 @@
 	></div>
 	<header class={getSiteShellHeaderClass()}>
 		<div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3">
-			<a href="/" class="motion-stage-hero flex min-w-0 items-center gap-3">
+			<a href={toBasePath("/")} class="motion-stage-hero flex min-w-0 items-center gap-3">
 				<img
-					src="/branding/logo-mark.png"
+					src={toAssetPath("/branding/logo-mark.png")}
 					alt=""
 					class="size-11 shrink-0 rounded-full border border-border/60 bg-background/80 object-cover shadow-[0_14px_28px_-22px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
 				/>
@@ -174,7 +176,7 @@
 			<nav class="motion-stage flex flex-wrap items-center gap-4 motion-delay-1 sm:gap-5">
 				{#each navItems as item (item.href)}
 					<a
-						href={item.href}
+						href={toBasePath(item.href)}
 						class={`group relative py-2 text-sm transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px ${
 							isActive(item.href)
 								? "text-foreground"

@@ -14,14 +14,14 @@ assert.ok(
 
 assert.match(
 	source,
-	/<Button\s+href="\/reading"\s+size="lg"[\s\S]*?class="motion-sheen group rounded-full px-5/,
-	"primary hero action should use the large button size instead of custom vertical padding"
+	/<Button\s+href=\{toBasePath\(\"\/reading\"\)\}\s+size="lg"[\s\S]*?class="motion-sheen group rounded-full px-5/,
+	"primary hero action should use the large button size and base-aware reading href"
 );
 
 assert.match(
 	source,
-	/<Button\s+href="\/themes"\s+variant="outline"\s+size="lg"[\s\S]*?class="motion-sheen rounded-full border-border\/70 bg-background\/72 px-5/,
-	"secondary hero action should use the large button size instead of custom vertical padding"
+	/<Button\s+href=\{toBasePath\(\"\/themes\"\)\}\s+variant="outline"\s+size="lg"[\s\S]*?class="motion-sheen rounded-full border-border\/70 bg-background\/72 px-5/,
+	"secondary hero action should use the large button size and base-aware theme href"
 );
 
 assert.ok(

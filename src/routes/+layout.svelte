@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import { page } from '$app/stores';
+	import { toAssetPath } from '$lib/paths/runtime-paths';
 	import SiteShell from '$lib/components/site-shell.svelte';
 	import type { LayoutData } from './$types';
 
@@ -24,7 +25,7 @@
 	<meta name="twitter:title" content={data.seo.twitter.title} />
 	<meta name="twitter:description" content={data.seo.twitter.description} />
 	<meta name="twitter:image" content={data.seo.twitter.image} />
-	<link rel="icon" href="/branding/favicon.png" type="image/png" />
+	<link rel="icon" href={toAssetPath('/branding/favicon.png')} type="image/png" />
 	{#each data.seo.jsonLd as schema, index (`${data.seo.pathname}-${index}`)}
 		<script type="application/ld+json">
 			{JSON.stringify(schema)}

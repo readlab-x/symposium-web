@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { EyeOff, FileText, Languages } from "@lucide/svelte";
 	import AnnotationPanel from "$lib/components/reading/annotation-panel.svelte";
+	import { toAssetPath } from "$lib/paths/runtime-paths.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
@@ -138,7 +139,7 @@
 					<Avatar.Root class="size-8 border border-border/65 bg-secondary/38">
 						{#if speaker?.avatarImage}
 							<Avatar.Image
-								src={speaker.avatarImage}
+								src={toAssetPath(speaker.avatarImage)}
 								alt={displaySpeakerName}
 								class="object-cover"
 							/>

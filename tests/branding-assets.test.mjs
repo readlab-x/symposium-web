@@ -14,15 +14,15 @@ for (const filePath of requiredFiles) {
 const layoutSource = fs.readFileSync("src/routes/+layout.svelte", "utf8");
 assert.match(
 	layoutSource,
-	/\/branding\/favicon\.png/,
-	"expected layout to reference branded favicon asset"
+	/toAssetPath\('\/branding\/favicon\.png'\)/,
+	"expected layout to resolve the branded favicon through the asset helper"
 );
 
 const shellSource = fs.readFileSync("src/lib/components/site-shell.svelte", "utf8");
 assert.match(
 	shellSource,
-	/\/branding\/logo-mark\.png/,
-	"expected site shell to reference branded logo mark asset"
+	/toAssetPath\(\"\/branding\/logo-mark\.png\"\)/,
+	"expected site shell to resolve the branded logo mark through the asset helper"
 );
 
 console.log("branding-assets test passed");

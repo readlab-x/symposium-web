@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { toAssetPath } from "$lib/paths/runtime-paths.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 	import type { EntityReference, EntityType } from "$lib/types";
@@ -115,7 +116,7 @@
 							<Avatar.Root class="size-9 shrink-0 border border-border/60 bg-secondary/28">
 								{#if segment.entity.avatarImage}
 									<Avatar.Image
-										src={segment.entity.avatarImage}
+										src={toAssetPath(segment.entity.avatarImage)}
 										alt={segment.entity.name}
 										class="object-cover"
 									/>

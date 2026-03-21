@@ -1,4 +1,5 @@
 ﻿<script lang="ts">
+	import { toBasePath } from "$lib/paths/runtime-paths.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import characterData from "$lib/data/characters.json";
@@ -98,7 +99,7 @@
 										{getDisplayText(line, $i18nPreferences.primaryLanguage)}
 									</p>
 									<a
-										href={`/reading#${line.id}`}
+										href={toBasePath(`/reading#${line.id}`)}
 										class="motion-sheen mt-2 inline-block text-xs transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px hover:text-foreground underline underline-offset-4"
 									>
 										{copy.jumpToReading}

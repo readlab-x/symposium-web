@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Check, ChevronDown } from "@lucide/svelte";
 	import { getReadingToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
+	import { toAssetPath } from "$lib/paths/runtime-paths.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { getDisplayCharacterName, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
@@ -115,7 +116,7 @@
 						<Avatar.Root class="size-8 shrink-0 border border-border/60 bg-secondary/30">
 							{#if speaker.avatarImage}
 								<Avatar.Image
-									src={speaker.avatarImage}
+									src={toAssetPath(speaker.avatarImage)}
 									alt={getDisplayCharacterName(speaker, $i18nPreferences.primaryLanguage)}
 									class="object-cover"
 								/>

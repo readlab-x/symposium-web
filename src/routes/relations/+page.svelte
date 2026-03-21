@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { toAssetPath } from "$lib/paths/runtime-paths.js";
 	import RelationGraph from "$lib/components/relations/relation-graph.svelte";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
@@ -34,7 +35,7 @@
 					...node,
 					label,
 					summary: getDisplayRelationNodeSummary(node, $i18nPreferences.primaryLanguage),
-					avatarImage: character?.avatarImage,
+					avatarImage: character?.avatarImage ? toAssetPath(character.avatarImage) : undefined,
 					avatarFallback: character?.avatar || label.trim().slice(0, 1) || "?"
 				} satisfies RelationGraphNode;
 			}) as RelationGraphNode[]

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ArrowRight } from "@lucide/svelte";
+	import { toBasePath } from "$lib/paths/runtime-paths.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 
@@ -307,7 +308,7 @@
 
 				<div class="flex flex-wrap items-center gap-3">
 					<Button
-						href="/reading"
+						href={toBasePath("/reading")}
 						size="lg"
 						class="motion-sheen group rounded-full px-5 transition-[transform,box-shadow,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:shadow-[0_18px_34px_-24px_color-mix(in_oklab,var(--color-primary)_48%,transparent)]"
 					>
@@ -318,7 +319,7 @@
 					</Button>
 
 					<Button
-						href="/themes"
+						href={toBasePath("/themes")}
 						variant="outline"
 						size="lg"
 						class="motion-sheen rounded-full border-border/70 bg-background/72 px-5 transition-[transform,box-shadow,border-color,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-expo)] hover:-translate-y-0.5 hover:border-border hover:bg-background/86 hover:shadow-[0_18px_30px_-24px_color-mix(in_oklab,var(--color-primary)_24%,transparent)]"
@@ -386,7 +387,7 @@
 		<div class="grid gap-4 md:grid-cols-2 md:gap-5">
 			{#each copy.positions.cards as card, index (`position-${card.speaker}`)}
 				<a
-					href={card.href}
+					href={toBasePath(card.href)}
 					class={`motion-stage-soft group relative flex min-h-[15rem] flex-col justify-between overflow-hidden rounded-[1.8rem] border border-border/60 p-6 shadow-[0_28px_64px_-50px_color-mix(in_oklab,var(--color-primary)_24%,transparent)] transition-[transform,box-shadow,border-color,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-0.5 hover:border-border/80 hover:shadow-[0_34px_72px_-48px_color-mix(in_oklab,var(--color-primary)_30%,transparent)] ${motionDelayClass(index)} ${thesisToneClass(index)} ${thesisShapeClass(index)}`}
 				>
 					<div
@@ -435,7 +436,7 @@
 
 		<div class="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
 			<a
-				href={copy.paths.primary.href}
+				href={toBasePath(copy.paths.primary.href)}
 				class="motion-stage-soft motion-delay-2 group relative overflow-hidden rounded-[2rem] border border-border/65 bg-[linear-gradient(150deg,color-mix(in_oklab,var(--color-card)_95%,transparent),color-mix(in_oklab,var(--color-primary)_16%,transparent))] p-7 shadow-[0_36px_78px_-56px_color-mix(in_oklab,var(--color-primary)_30%,transparent)] transition-[transform,box-shadow,border-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-0.5 hover:border-border/80 hover:shadow-[0_40px_84px_-54px_color-mix(in_oklab,var(--color-primary)_34%,transparent)] sm:p-8"
 			>
 				<div aria-hidden="true" class="pointer-events-none absolute inset-0">
@@ -476,7 +477,7 @@
 			<div class="grid gap-4 sm:grid-cols-2">
 				{#each copy.paths.secondary as entry, index (`entry-${entry.title}`)}
 					<a
-						href={entry.href}
+						href={toBasePath(entry.href)}
 						class={`motion-stage-soft group relative flex min-h-[12.75rem] flex-col justify-between overflow-hidden rounded-[1.65rem] border border-border/60 p-5 shadow-[0_24px_52px_-44px_color-mix(in_oklab,var(--color-primary)_18%,transparent)] transition-[transform,box-shadow,border-color,background-color] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-0.5 hover:border-border/80 hover:shadow-[0_28px_58px_-40px_color-mix(in_oklab,var(--color-primary)_24%,transparent)] ${motionDelayClass(index + 1)} ${entryToneClass(index)}`}
 					>
 						<div class="space-y-3">
