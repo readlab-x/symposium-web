@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Add a GitHub Pages deployment workflow and make the static SvelteKit site work correctly when hosted under `/huiyin-symposium`.
+**Goal:** Add a GitHub Pages deployment workflow and make the static SvelteKit site work correctly when hosted under `/symposium-web`.
 
 **Architecture:** Introduce a small pure base-path helper layer, wire SvelteKit to read `BASE_PATH`, update route and asset references to use base-aware URLs, and add a GitHub Actions workflow that builds and deploys `build/` with both `SITE_URL` and `BASE_PATH` configured.
 
@@ -21,10 +21,10 @@
 Add assertions for:
 
 - empty base path stays empty
-- `/huiyin-symposium` stays normalized
-- joining `/huiyin-symposium` with `/reading` yields `/huiyin-symposium/reading`
-- joining with `/branding/logo-mark.png` yields `/huiyin-symposium/branding/logo-mark.png`
-- stripping `/huiyin-symposium` from `/huiyin-symposium/reading` yields `/reading`
+- `/symposium-web` stays normalized
+- joining `/symposium-web` with `/reading` yields `/symposium-web/reading`
+- joining with `/branding/logo-mark.png` yields `/symposium-web/branding/logo-mark.png`
+- stripping `/symposium-web` from `/symposium-web/reading` yields `/reading`
 
 **Step 2: Write the failing workflow/config test**
 
@@ -165,8 +165,8 @@ Use the GitHub Pages official actions to:
 - run `npm ci`
 - run `npm run check`
 - run `npm run build`
-- pass `SITE_URL=https://github.6iedog.com/huiyin-symposium`
-- pass `BASE_PATH=/huiyin-symposium`
+- pass `SITE_URL=https://github.6iedog.com/symposium-web`
+- pass `BASE_PATH=/symposium-web`
 - upload `build/`
 - deploy the uploaded artifact
 
@@ -197,7 +197,7 @@ node tests/base-paths.test.mjs
 node tests/github-pages-workflow.test.mjs
 node tests/branding-assets.test.mjs
 pnpm check
-BASE_PATH=/huiyin-symposium SITE_URL=https://github.6iedog.com/huiyin-symposium pnpm build
+BASE_PATH=/symposium-web SITE_URL=https://github.6iedog.com/symposium-web pnpm build
 ```
 
 Expected: PASS.

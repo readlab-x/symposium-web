@@ -1,6 +1,6 @@
 # GitHub Pages Deployment Design
 
-**Goal:** Add a repeatable GitHub Pages deployment flow for the static SvelteKit site, with correct support for hosting under the subpath `https://github.6iedog.com/huiyin-symposium`.
+**Goal:** Add a repeatable GitHub Pages deployment flow for the static SvelteKit site, with correct support for hosting under the subpath `https://github.6iedog.com/symposium-web`.
 
 ## Context
 
@@ -13,7 +13,7 @@ There is currently no `.github/workflows` deployment pipeline in the repository.
 Use a complete GitHub Pages deployment setup with three coordinated parts:
 
 1. Add a GitHub Actions workflow that installs dependencies, runs validation, builds the site, uploads the `build/` artifact, and deploys it to Pages.
-2. Add `BASE_PATH` support to SvelteKit so the generated site can live under `/huiyin-symposium`.
+2. Add `BASE_PATH` support to SvelteKit so the generated site can live under `/symposium-web`.
 3. Replace root-absolute internal links and static asset references with base-aware helpers so routes, images, favicon, and character avatars still resolve after deployment.
 
 ## Why This Approach
@@ -46,8 +46,8 @@ This is the only option that makes the deployment operational rather than nomina
 
 ### Build-Time Configuration
 
-- `SITE_URL` remains the canonical origin plus subpath, e.g. `https://github.6iedog.com/huiyin-symposium`
-- `BASE_PATH` becomes `/huiyin-symposium`
+- `SITE_URL` remains the canonical origin plus subpath, e.g. `https://github.6iedog.com/symposium-web`
+- `BASE_PATH` becomes `/symposium-web`
 - `svelte.config.js` reads `BASE_PATH` and sets `kit.paths.base`
 
 ### Runtime Path Layer
@@ -61,7 +61,7 @@ This keeps the deployment logic centralized instead of scattering string concate
 
 ### SEO Integration
 
-Because requests under a base path will reach the root server load as `/huiyin-symposium/...`, the SEO metadata resolver must strip the configured base path before mapping to route metadata. Canonical URLs should still be generated from `SITE_URL`.
+Because requests under a base path will reach the root server load as `/symposium-web/...`, the SEO metadata resolver must strip the configured base path before mapping to route metadata. Canonical URLs should still be generated from `SITE_URL`.
 
 ## GitHub Pages Workflow
 
@@ -83,7 +83,7 @@ Before calling this complete, verify:
 - base-path helper tests pass
 - workflow/config tests pass
 - existing test suite still passes
-- `pnpm build` still succeeds with `BASE_PATH=/huiyin-symposium`
+- `pnpm build` still succeeds with `BASE_PATH=/symposium-web`
 - generated output still contains `robots.txt` and `sitemap.xml`
 
 ## Notes

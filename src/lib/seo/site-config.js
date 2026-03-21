@@ -1,4 +1,4 @@
-export const DEFAULT_SITE_URL = "https://github.6iedog.com/huiyin-symposium";
+export const DEFAULT_SITE_URL = "https://github.6iedog.com/symposium-web";
 
 export const SITE_NAME_ZH = "会饮研读台";
 export const SITE_NAME_EN = "Symposium Reading Desk";

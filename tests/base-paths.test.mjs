@@ -7,27 +7,27 @@ import {
 
 assert.equal(normalizeBasePath(""), "", "expected empty base path to stay empty");
 assert.equal(
-	normalizeBasePath("/huiyin-symposium/"),
-	"/huiyin-symposium",
+	normalizeBasePath("/symposium-web/"),
+	"/symposium-web",
 	"expected trailing slash to be removed from base path"
 );
 assert.equal(
-	joinBasePath("/huiyin-symposium", "/reading"),
-	"/huiyin-symposium/reading",
+	joinBasePath("/symposium-web", "/reading"),
+	"/symposium-web/reading",
 	"expected internal route to be prefixed with base path"
 );
 assert.equal(
-	joinBasePath("/huiyin-symposium", "/branding/logo-mark.png"),
-	"/huiyin-symposium/branding/logo-mark.png",
+	joinBasePath("/symposium-web", "/branding/logo-mark.png"),
+	"/symposium-web/branding/logo-mark.png",
 	"expected asset path to be prefixed with base path"
 );
 assert.equal(
-	joinBasePath("/huiyin-symposium", "https://example.com"),
+	joinBasePath("/symposium-web", "https://example.com"),
 	"https://example.com",
 	"expected external urls to stay unchanged"
 );
 assert.equal(
-	stripBasePath("/huiyin-symposium", "/huiyin-symposium/reading"),
+	stripBasePath("/symposium-web", "/symposium-web/reading"),
 	"/reading",
 	"expected incoming pathname to strip the configured base path"
 );

@@ -7,12 +7,12 @@ assert.ok(fs.existsSync(workflowPath), "expected GitHub Pages workflow to exist"
 const workflowSource = fs.readFileSync(workflowPath, "utf8");
 assert.match(
 	workflowSource,
-	/SITE_URL:\s*https:\/\/github\.6iedog\.com\/huiyin-symposium/,
+	/SITE_URL:\s*https:\/\/github\.6iedog\.com\/symposium-web/,
 	"expected workflow to set SITE_URL for the subpath deployment"
 );
 assert.match(
 	workflowSource,
-	/BASE_PATH:\s*\/huiyin-symposium/,
+	/BASE_PATH:\s*\/symposium-web/,
 	"expected workflow to set BASE_PATH for the subpath deployment"
 );
 assert.match(

@@ -15,7 +15,7 @@
 
 - Keep the current in-app bilingual toggle as-is.
 - Do not introduce `/en` route duplication or `hreflang` in this pass.
-- Use a configurable `SITE_URL` with a default fallback of `https://github.6iedog.com/huiyin-symposium`.
+- Use a configurable `SITE_URL` with a default fallback of `https://github.6iedog.com/symposium-web`.
 - Use mixed bilingual SEO copy instead of runtime language-dependent metadata.
 - Preserve static prerendering with `@sveltejs/adapter-static`.
 
@@ -30,7 +30,7 @@ This approach is better than page-local hand-authored tags because the site alre
 ### 1. Site URL and canonical strategy
 
 - Read `SITE_URL` from the environment at build time.
-- Fall back to `https://github.6iedog.com/huiyin-symposium` if the variable is missing.
+- Fall back to `https://github.6iedog.com/symposium-web` if the variable is missing.
 - Normalize the base URL and join it with route pathnames.
 - Strip query parameters and fragments from canonical URLs.
 
