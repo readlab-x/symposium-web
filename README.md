@@ -94,3 +94,16 @@ pnpm build
 - 更完整的技术文档
 - 更系统的内容数据维护流程
 - 更细粒度的性能与 SEO 优化
+## Content Sync
+
+When using the shared `symposium-content` repository, rebuild the shared artifacts first and then refresh this app:
+
+```bash
+cd ../symposium-content
+node scripts/build.mjs
+
+cd ../symposium-web
+npm run sync:content
+```
+
+This repository keeps the synced JSON files plus generated `content-i18n.js` and `reading-i18n.js` wrapper modules locally so the existing Svelte imports stay stable.
