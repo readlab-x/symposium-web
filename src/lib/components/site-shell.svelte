@@ -28,7 +28,7 @@
 
 	const THEME_STORAGE_KEY = "huiyin:theme-mode";
 	const themeCycle: ThemeMode[] = ["system", "light", "dark"];
-	const GITHUB_REPOSITORY_URL = "https://github.com/6iedog/symposium-web";
+	const GITHUB_REPOSITORY_URL = "https://github.com/readlab-x/symposium-web";
 
 	const navItems: NavItem[] = [
 		{ href: "/reading", label: { "zh-CN": "阅读", "en-US": "Reading" } },

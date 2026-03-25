@@ -26,7 +26,7 @@ assert.match(
 );
 assert.match(
 	shellSource,
-	/https:\/\/github\.com\/6iedog\/symposium-web/,
+	/https:\/\/github\.com\/readlab-x\/symposium-web/,
 	"expected site shell to include a GitHub repository link"
 );
 assert.match(

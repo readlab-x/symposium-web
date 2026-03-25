@@ -4,15 +4,15 @@
 
 在线地址：
 
-- https://github.6iedog.com/symposium-web/
+- https://readlab-x.github.io/symposium-web/
 
 ## 这个项目能做什么
 
-- 在 [阅读台](https://github.6iedog.com/symposium-web/reading/) 中按发言顺序阅读文本，并结合场景筛选、人物筛选和注解辅助理解。
-- 在 [人物索引](https://github.6iedog.com/symposium-web/characters/) 中查看主要角色、头像、人物简介与外部百科入口。
-- 在 [主题地图](https://github.6iedog.com/symposium-web/themes/) 中按“荣誉、欲望、完整、美、不朽”等主题横向进入文本。
-- 在 [关系图](https://github.6iedog.com/symposium-web/relations/) 中查看人物之间的回应、继承、修正与叙事关联。
-- 在 [全文搜索](https://github.6iedog.com/symposium-web/search/) 中按关键词检索《会饮》相关文本内容。
+- 在 [阅读台](https://readlab-x.github.io/symposium-web/reading/) 中按发言顺序阅读文本，并结合场景筛选、人物筛选和注解辅助理解。
+- 在 [人物索引](https://readlab-x.github.io/symposium-web/characters/) 中查看主要角色、头像、人物简介与外部百科入口。
+- 在 [主题地图](https://readlab-x.github.io/symposium-web/themes/) 中按“荣誉、欲望、完整、美、不朽”等主题横向进入文本。
+- 在 [关系图](https://readlab-x.github.io/symposium-web/relations/) 中查看人物之间的回应、继承、修正与叙事关联。
+- 在 [全文搜索](https://readlab-x.github.io/symposium-web/search/) 中按关键词检索《会饮》相关文本内容。
 
 ## 项目特点
 
@@ -52,7 +52,7 @@ npm run build
 
 ```powershell
 $env:BASE_PATH='/symposium-web'
-$env:SITE_URL='https://github.6iedog.com/symposium-web'
+$env:SITE_URL='https://readlab-x.github.io/symposium-web'
 pnpm build
 ```
 
@@ -78,13 +78,13 @@ pnpm build
 
 ## 文档入口
 
-项目文档入口在 [docs/README.md](https://github.com/6iedog/symposium-web/blob/master/docs/README.md)。
+项目文档入口在 [docs/README.md](https://github.com/readlab-x/symposium-web/blob/master/docs/README.md)。
 
 当前建议优先阅读：
 
-- [项目 SEO 技术文档](https://github.com/6iedog/symposium-web/blob/master/docs/seo-technical-guide.md)
-- [GitHub Pages 部署设计](https://github.com/6iedog/symposium-web/blob/master/docs/plans/2026-03-21-github-pages-deployment-design.md)
-- [GitHub Pages 部署实施计划](https://github.com/6iedog/symposium-web/blob/master/docs/plans/2026-03-21-github-pages-deployment-implementation.md)
+- [项目 SEO 技术文档](https://github.com/readlab-x/symposium-web/blob/master/docs/seo-technical-guide.md)
+- [GitHub Pages 部署设计](https://github.com/readlab-x/symposium-web/blob/master/docs/plans/2026-03-21-github-pages-deployment-design.md)
+- [GitHub Pages 部署实施计划](https://github.com/readlab-x/symposium-web/blob/master/docs/plans/2026-03-21-github-pages-deployment-implementation.md)
 
 ## 项目状态
 

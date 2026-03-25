@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://github.6iedog.com/symposium-web
+      SITE_URL: https://readlab-x.github.io/symposium-web
       BASE_PATH: /symposium-web
     steps:
       - name: Checkout

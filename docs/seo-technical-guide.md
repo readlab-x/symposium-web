@@ -179,7 +179,7 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://github.6iedog.com/symposium-web/sitemap.xml
+Sitemap: https://readlab-x.github.io/symposium-web/sitemap.xml
 ```
 
 ### 7.2 sitemap.xml
@@ -217,7 +217,7 @@ sitemap 的页面来源不是手写列表，而是 [site-config.js](/d:/Reposito
 
 这个项目不是部署在域名根目录，而是部署在：
 
-`https://github.6iedog.com/symposium-web`
+`https://readlab-x.github.io/symposium-web`
 
 这意味着 SEO 不能只考虑“域名”，还必须考虑“子路径”。
 
@@ -232,7 +232,7 @@ sitemap 的页面来源不是手写列表，而是 [site-config.js](/d:/Reposito
 
 当前 GitHub Pages 工作流里设置的是：
 
-- `SITE_URL=https://github.6iedog.com/symposium-web`
+- `SITE_URL=https://readlab-x.github.io/symposium-web`
 - `BASE_PATH=/symposium-web`
 
 ### 9.2 为什么 `+layout.server.ts` 还要 strip base path
@@ -331,18 +331,17 @@ pnpm check
 如果你改了部署域名、仓库名或 GitHub Pages 子路径，再补跑一次构建：
 
 ```bash
-BASE_PATH=/symposium-web SITE_URL=https://github.6iedog.com/symposium-web pnpm build
+BASE_PATH=/symposium-web SITE_URL=https://readlab-x.github.io/symposium-web pnpm build
 ```
 
 在 PowerShell 里对应写法是：
 
 ```powershell
 $env:BASE_PATH='/symposium-web'
-$env:SITE_URL='https://github.6iedog.com/symposium-web'
+$env:SITE_URL='https://readlab-x.github.io/symposium-web'
 pnpm build
 ```
 
 ## 14. 一句话总结
 
 本项目的 SEO 不是散落在各页面里的，而是一套“集中配置 + 服务端生成 + 根布局渲染 + 预渲染 crawl 文件 + 子路径部署适配”的结构。只要你记住 `site-config.js` 是配置入口、`metadata.js` 是计算层、`+layout.server.ts` / `+layout.svelte` 是输出层，再配合 `robots.txt`、`sitemap.xml` 和 `BASE_PATH` / `SITE_URL`，后续维护就不会乱。
-
