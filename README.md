@@ -94,6 +94,7 @@ pnpm build
 - 更完整的技术文档
 - 更系统的内容数据维护流程
 - 更细粒度的性能与 SEO 优化
+
 ## Content Sync
 
 When using the shared `symposium-content` repository, rebuild the shared artifacts first and then refresh this app:
