@@ -2,6 +2,7 @@
 	import { Check, ChevronDown } from "@lucide/svelte";
 	import { getReadingSceneToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
 	import { Button } from "$lib/components/ui/button/index.js";
+	import { areAllSelected } from "$lib/reading/filter-selection.js";
 	import { i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
 
 	let {
@@ -24,13 +25,22 @@
 			"zh-CN": {
 				title: "按场景筛选",
 				selectAll: "全选",
+				deselectAll: "取消全选",
 				triggerLabel: "筛选场景"
 			},
 			"en-US": {
 				title: "Filter by Scene",
 				selectAll: "Select All",
+				deselectAll: "Deselect All",
 				triggerLabel: "Filter Scenes"
 			}
+		})
+	);
+
+	const allSelected = $derived.by(() =>
+		areAllSelected({
+			activeIds: activeSceneIds,
+			allIds: scenes
 		})
 	);
 
@@ -94,7 +104,7 @@
 				class="motion-sheen transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px"
 				onclick={() => onSelectAll?.()}
 			>
-				{copy.selectAll}
+				{allSelected ? copy.deselectAll : copy.selectAll}
 			</Button>
 		</div>
 		<div class="max-h-72 space-y-1 overflow-y-auto pr-1">

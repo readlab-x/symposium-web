@@ -14,6 +14,7 @@
 	import characterData from "$lib/data/characters.json";
 	import dialogData from "$lib/data/dialogs.json";
 	import placeData from "$lib/data/places.json";
+	import { toggleAllSelection } from "$lib/reading/filter-selection.js";
 	import { resolveSpeakerIdsFromQuery } from "$lib/reading/speaker-query.js";
 	import {
 		getDisplayCharacterName,
@@ -139,8 +140,11 @@
 		activeSpeakerIds = [...activeSpeakerIds, speakerId];
 	}
 
-	function resetSpeakers() {
-		activeSpeakerIds = defaultSpeakerIds;
+	function toggleAllSpeakers() {
+		activeSpeakerIds = toggleAllSelection({
+			activeIds: activeSpeakerIds,
+			allIds: defaultSpeakerIds
+		});
 	}
 
 	function toggleScene(sceneId: string) {
@@ -152,8 +156,11 @@
 		activeSceneIds = [...activeSceneIds, sceneId];
 	}
 
-	function resetScenes() {
-		activeSceneIds = defaultSceneIds;
+	function toggleAllScenes() {
+		activeSceneIds = toggleAllSelection({
+			activeIds: activeSceneIds,
+			allIds: defaultSceneIds
+		});
 	}
 </script>
 
@@ -170,13 +177,13 @@
 					scenes={defaultSceneIds}
 					activeSceneIds={activeSceneIds}
 					onToggleScene={toggleScene}
-					onSelectAll={resetScenes}
+					onSelectAll={toggleAllScenes}
 				/>
 				<SpeakerFilter
 					{speakers}
 					activeSpeakerIds={activeSpeakerIds}
 					onToggleSpeaker={toggleSpeaker}
-					onSelectAll={resetSpeakers}
+					onSelectAll={toggleAllSpeakers}
 				/>
 			</div>
 		</aside>

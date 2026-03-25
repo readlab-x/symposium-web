@@ -2,6 +2,7 @@
 	import { Check, ChevronDown } from "@lucide/svelte";
 	import { getReadingToolbarSummary } from "$lib/components/reading/reading-toolbar-layout.js";
 	import { toAssetPath } from "$lib/paths/runtime-paths.js";
+	import { areAllSelected } from "$lib/reading/filter-selection.js";
 	import * as Avatar from "$lib/components/ui/avatar/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { getDisplayCharacterName, i18nPreferences, pickByLanguage } from "$lib/stores/i18n";
@@ -27,13 +28,22 @@
 			"zh-CN": {
 				title: "按人物筛选",
 				selectAll: "全选",
+				deselectAll: "取消全选",
 				triggerLabel: "筛选人物"
 			},
 			"en-US": {
 				title: "Filter by Speaker",
 				selectAll: "Select All",
+				deselectAll: "Deselect All",
 				triggerLabel: "Filter Speakers"
 			}
+		})
+	);
+
+	const allSelected = $derived.by(() =>
+		areAllSelected({
+			activeIds: activeSpeakerIds,
+			allIds: speakers.map((speaker) => speaker.id)
 		})
 	);
 
@@ -97,7 +107,7 @@
 				class="motion-sheen transition-[color,transform] [transition-duration:var(--motion-feedback-medium)] ease-[var(--ease-ritual-out)] hover:-translate-y-px"
 				onclick={() => onSelectAll?.()}
 			>
-				{copy.selectAll}
+				{allSelected ? copy.deselectAll : copy.selectAll}
 			</Button>
 		</div>
 		<div class="max-h-72 space-y-1 overflow-y-auto pr-1">

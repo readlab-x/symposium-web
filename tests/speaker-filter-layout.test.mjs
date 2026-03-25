@@ -20,4 +20,19 @@ assert.ok(
 	"speaker filter options should keep a readable avatar fallback"
 );
 
+assert.ok(
+	source.includes("取消全选"),
+	"speaker filter should expose a Chinese deselect-all label when every speaker is active"
+);
+
+assert.ok(
+	source.includes("Deselect All"),
+	"speaker filter should expose an English deselect-all label when every speaker is active"
+);
+
+assert.ok(
+	source.includes("allSelected"),
+	"speaker filter should compute whether all speakers are currently selected"
+);
+
 console.log("speaker-filter-layout test passed");

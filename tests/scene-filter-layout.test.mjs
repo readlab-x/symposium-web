@@ -27,4 +27,19 @@ assert.ok(
 	"scene filter should render from the active scene selection state"
 );
 
+assert.ok(
+	source.includes("取消全选"),
+	"scene filter should expose a Chinese deselect-all label when every scene is active"
+);
+
+assert.ok(
+	source.includes("Deselect All"),
+	"scene filter should expose an English deselect-all label when every scene is active"
+);
+
+assert.ok(
+	source.includes("allSelected"),
+	"scene filter should compute whether all scenes are currently selected"
+);
+
 console.log("scene-filter-layout test passed");
